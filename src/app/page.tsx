@@ -22,8 +22,8 @@ export default function Home() {
             <InputBar  />
           </div>
         </div>
-        <div className=" lg:flex flex-1 lg:justify-end hidden ">
-          <Model/>
+        <div className="flex flex-1 lg:justify-end  ">
+          <Model />
         </div>
       </div>
 

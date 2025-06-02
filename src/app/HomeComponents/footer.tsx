@@ -80,7 +80,7 @@ export default function Footer() {
                     <path d="M60.7113 3.12133C56.3351 3.51631 12.9814 12.7559 -1 35.0035V170.999H376V23.6705C329.069 38.7249 333.878 37.7534 295.5 43C285.487 43 248.083 55.2419 185.5 29.5C131.679 3.27223 123 -2.50059 60.7113 3.12133Z" stroke="black" />
                     <defs>
                         <filter id="filter0_ii_1459_4604" x="-1.5" y="0.660156" width="378" height="194.839" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
-                            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                            <feFlood floodOpacity="0" result="BackgroundImageFix" />
                             <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
                             <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
                             <feOffset dy="1" />
