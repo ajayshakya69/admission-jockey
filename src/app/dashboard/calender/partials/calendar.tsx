@@ -5,7 +5,8 @@ import { ChevronLeft, ChevronRight } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { useMobile } from "@/hooks/use-mobile"
 import { EventModal } from "./event-modal"
-import type { Event } from "./calendar-view"
+import { Event } from "../calender.schema"
+
 
 interface CalendarProps {
   events: Event[]

@@ -2,8 +2,9 @@
 
 import { Button } from "@/components/ui/button";
 import { Trash2, Clock } from "lucide-react";
-import type { Event } from "./calendar-view";
+import type { Event } from "../calender.schema";
 import { cn } from "@/lib/utils";
+import { Badge } from "@/components/ui/badge";
 
 interface ImportantDatesProps {
   events: Event[];
@@ -56,16 +57,20 @@ export function ImportantDates({ events, onDeleteEvent }: ImportantDatesProps) {
           <div className="flex gap-2">
             {onDeleteEvent && (
               <button
-                onClick={() => onDeleteEvent(event.id)}
+                onClick={() => onDeleteEvent(event.id ?? "")}
                 className="p-2 rounded-full hover:bg-gray-800"
               >
                 <Trash2 className="w-4 h-4 text-red-400" />
               </button>
             )}
-            {event.type === "event" && (
-              <Button className="bg-gradient-to-r from-purple-400 to-pink-400 hover:from-purple-500 hover:to-pink-500">
-                Apply
-              </Button>
+            {event.type === "event" ? (
+              <Badge className=" w-24 text-center text-white bg-gradient-to-r from-purple-500 to-pink-500">
+                Event
+              </Badge>
+            ) : (
+              <Badge className="bg-gradient-to-r from-blue-500 to-cyan-500 w-24 text-center text-white ">
+                Reminder
+              </Badge>
             )}
           </div>
         </div>
