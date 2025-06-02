@@ -1,0 +1,1 @@
+bg-[linear-gradient(90deg,#A07DF1,#F69DBA)]
