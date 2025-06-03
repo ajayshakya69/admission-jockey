@@ -52,12 +52,18 @@ export default function ChatInterface() {
 
   return (
     <>
-      {/* Messages */}
-      <div className="flex flex-col min-h-screen bg-black text-white w-full md:w-3/4 mx-auto">
-        {/* Messages Area */}
-        <MessageComponent messages={messages} messagesEndRef={messagesEndRef} />
-        {/* Input */}
-        <div className="border-t border-gray-800 p-4 bg-black sticky bottom-10 md:bottom-0">
+      <div className="flex flex-col h-screen">
+        <div className="flex-1 overflow-y-auto px-4 text-white  bg-black">
+          <div className="flex flex-col items-center justify-start min-h-[90%]">
+            <MessageComponent
+              messages={messages}
+              messagesEndRef={messagesEndRef}
+            />
+          </div>
+        </div>
+
+        {/* Fixed bottom input */}
+        <div className=" pb-20 shadow-md">
           <div className="w-full mx-auto">
             <InputBar
               setMessages={setMessages}
@@ -67,6 +73,22 @@ export default function ChatInterface() {
           </div>
         </div>
       </div>
+
+      {/* Messages */}
+      {/* <div className="flex flex-col min-h-screen bg-black text-white w-full md:w-3/4 mx-auto">
+      
+        <MessageComponent messages={messages} messagesEndRef={messagesEndRef} />
+       
+        <div className="border-t border-gray-800 p-4 bg-black sticky bottom-10 md:bottom-0">
+          <div className="w-full mx-auto">
+            <InputBar
+              setMessages={setMessages}
+              hasStartedChat={hasStartedChat}
+              setHasStartedChat={setHasStartedChat}
+            />
+          </div>
+        </div>
+      </div> */}
     </>
   );
 }

@@ -15,7 +15,7 @@ export default function MessageComponent({
   messagesEndRef,
 }: pageProps) {
   return (
-    <div className="flex-1  overflow-y-auto px-4 md:px-16  py-20 space-y-4">
+    <div className="flex-1  overflow-y-scroll h-[80%] px-4 md:px-16  py-20 space-y-4">
       {messages.map((message) => (
         <div key={message.id} className="flex justify-start py-2">
           <div className={`flex gap-2 md:gap-3 max-w-[85%] md:max-w-[80%]`}>
