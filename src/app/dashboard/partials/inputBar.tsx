@@ -55,14 +55,12 @@ const InputBar: React.FC<InputBarProps> = ({
     }
     setInputValue("");
 
-  
-
-    const resMessage = await axios.post("http://localhost:3000/chat", {
+    // const resMessage = await axios.post("http://localhost:3000/chat", {
+      const resMessage = await axios.post("https://ml-python-jqzx.onrender.com/chat", {
       session_id: sessionId,
       message: inputValue,
       history: ["string"],
     });
-
 
     let botResponse: Message;
 
@@ -79,13 +77,14 @@ const InputBar: React.FC<InputBarProps> = ({
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
     if (e.key === "Enter" && !e.shiftKey) {
-      e.preventDefault()
+      e.preventDefault();
       handleSendMessage();
     }
   };
 
   async function fetchSessionId() {
-    const res = await axios.post("http://localhost:3000/init_session", {
+    // const res = await axios.post("http://localhost:3000/init_session", {
+      const res = await axios.post("https://ml-python-jqzx.onrender.com/init_session", {
       name: "",
     });
 
