@@ -40,6 +40,7 @@ export default function ChatInterface() {
                 setMessages={setMessages}
                 hasStartedChat={hasStartedChat}
                 setHasStartedChat={setHasStartedChat}
+                setIsTyping={setIsTyping}
               />
             </div>
           </div>
@@ -54,10 +55,11 @@ export default function ChatInterface() {
     <>
       <div className="flex flex-col h-screen">
         <div className="flex-1 overflow-y-auto px-4 text-white  bg-black">
-          <div className="flex flex-col items-center justify-start min-h-[90%]">
+          <div className="flex flex-col  justify-start min-h-[90%]">
             <MessageComponent
               messages={messages}
               messagesEndRef={messagesEndRef}
+              isTyping={isTyping}
             />
           </div>
         </div>
@@ -69,6 +71,7 @@ export default function ChatInterface() {
               setMessages={setMessages}
               hasStartedChat={hasStartedChat}
               setHasStartedChat={setHasStartedChat}
+              setIsTyping={setIsTyping}
             />
           </div>
         </div>

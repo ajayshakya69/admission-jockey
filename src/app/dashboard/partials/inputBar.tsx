@@ -1,13 +1,13 @@
 "use client";
 
-import React, { useState, ReactNode } from "react";
+import React, { useState, ReactNode, useEffect } from "react";
 import { GrAttachment } from "react-icons/gr";
 import { MdOutlineMicNone } from "react-icons/md";
 import { Send } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Message } from "../dashboard.type";
-
+import axios from "axios";
 
 interface InputBarProps {
   placeholder?: string;
@@ -21,8 +21,6 @@ interface InputBarProps {
   customButton?: ReactNode; // ✅ New custom button (e.g. emoji picker, image upload, etc.)
 }
 
-
-
 const InputBar: React.FC<InputBarProps> = ({
   placeholder = "What's your next discovery?",
   showMicButton = true,
@@ -34,6 +32,7 @@ const InputBar: React.FC<InputBarProps> = ({
   hasStartedChat,
 }) => {
   const [inputValue, setInputValue] = useState("");
+  const [sessionId, setSessionId] = useState("");
   const handleSendMessage = async () => {
     if (!inputValue.trim()) return;
 
@@ -47,6 +46,7 @@ const InputBar: React.FC<InputBarProps> = ({
       sender: "user",
       timestamp: new Date(),
     };
+
     if (setMessages) {
       setMessages((prev) => [...prev, userMessage]);
     }
@@ -55,50 +55,46 @@ const InputBar: React.FC<InputBarProps> = ({
     }
     setInputValue("");
 
-    // Simulate bot response based on input
-    setTimeout(() => {
-      let botResponse: Message;
+  
 
-      if (
-        inputValue.toLowerCase().includes("graphic era") ||
-        inputValue.toLowerCase().includes("university")
-      ) {
-        botResponse = {
-          id: (Date.now() + 1).toString(),
-          content:
-            "GEU Dehradun courses are offered to students at UG, PG, and certificate levels and are AICTE-approved. The university has been accredited by NAAC with an A+ grade and has ranked 74th by the NIRF 2023 in the Overall category.\n\nGraphic Era University, also known as GEU, is located in Dehradun, Uttarakhand, and was established in 1996. In 2008, the university attained its status as a Deemed university by the UGC, which is approved by the Ministry of Human Resource Development. It is one of the leading universities in Uttarakhand to offer quality education to students in the Engineering and Management fields.",
-          sender: "bot",
-          timestamp: new Date(),
-          type: "card",
-          cardData: {
-            title: "Graphic Era University",
-            description:
-              "Leading university in Uttarakhand offering quality education",
-            images: ["/placeholder.svg?height=200&width=300"],
-            action: "Learn More",
-          },
-        };
-      } else {
-        botResponse = {
-          id: (Date.now() + 1).toString(),
-          content:
-            "I'm here to help you with information about universities, courses, admissions, and much more. What would you like to know?",
-          sender: "bot",
-          timestamp: new Date(),
-        };
-      }
+    const resMessage = await axios.post("http://localhost:3000/chat", {
+      session_id: sessionId,
+      message: inputValue,
+      history: ["string"],
+    });
 
-      setMessages && setMessages((prev) => [...prev, botResponse]);
-      setIsTyping && setIsTyping(false);
-    }, 1500);
+
+    let botResponse: Message;
+
+    botResponse = {
+      id: (Date.now() + 1).toString(),
+      content: resMessage.data.response,
+      sender: "bot",
+      timestamp: new Date(),
+    };
+
+    setMessages && setMessages((prev) => [...prev, botResponse]);
+    setIsTyping && setIsTyping(false);
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
     if (e.key === "Enter" && !e.shiftKey) {
-      e.preventDefault();
+      e.preventDefault()
       handleSendMessage();
     }
   };
+
+  async function fetchSessionId() {
+    const res = await axios.post("http://localhost:3000/init_session", {
+      name: "",
+    });
+
+    setSessionId(res.data.session_id);
+  }
+
+  useEffect(() => {
+    fetchSessionId();
+  }, []);
 
   return (
     <div className="bg-gradient-to-b from-[#ffffff0d] border-t border-[#ffffff14] to-[#ffffff04] rounded-lg h-14 px-5 my-4 flex items-center gap-3">
