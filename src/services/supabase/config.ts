@@ -1,4 +1,18 @@
 export const supabaseConfig = {
-  supabaseurl: process.env.NEXT_PUBLIC_SUPABASE_URL ?? "",
+  supabaseUrl: process.env.NEXT_PUBLIC_SUPABASE_URL ?? "",
   supabaseAnonKey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? "",
+  roles: {
+    defaultRole: "user",
+    pathRoles: {
+      "/admin": ["admin"],
+    },
+  },
+  routes: {
+    login: "/login",
+    authCallback: "/auth/callback",
+    onboarding: "/onboarding",
+  },
+  profile: {
+    profileUrl: "/api/profile",
+  },
 };

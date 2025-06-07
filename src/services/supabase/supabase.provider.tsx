@@ -6,8 +6,9 @@ import { SupabaseAuthClient } from "./supabaseClient";
 import { Session } from "@supabase/supabase-js";
 import { useAxios } from "../axios/axios.hook";
 import { AxiosError } from "axios";
+import { supabaseConfig } from "./config";
 
-const createClient = new SupabaseAuthClient();
+const createClient = new SupabaseAuthClient(supabaseConfig);
 
 export function SupabaseNewProvider({
   children,

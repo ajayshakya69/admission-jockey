@@ -17,7 +17,7 @@ export default function LoginPage() {
   // const [ispending, startSubmitTransition] = useTransition();
   const [email, setEmail] = useState("");
 
-  const { supabase,  refreshSession } = useSupabase();
+  const { supabase, refreshSession } = useSupabase();
 
   const router = useRouter();
 
@@ -40,6 +40,22 @@ export default function LoginPage() {
         console.error(error);
       }
     });
+  }
+
+  async function googleLogin() {
+    try {
+      console.log("Google Login Clicked");
+      const { data, error } = await supabase.auth.signInWithOAuth({
+        provider: "google",
+        options: {
+          redirectTo: `http://localhost:3000/auth/callback`,
+        },
+      });
+     
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   function submitOtp() {
@@ -79,9 +95,12 @@ export default function LoginPage() {
             <Card className="border border-transparent w-3/4  text-center bg-opacity-30 rounded-lg">
               <div className="p-[1px]  bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] rounded-lg">
                 <CardContent className="bg-black rounded-[10px] p-2 space-y-2">
-                  <span className="text-sm text-transparent bg-clip-text bg-[linear-gradient(90deg,#A07DF1,#F69DBA)]">
+                  <Button
+                    onClick={googleLogin}
+                    className="text-sm text-transparent bg-clip-text bg-[linear-gradient(90deg,#A07DF1,#F69DBA)]"
+                  >
                     Sign Up with Google
-                  </span>
+                  </Button>
                 </CardContent>
               </div>
             </Card>
@@ -97,7 +116,7 @@ export default function LoginPage() {
                     htmlFor="email"
                     className="text-white text-sm font-medium"
                   >
-                    Email ID / Phone Number
+                    Email ID
                   </label>
 
                   {/* Email Input */}
