@@ -35,7 +35,7 @@ const Navbar: React.FC = () => {
           </Button>
         </Link>
       ) : (
-        <Link href="/login">
+        <Link href="/auth">
           <Button
             className="lg:px-6 lg:py-2 px-6 py-1 lg:rounded-lg rounded-sm font-semibold text-white lg:text-base text-[16px] 
             bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] 

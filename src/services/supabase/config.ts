@@ -8,7 +8,7 @@ export const supabaseConfig = {
     },
   },
   routes: {
-    login: "/login",
+    login: "/auth",
     authCallback: "/auth/callback",
     onboarding: "/onboarding",
   },

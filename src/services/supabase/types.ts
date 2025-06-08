@@ -58,7 +58,7 @@ export type AuthConfig = {
 	routes?: {
 		/**
 		 * Login page path
-		 * @default '/login'
+		 * @default '/auth'
 		 */
 		login?: string;
 

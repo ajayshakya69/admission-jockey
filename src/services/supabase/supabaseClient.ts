@@ -35,6 +35,34 @@ export class SupabaseAuthClient {
     this.config = config;
   }
 
+  async createServer() {
+    const { cookies } = await import("next/headers");
+    const cookieStore = await cookies();
+
+    return createServerClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+      {
+        cookies: {
+          getAll() {
+            return cookieStore.getAll();
+          },
+          setAll(cookiesToSet) {
+            try {
+              cookiesToSet.forEach(({ name, value, options }) =>
+                cookieStore.set(name, value, options)
+              );
+            } catch {
+              // The `setAll` method was called from a Server Component.
+              // This can be ignored if you have middleware refreshing
+              // user sessions.
+            }
+          },
+        },
+      }
+    );
+  }
+
   getBrowserclient() {
     return (this.SupabaseClient = createBrowserClient(
       this.config.supabaseUrl,
@@ -58,69 +86,6 @@ export class SupabaseAuthClient {
     ));
   }
 
-  createServer(): SupabaseClient {
-    return createServerClient(
-      this.config.supabaseUrl,
-      this.config.supabaseAnonKey,
-      {
-        cookies: {
-          getAll: () => {
-            const cookieStore = this.request
-              ? this.request.cookies.getAll()
-              : Object.entries(
-                  nookies.get(
-                    this.ctx ?? {
-                      req: this.request,
-                      res: this.response,
-                    }
-                  )
-                ).map(([name, value]) => ({
-                  name,
-                  value,
-                }));
-            return cookieStore;
-          },
-          setAll: (cookiesToSet: CookieData[]) => {
-            try {
-              if (this.ctx) {
-                cookiesToSet.forEach(({ name, value, options }) =>
-                  setCookie(this.ctx, name, value, options)
-                );
-                return;
-              }
-
-              cookiesToSet.forEach(({ name, value, options }) => {
-                nookies.set(this.ctx, name, value, options);
-              });
-
-              if (this.request) {
-                const newResponse = NextResponse.next({
-                  request: this.request,
-                });
-
-                cookiesToSet.forEach(({ name, value, options }) =>
-                  newResponse.cookies.set(name, value, options)
-                );
-
-                this.response = newResponse;
-              }
-            } catch {
-              // Ignore errors in Server Components
-            }
-          },
-        },
-        cookieOptions: {
-          path: this.config?.cookies?.path || "/",
-          name: this.config?.cookies?.name || "auth-token",
-          domain: this.config?.cookies?.domain,
-          maxAge: this.config?.cookies?.maxAge,
-          secure:
-            this.config?.cookies?.secure ??
-            process.env.NODE_ENV === "production",
-        },
-      }
-    );
-  }
   /**
    * Direct access to the Supabase client
    */

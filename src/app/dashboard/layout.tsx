@@ -16,7 +16,7 @@ export default function DashboardLayout({
 }>) {
   const { isLoading, authorised } = useSupabase({
     required: true,
-    redirect: "/login",
+    redirect: "/auth",
     role: ["authenticated"],
   });
 

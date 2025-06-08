@@ -1,15 +1,16 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 import { SupabaseAuthClient } from "@/services/supabase/supabaseClient";
 import { supabaseConfig } from "@/services/supabase/config";
 
-export async function GET(request: Request) {
+export async function GET(request: NextRequest) {
   console.log("Auth Callback Route Hit");
   const { searchParams, origin } = new URL(request.url);
 
-  const supabaseClient = new SupabaseAuthClient(supabaseConfig);
+  const supabaseClient = new SupabaseAuthClient(supabaseConfig, { request });
 
   const code = searchParams.get("code");
+  const url = new URL(request.url);
   // if "next" is in param, use it as the redirect URL
   let next = searchParams.get("next") ?? "/";
   if (!next.startsWith("/")) {
@@ -18,8 +19,9 @@ export async function GET(request: Request) {
   }
   try {
     if (code) {
-      const supabase = supabaseClient.createServer();
-      const { error } = await supabase.auth.exchangeCodeForSession(code);
+      const supabase = await supabaseClient.createServer();
+      const { data, error } = await supabase.auth.exchangeCodeForSession(code);
+      console.log("Exchange Code for Session Data:", data);
       if (!error) {
         const forwardedHost = request.headers.get("x-forwarded-host"); // original origin before load balancer
         const isLocalEnv = process.env.NODE_ENV === "development";
@@ -33,6 +35,8 @@ export async function GET(request: Request) {
         }
       }
     }
+
+    return NextResponse.redirect(`${url.origin}${next}`);
   } catch (error) {
     console.log(error);
     return NextResponse.redirect(`${origin}/auth/auth-code-error`);
