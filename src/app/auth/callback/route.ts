@@ -13,6 +13,7 @@ export async function GET(request: NextRequest) {
   const url = new URL(request.url);
   // if "next" is in param, use it as the redirect URL
   let next = searchParams.get("next") ?? "/";
+  console.log({ next });
   if (!next.startsWith("/")) {
     // if "next" is not a relative URL, use the default
     next = "/";

@@ -6,7 +6,7 @@ import SlicedImageGrid from "../(components)/grid";
 import { useEffect, useState, useTransition } from "react";
 import OTPPage from "./register/partials/otp";
 import { Button } from "@/components/ui/button";
-import { Loader } from "lucide-react";
+import { Loader, Refrigerator } from "lucide-react";
 import { useSupabase } from "@/services/supabase/supabase.hook";
 import { useRouter } from "next/navigation";
 
@@ -24,20 +24,43 @@ export default function LoginPage() {
 
   const router = useRouter();
 
-  function sendOtp() {
+  function SignUPHandler() {
+    console.log("singup hadler called");
     startTransition(async () => {
       try {
-        const { data, error } = await supabase.auth.signInWithOtp({
+        const { data, error } = await supabase.auth.signUp({
           email,
+          password,
           options: {
-            shouldCreateUser: false,
+            data: {
+              display_name: name,
+            },
           },
+        });
+        console.log("Sign Up Data:", data);
+        if (error) {
+          console.error(error.message);
+        } else {
+          setIsOptSent(true);
+          console.log({ data });
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    });
+  }
+  function LoginHandler() {
+    startTransition(async () => {
+      try {
+        const { data, error } = await supabase.auth.signInWithPassword({
+          email,
+          password,
         });
         if (error) {
           console.error(error.message);
         } else {
-          console.log(data);
-          setIsOptSent(true);
+          refreshSession();
+          router.push("/dashboard");
         }
       } catch (error) {
         console.error(error);
@@ -58,6 +81,8 @@ export default function LoginPage() {
       console.log(data);
     } catch (error) {
       console.log(error);
+    } finally {
+      refreshSession();
     }
   }
 
@@ -72,9 +97,9 @@ export default function LoginPage() {
         });
         if (data) {
           console.log(data);
-          await refreshSession();
+          refreshSession();
           // toast.success("Loggged In successfully");
-          router.push("/dashboard");
+          router.push("/auth");
           console.log("email verification done ");
         }
       } catch (error) {
@@ -178,7 +203,7 @@ export default function LoginPage() {
                   className="w-full py-3 mt-7 text-white font-semibold rounded-md 
                       bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] hover:brightness-110 hover:text-shadow active:scale-95 transition-all duration-200"
                   disabled={ispending}
-                  onClick={sendOtp}
+                  onClick={isLogin ? LoginHandler : SignUPHandler}
                 >
                   {ispending ? (
                     <>
