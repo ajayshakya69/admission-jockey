@@ -12,10 +12,10 @@ import axios from "axios";
 interface InputBarProps {
   placeholder?: string;
   showMicButton?: boolean;
-  onSend?: (value: string) => void;
   handleKeyPress?: (e: React.KeyboardEvent) => void;
   setMessages?: React.Dispatch<React.SetStateAction<Message[]>>;
   setIsTyping?: React.Dispatch<React.SetStateAction<boolean>>;
+  chatbotSessionId: string | null;
   hasStartedChat?: boolean;
   setHasStartedChat?: React.Dispatch<React.SetStateAction<boolean>>;
   customButton?: ReactNode; // ✅ New custom button (e.g. emoji picker, image upload, etc.)
@@ -24,12 +24,12 @@ interface InputBarProps {
 const InputBar: React.FC<InputBarProps> = ({
   placeholder = "What's your next discovery?",
   showMicButton = true,
-  onSend,
   setMessages,
   customButton,
   setIsTyping,
   setHasStartedChat,
   hasStartedChat,
+  chatbotSessionId,
 }) => {
   const [inputValue, setInputValue] = useState("");
   const [sessionId, setSessionId] = useState("");
@@ -55,12 +55,14 @@ const InputBar: React.FC<InputBarProps> = ({
     }
     setInputValue("");
 
-    // const resMessage = await axios.post("http://localhost:3000/chat", {
-      const resMessage = await axios.post("https://ml-python-jqzx.onrender.com/chat", {
-      session_id: sessionId,
-      message: inputValue,
-      history: ["string"],
-    });
+    const resMessage = await axios.post(
+      `${process.env.NEXT_PUBLIC_ML_URL}/chat`,
+      {
+        session_id: sessionId,
+        message: inputValue,
+        history: ["string"],
+      },
+    );
 
     let botResponse: Message;
 
@@ -82,18 +84,9 @@ const InputBar: React.FC<InputBarProps> = ({
     }
   };
 
-  async function fetchSessionId() {
-    // const res = await axios.post("http://localhost:3000/init_session", {
-      const res = await axios.post("https://ml-python-jqzx.onrender.com/init_session", {
-      name: "",
-    });
-
-    setSessionId(res.data.session_id);
-  }
-
   useEffect(() => {
-    fetchSessionId();
-  }, []);
+    if (chatbotSessionId != null) setSessionId(chatbotSessionId);
+  }, [chatbotSessionId]);
 
   return (
     <div className="bg-gradient-to-b from-[#ffffff0d] border-t border-[#ffffff14] to-[#ffffff04] rounded-lg h-14 px-5 my-4 flex items-center gap-3">
