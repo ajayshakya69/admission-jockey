@@ -56,7 +56,7 @@ const InputBar: React.FC<InputBarProps> = ({
     setInputValue("");
 
     // const resMessage = await axios.post("http://localhost:3000/chat", {
-      const resMessage = await axios.post("https://ml-python-jqzx.onrender.com/chat", {
+    const resMessage = await axios.post("https://ml-python-jqzx.onrender.com/chat", {
       session_id: sessionId,
       message: inputValue,
       history: ["string"],
@@ -84,7 +84,7 @@ const InputBar: React.FC<InputBarProps> = ({
 
   async function fetchSessionId() {
     // const res = await axios.post("http://localhost:3000/init_session", {
-      const res = await axios.post("https://ml-python-jqzx.onrender.com/init_session", {
+    const res = await axios.post("https://ml-python-jqzx.onrender.com/init_session", {
       name: "",
     });
 
@@ -110,21 +110,22 @@ const InputBar: React.FC<InputBarProps> = ({
         onChange={(e) => setInputValue(e.target.value)}
         onKeyUp={handleKeyPress}
         placeholder={placeholder}
-        className="text-lg outline-none border-none"
+        className="lg:text-lg text-sm outline-none border-none"
         style={{ flex: 1, padding: "8px", borderRadius: "4px" }}
       />
 
       <Button
         onClick={handleSendMessage}
-        disabled={!inputValue.trim()}
-        className="rounded-full border-t border-[#ffffff3f] bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] p-1"
+        disabled={!inputValue.trim() && !showMicButton}
+        className="lg:w-12 lg:h-12 w-10 h-10 rounded-full flex items-center justify-center border-t border-[#ffffff3f] bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] hover:opacity-90 transition-opacity"
       >
-        {showMicButton ? (
-          <MdOutlineMicNone size={28} color="#fff" />
+        {inputValue.trim() ? (
+          <Send size={26} color="#FFFFFF" />
         ) : (
-          <Send size={28} color="#fff" />
+          showMicButton && <MdOutlineMicNone size={26} color="#FFFFFF" />
         )}
       </Button>
+
     </div>
   );
 };
