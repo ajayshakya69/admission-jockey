@@ -15,7 +15,7 @@ interface InputBarProps {
   handleKeyPress?: (e: React.KeyboardEvent) => void;
   setMessages?: React.Dispatch<React.SetStateAction<Message[]>>;
   setIsTyping?: React.Dispatch<React.SetStateAction<boolean>>;
-  chatbotSessionId: string | null;
+  chatbotSessionId?: string | null;
   hasStartedChat?: boolean;
   setHasStartedChat?: React.Dispatch<React.SetStateAction<boolean>>;
   customButton?: ReactNode; // ✅ New custom button (e.g. emoji picker, image upload, etc.)
