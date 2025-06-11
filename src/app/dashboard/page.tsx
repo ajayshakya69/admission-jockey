@@ -45,55 +45,63 @@ export default function ChatInterface() {
 
   if (!hasStartedChat) {
     return (
-      <>
-        {/* Welcome Content */}
+  <div className="flex flex-col items-center justify-center h-[650px] px-4 md:px-6 text-white bg-black">
+    {/* Welcome Text */}
+    <div className="w-full max-w-5xl text-center">
+      <Welcome />
+    </div>
 
-        <div className="flex-1 flex flex-col justify-center gap-30 h-screen md:w-3/4 w-full mx-auto px-4 pb-32">
-          <Welcome />
-          <div className="p-4 md:p-6">
-            <div className="w-full mx-auto">
-              <InputBar
-                chatbotSessionId={chatbotSessionId}
-                setMessages={setMessages}
-                hasStartedChat={hasStartedChat}
-                setHasStartedChat={setHasStartedChat}
-                setIsTyping={setIsTyping}
-              />
-            </div>
-          </div>
+    {/* Input Bar */}
+    <div className="w-full max-w-3xl mt-10">
+      <InputBar
+        chatbotSessionId={chatbotSessionId}
+        setMessages={setMessages}
+        hasStartedChat={hasStartedChat}
+        setHasStartedChat={setHasStartedChat}
+        setIsTyping={setIsTyping}
+      />
+    </div>
+
+    {/* Suggested Boxes */}
+    <div className="w-full max-w-3xl mt-10 grid grid-cols-1 sm:grid-cols-3 gap-4">
+      {[1, 2, 3].map((_, idx) => (
+        <div
+          key={idx}
+          className="bg-[#11111146] text-zinc-300 p-4 rounded-lg shadow-md text-[10px] text-center hover:bg-[#1a1a1a] transition"
+        >
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.
         </div>
+      ))}
+    </div>
+  </div>
+);
 
-        {/* Input Section */}
-      </>
-    );
+
   }
 
   return (
-    <>
-      <div className="flex flex-col h-screen">
-        <div className="flex-1 overflow-y-auto px-4 text-white  bg-black custom-scroll">
-          <div className="flex flex-col  justify-start min-h-[90%]">
-            <MessageComponent
-              messages={messages}
-              messagesEndRef={messagesEndRef}
-              isTyping={isTyping}
-            />
-          </div>
+    <div className="flex flex-col h-[650px]">
+      <main className="flex-1 overflow-y-auto px-4 md:px-6 py-6 text-white custom-scroll">
+        <div className="max-w-5xl mx-auto">
+          <MessageComponent
+            messages={messages}
+            messagesEndRef={messagesEndRef}
+            isTyping={isTyping}
+          />
         </div>
+      </main>
 
-        {/* Fixed bottom input */}
-        <div className=" pb-20 shadow-md">
-          <div className="w-full mx-auto">
-            <InputBar
-              chatbotSessionId={chatbotSessionId}
-              setMessages={setMessages}
-              hasStartedChat={hasStartedChat}
-              setHasStartedChat={setHasStartedChat}
-              setIsTyping={setIsTyping}
-            />
-          </div>
+      <footer className="w-full py-2 px-4 md:px-6">
+        <div className="max-w-5xl mx-auto">
+          <InputBar
+            chatbotSessionId={chatbotSessionId}
+            setMessages={setMessages}
+            hasStartedChat={hasStartedChat}
+            setHasStartedChat={setHasStartedChat}
+            setIsTyping={setIsTyping}
+          />
         </div>
-      </div>
-    </>
+      </footer>
+    </div>
   );
 }
