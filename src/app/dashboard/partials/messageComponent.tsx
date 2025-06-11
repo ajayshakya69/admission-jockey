@@ -16,7 +16,6 @@ export default function MessageComponent({
   messagesEndRef,
   isTyping,
 }: pageProps) {
-
   return (
     <div className="flex-1  overflow-y-scroll h-[80%] px-4 md:px-16  py-20 space-y-4">
       {messages.map((message) => (
@@ -72,7 +71,14 @@ export default function MessageComponent({
                     : "bg-gray-800 text-white rounded-bl-sm"
                 }`}
               >
-                {message.content}
+                {message.content.split("\n").map((item, key) => {
+                  return (
+                    <span key={key}>
+                      {item}
+                      <br />
+                    </span>
+                  );
+                })}
               </div>
 
               {message.type === "card" && message.cardData && (
