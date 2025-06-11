@@ -37,7 +37,7 @@ export default function DashboardLayout({
             </div>
             {/* Desktop header controls */}
             <div className="hidden md:flex items-center gap-4">
-              <Button
+              {/* <Button
                 className="px-6 py-2 rounded-lg font-semibold text-white text-base
                bg-[linear-gradient(90deg,#A07DF1,#F69DBA)]
                border-t border-[#ffffff36]
@@ -45,7 +45,7 @@ export default function DashboardLayout({
                hover:opacity-90 transition-all duration-300 flex items-center gap-2"
               >
                 <span className="hidden sm:block">New Chat</span>
-              </Button>
+              </Button> */}
 
               <button className="rounded-full flex items-center justify-center h-10 w-10 p-[1px] bg-[linear-gradient(90deg,#A07DF1,#F69DBA)]">
                 <div className="rounded-full h-full w-full bg-black flex justify-center items-center">

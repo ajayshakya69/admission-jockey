@@ -50,8 +50,8 @@ export default function ChatInterface() {
 
         <div className="flex-1 flex flex-col justify-center gap-30 h-screen md:w-3/4 w-full mx-auto px-4 pb-32">
           <Welcome />
-          <div className=" pb-20 shadow-md">
-            <div className="w-full mx-auto">
+          <div className=" pb-10 shadow-md">
+            <div className="w-full mx-auto mt-20">
               <InputBar
                 chatbotSessionId={chatbotSessionId}
                 setMessages={setMessages}
