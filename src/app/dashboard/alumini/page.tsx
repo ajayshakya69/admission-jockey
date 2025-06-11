@@ -1,6 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Star } from "lucide-react";
+import Link from "next/link";
 import InputBar from "@/app/dashboard/partials/inputBar";
 
 const AlumniCard = () => (
@@ -62,9 +63,11 @@ const AlumniCardGrid = () => {
       Join our alumni network to stay connected<br className="hidden md:block" />
       and inspire the next generation.
     </p>
+    <Link href="/dashboard/register" className="w-full">
     <button className="mt-6 px-6 py-2 rounded-md bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] text-white text-sm font-medium">
       Register
     </button>
+    </Link>
   </div>
       <div className="absolute inset-0 bg-black/60 backdrop-blur-sm z-10"></div>
 
