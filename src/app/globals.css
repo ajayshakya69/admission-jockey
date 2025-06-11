@@ -23,7 +23,6 @@ body {
   }
 }
 
-
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -64,8 +63,6 @@ body {
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.141 0.005 285.823);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.141 0.005 285.823);
   --popover: oklch(1 0 0);
@@ -95,6 +92,8 @@ body {
   --sidebar-accent-foreground: oklch(0.21 0.006 285.885);
   --sidebar-border: oklch(0.92 0.004 286.32);
   --sidebar-ring: oklch(0.705 0.015 286.067);
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.141 0.005 285.823);
 }
 
 .dark {
@@ -148,4 +147,15 @@ body {
   border-style: solid;
   width: auto; /* match w-64 */
   margin-top: 1.5rem; /* mt-6 */
+}
+
+.fancy-border-new {
+  border-bottom-width: 1px;
+  border-image: linear-gradient( #8960ea 0%, #ec9fb9 50%, transparent 100%) 1;
+  border-image-slice: 30;
+  border-style: solid;
+  width: auto; /* match w-64 */
+  margin-top: 2rem; /* mt-6 */
+  opacity: 80%;
+  transition: opacity 0.3s ease-in-out;
 }
