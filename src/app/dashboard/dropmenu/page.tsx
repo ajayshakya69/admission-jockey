@@ -63,6 +63,7 @@ import {
     ChevronRight,
     ChevronLeft,
     Menu,
+    Home,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -72,12 +73,12 @@ export default function Sidebar() {
     const [selectedIndex, setSelectedIndex] = useState<number | null>(null); // track selected item
 
     const navItems = [
+        { icon: <Home size={20} />, label: "Home", href: "/dashboard" },
         { icon: <Users size={20} />, label: "Alumni", href: "/dashboard/alumini" },
         { icon: <ClipboardList size={20} />, label: "Application Builder", href: "/dashboard/introForm" },
         { icon: <Calendar size={20} />, label: "Calendar", href: "/dashboard/calender" },
         { icon: <BookMarked size={20} />, label: "Courses", href: "/dashboard/courses" },
         { icon: <Briefcase size={20} />, label: "Jobs", href: "/dashboard/addresume" },
-        { icon: <MessageSquare size={20} />, label: "Chat History", href: "#" },
     ];
 
     return (
@@ -96,7 +97,7 @@ export default function Sidebar() {
             >
                 <div className="flex items-center justify-center h-16 mt-3">
                     <div onClick={() => setSelectedIndex(null)}>
-                        <Link href="/dashboard">
+                        <Link href="/">
                             {expanded ? (
                                 <Image src="/logo.jpg" alt="Logo" width={200} height={100} />
                             ) : (
@@ -120,12 +121,13 @@ export default function Sidebar() {
                                        ${selectedIndex === i ? "text-[#F69DBA]" : "text-white hover:text-[#F69DBA]"}`}
 
                         >
-                            <span className="min-w-[20px] ml-2">{item.icon}</span>
+                            <span className="min-w-[20px]">{item.icon}</span>
                             {expanded ? (
                                 <span className="whitespace-nowrap">{item.label}</span>
                             ) : (
-                                <span className="text-[10px] text-center">{item.label}</span>
+                                <span className="text-[10px] text-center mt-1">{item.label}</span>
                             )}
+
                         </Link>
                     ))}
                 </nav>

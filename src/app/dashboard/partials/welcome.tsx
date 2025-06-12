@@ -10,7 +10,7 @@ export default function Welcome() {
               </span>
               !{" "}
             </h1>
-            <span className="text-center text-xl">
+            <span className="text-center text-[#ffffffba] text-[24px]">
               I’m here to make things easier for you. <br />
               How can I help you?
             </span>

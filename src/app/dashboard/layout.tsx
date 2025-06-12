@@ -32,18 +32,20 @@ export default function DashboardLayout({
         <header className="w-full bg-[#00000000] px-6 py-4">
           <div className="flex items-center justify-end relative">
             {/* Left logo area */}
-<div className="lg:hidden flex items-center absolute top-2 left-22"><img src="/logo.jpg" alt="logo" className="h-10 w-auto" /></div>
+            <div className="lg:hidden flex items-center absolute top-2 left-22">
+              <img src="/logo.jpg" alt="logo" className="h-10 w-auto" />
+            </div>
             {/* Desktop header controls */}
             <div className="hidden md:flex items-center gap-4">
-              <Button
-                className="px-6 py-2 rounded-lg font-semibold text-white text-base 
-               bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] 
-               border-t border-[#ffffff36] 
-               shadow-[0_0_11px_0_rgba(160,125,241,0.3)] 
+              {/* <Button
+                className="px-6 py-2 rounded-lg font-semibold text-white text-base
+               bg-[linear-gradient(90deg,#A07DF1,#F69DBA)]
+               border-t border-[#ffffff36]
+               shadow-[0_0_11px_0_rgba(160,125,241,0.3)]
                hover:opacity-90 transition-all duration-300 flex items-center gap-2"
               >
                 <span className="hidden sm:block">New Chat</span>
-              </Button>
+              </Button> */}
 
               <button className="rounded-full flex items-center justify-center h-10 w-10 p-[1px] bg-[linear-gradient(90deg,#A07DF1,#F69DBA)]">
                 <div className="rounded-full h-full w-full bg-black flex justify-center items-center">
@@ -64,7 +66,7 @@ export default function DashboardLayout({
         </header>
 
         {/* Page Content */}
-        <main className="flex-1 overflow-y-auto px-6 py-4">
+        <main className="flex-1 overflow-y-hidden px-6 py-4 hide-scroll">
           {children}
         </main>
       </div>

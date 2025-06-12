@@ -14,13 +14,37 @@ export default function Home() {
       <Navbar />
       <div className="flex lg:flex-row flex-col item-center justify-between lg:my-20 max-h-screen gap-5">
         <div className="flex flex-col flex-1 justify-center lg:gap-10 gap-4 lg:mt-0 mt-10">
-          <h1 className="lg:text-[40px] text-[24px] tracking-wide lg:leading-13 leading-8 font-semibold">Your AI-Powered Guide to <span className="text-transparent  bg-clip-text bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] ">Education</span>, <span className="text-transparent  bg-clip-text bg-[linear-gradient(90deg,#A07DF1,#F69DBA)]">Careers</span> & <span className="text-transparent  bg-clip-text bg-[linear-gradient(90deg,#A07DF1,#F69DBA)]">Everything</span> in Between</h1>
-          <span className="text-left  lg:text-base text-[17px]  lg:w-3/4 lg:mt-0 mt-5 ">Alumna.ai is India’s first dedicated AI foundation model for EdTech — <br className="lg:block hidden" />
-            built to help students discover the right colleges, courses, internships, and
-            career paths with hyper-personalized guidance.</span>
+          <h1 className="lg:text-[40px] text-[24px] tracking-wide lg:leading-13 leading-8 font-semibold">
+            Your AI-Powered Guide to{" "}
+            <span className="text-transparent  bg-clip-text bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] ">
+              Education
+            </span>
+            ,{" "}
+            <span className="text-transparent  bg-clip-text bg-[linear-gradient(90deg,#A07DF1,#F69DBA)]">
+              Careers
+            </span>{" "}
+            &{" "}
+            <span className="text-transparent  bg-clip-text bg-[linear-gradient(90deg,#A07DF1,#F69DBA)]">
+              Everything
+            </span>{" "}
+            in Between
+          </h1>
+          <span className="text-left  lg:text-base text-[17px]  lg:w-3/4 lg:mt-0 mt-5 ">
+            Alumna.ai is India’s first dedicated AI foundation model for EdTech
+            — <br className="lg:block hidden" />
+            built to help students discover the right colleges, courses,
+            internships, and career paths with hyper-personalized guidance.
+          </span>
+          
           <div className="lg:w-3/4">
-            <InputBar  />
+            <a href="/auth">
+              <InputBar />
+            </a>
           </div>
+          
+          {/* <div className="lg:w-3/4">
+            <InputBar  />
+          </div> */}
         </div>
         <div className="flex flex-1 lg:justify-end  ">
           <Model />
