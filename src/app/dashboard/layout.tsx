@@ -71,7 +71,9 @@ export default function DashboardLayout({
           </header>
 
           {/* Page Content */}
-          <main className="flex-1 overflow-y-auto px-6 py-2">{children}</main>
+          <main className="flex-1 overflow-y-auto px-6 py-2 custom-scroll">
+            {children}
+          </main>
         </div>
       </div>
     </SidebarProvider>
