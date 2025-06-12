@@ -46,12 +46,11 @@ export default function ChatInterface() {
   if (!hasStartedChat) {
     return (
       <>
-        {/* Welcome Content */}
-
-        <div className="flex-1 flex flex-col justify-center gap-30 h-screen md:w-3/4 w-full mx-auto px-4 pb-32">
+        {/* Welcome Text */}
+        <div className="flex-1 flex flex-col justify-center gap-5 h-screen md:w-3/4 w-full mx-auto px-4 pb-32">
           <Welcome />
-          <div className=" pb-10 shadow-md">
-            <div className="w-full mx-auto mt-20">
+          <div className="p-4 md:p-6">
+            <div className="w-full mx-auto">
               <InputBar
                 chatbotSessionId={chatbotSessionId}
                 setMessages={setMessages}
@@ -61,13 +60,24 @@ export default function ChatInterface() {
               />
             </div>
           </div>
+          <div className="w-full max-w-4xl mt-10 grid grid-cols-1 sm:grid-cols-3 mx-auto gap-4">
+            {[1, 2, 3].map((_, idx) => (
+              <div
+                key={idx}
+                className="bg-[#11111146] text-zinc-300 p-4 rounded-lg shadow-md text-[13px] text-center hover:bg-[#1a1a1a] transition"
+              >
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod.
+              </div>
+            ))}
+          </div>
         </div>
-
         {/* Input Section */}
+        );
+        {/* Suggested Boxes */}
       </>
     );
   }
-
   return (
     <>
       <div className="flex flex-col h-screen">

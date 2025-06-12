@@ -1,11 +1,12 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Star } from "lucide-react";
+import Link from "next/link";
 import InputBar from "@/app/dashboard/partials/inputBar";
 
 const AlumniCard = () => (
   <Card className="bg-gradient-to-b from-[#111] to-[#000] border border-zinc-800 text-white rounded-xl shadow-md">
-    <CardContent className="px-5 py-5 flex flex-col items-center text-center gap-4">
+    <CardContent className="px-5 flex flex-col items-center text-center gap-4">
       <div className="flex items-center justify-around w-full gap-5">
         <div className="w-20 h-20 flex-1">
           {" "}
@@ -46,26 +47,31 @@ const AlumniCard = () => (
 
 const AlumniCardGrid = () => {
   return (
-    <div className="flex flex-col max-h-screen relative " >
+    <div className="flex flex-col max-h-screen relative ">
       {/* Scrollable main content */}
       <div className="absolute inset-0 z-20 flex flex-col items-center justify-center px-4 text-center bg-black/60 backdrop-blur-sm">
-    <p className="text-md md:text-xl font-semibold">Soon you'll be chatting with your future seniors</p>
-    <h2 className="text-xl md:text-3xl font-bold text-transparent bg-clip-text bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] my-2">
-      — STAY CONNECTED!
-    </h2>
-    <div className="lg:w-100 w-60 h-[1px] my-10 bg-[#fffcfc94]"></div>
-    <p className="text-sm md:text-lg text-zinc-300">
-      <span className="text-lg md:text-xl font-semibold text-transparent bg-clip-text bg-[linear-gradient(90deg,#A07DF1,#F69DBA)]">
-        Hey Alumnis
-      </span>
-      <br />
-      Join our alumni network to stay connected<br className="hidden md:block" />
-      and inspire the next generation.
-    </p>
-    <button className="mt-6 px-6 py-2 rounded-md bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] text-white text-sm font-medium">
-      Register
-    </button>
-  </div>
+        <p className="text-md md:text-xl font-semibold">
+          Soon you'll be chatting with your future seniors
+        </p>
+        <h2 className="text-xl md:text-3xl font-bold text-transparent bg-clip-text bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] my-2">
+          — STAY CONNECTED!
+        </h2>
+        <div className="lg:w-100 w-60 h-[1px] my-10 bg-[#fffcfc94]"></div>
+        <p className="text-sm md:text-lg text-zinc-300">
+          <span className="text-lg md:text-xl font-semibold text-transparent bg-clip-text bg-[linear-gradient(90deg,#A07DF1,#F69DBA)]">
+            Hey Alumnis
+          </span>
+          <br />
+          Join our alumni network to stay connected
+          <br className="hidden md:block" />
+          and inspire the next generation.
+        </p>
+        <Link href="/dashboard/register" className="w-full">
+          <button className="mt-6 px-6 py-2 rounded-md bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] text-white text-sm font-medium">
+            Register
+          </button>
+        </Link>
+      </div>
       <div className="absolute inset-0 bg-black/60 backdrop-blur-sm z-10"></div>
 
       <div className="flex-1 overflow-y-auto px-4 text-white text-center bg-black">
