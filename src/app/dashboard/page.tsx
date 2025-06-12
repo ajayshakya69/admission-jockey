@@ -73,7 +73,6 @@ export default function ChatInterface() {
           </div>
         </div>
         {/* Input Section */}
-        );
         {/* Suggested Boxes */}
       </>
     );
