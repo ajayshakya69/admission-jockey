@@ -68,8 +68,10 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function Sidebar() {
+
   const [expanded, setExpanded] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null); // track selected item
+
 
   const navItems = [
     { icon: <Users size={20} />, label: "Alumni", href: "/dashboard/alumini" },
@@ -96,65 +98,65 @@ export default function Sidebar() {
     { icon: <MessageSquare size={20} />, label: "Chat History", href: "#" },
   ];
 
-  return (
-    <>
-      <button
-        className="md:hidden fixed top-5 left-4 z-50 bg-[#ffffff0d] text-white p-2 rounded-sm shadow-md"
-        onClick={() => console.log("Menu clicked")}
-      >
-        <Menu size={26} />
-      </button>
+    return (
+        <>
+            <button
+                className="md:hidden fixed top-5 left-4 z-50 bg-[#ffffff0d] text-white p-2 rounded-sm shadow-md"
+                onClick={() => console.log("Menu clicked")}
+            >
+                <Menu size={26} />
+            </button>
 
-      <div
-        className={`hidden md:block relative h-screen text-white transition-all duration-300 ease-in-out
+            <div
+                className={`hidden md:block relative h-screen text-white transition-all duration-300 ease-in-out 
                 ${expanded ? "w-[268px]" : "w-[111px]"} bg-gradient-to-r
                 from-[#fffdfd06] via-black to-[#fffdfd06]`}
-      >
-        <div className="flex items-center justify-center h-16 mt-3">
-          <div onClick={() => setSelectedIndex(null)}>
-            <Link href="/dashboard">
-              {expanded ? (
-                <Image src="/logo.jpg" alt="Logo" width={200} height={100} />
-              ) : (
-                <Image src="/miniLogo.png" alt="Icon" width={45} height={45} />
-              )}
-            </Link>
-          </div>
-        </div>
+            >
+                <div className="flex items-center justify-center h-16 mt-3">
+                    <div onClick={() => setSelectedIndex(null)}>
+                        <Link href="/dashboard">
+                            {expanded ? (
+                                <Image src="/logo.jpg" alt="Logo" width={200} height={100} />
+                            ) : (
+                                <Image src="/miniLogo.png" alt="Icon" width={45} height={45} />
+                            )}
+                        </Link>
+                    </div>
+                </div>
 
-        <nav
-          className={`flex min-h-screen overflow-y-auto custom-scroll flex-col mt-4 px-2 transition-all duration-300 ${
-            expanded ? "items-start space-y-8" : "items-center space-y-6"
-          }`}
-        >
-          {navItems.map((item, i) => (
-            <Link
-              key={i}
-              href={item.href}
-              onClick={() => setSelectedIndex(i)}
-              className={`flex flex-col items-center text-sm transition-all duration-200 px-5
+                <nav
+                    className={`flex flex-col mt-4 px-2 transition-all duration-300 ${expanded ? "items-start space-y-8" : "items-center space-y-6"
+                        }`}
+                >
+                    {navItems.map((item, i) => (
+                        <Link
+                            key={i}
+                            href={item.href}
+                            onClick={() => setSelectedIndex(i)}
+                            className={`flex flex-col items-center text-sm transition-all duration-200 px-5
                                        ${expanded ? "flex-row justify-start gap-4 items-center" : "gap-1"}
                                        ${selectedIndex === i ? "text-[#F69DBA]" : "text-white hover:text-[#F69DBA]"}`}
-            >
-              <span className="min-w-[20px] ml-2">{item.icon}</span>
-              {expanded ? (
-                <span className="whitespace-nowrap">{item.label}</span>
-              ) : (
-                <span className="text-[10px] text-center">{item.label}</span>
-              )}
-            </Link>
-          ))}
-        </nav>
 
-        {expanded && <hr className="fancy-border-new my-4 mx-4" />}
+                        >
+                            <span className="min-w-[20px] ml-2">{item.icon}</span>
+                            {expanded ? (
+                                <span className="whitespace-nowrap">{item.label}</span>
+                            ) : (
+                                <span className="text-[10px] text-center">{item.label}</span>
+                            )}
+                        </Link>
+                    ))}
+                </nav>
 
-        <button
-          onClick={() => setExpanded(!expanded)}
-          className="absolute -right-5 top-6 z-20 w-10 h-10 rounded-full bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] text-white flex items-center justify-center shadow-md"
-        >
-          {expanded ? <ChevronLeft size={16} /> : <ChevronRight size={16} />}
-        </button>
-      </div>
-    </>
-  );
+                {expanded && <hr className="fancy-border-new my-4 mx-4" />}
+
+                <button
+                    onClick={() => setExpanded(!expanded)}
+                    className="absolute -right-5 top-6 z-20 w-10 h-10 rounded-full bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] text-white flex items-center justify-center shadow-md"
+                >
+                    {expanded ? <ChevronLeft size={16} /> : <ChevronRight size={16} />}
+                </button>
+            </div>
+        </>
+    );
 }
