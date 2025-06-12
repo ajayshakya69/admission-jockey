@@ -45,38 +45,37 @@ export default function ChatInterface() {
 
   if (!hasStartedChat) {
     return (
-  <div className="flex flex-col items-center justify-center h-[650px] px-4 md:px-6 text-white bg-black">
-    {/* Welcome Text */}
-    <div className="w-full max-w-5xl text-center">
-      <Welcome />
-    </div>
-
-    {/* Input Bar */}
-    <div className="w-full max-w-3xl mt-10">
-      <InputBar
-        chatbotSessionId={chatbotSessionId}
-        setMessages={setMessages}
-        hasStartedChat={hasStartedChat}
-        setHasStartedChat={setHasStartedChat}
-        setIsTyping={setIsTyping}
-      />
-    </div>
-
-    {/* Suggested Boxes */}
-    <div className="w-full max-w-3xl mt-10 grid grid-cols-1 sm:grid-cols-3 gap-4">
-      {[1, 2, 3].map((_, idx) => (
-        <div
-          key={idx}
-          className="bg-[#11111146] text-zinc-300 p-4 rounded-lg shadow-md text-[10px] text-center hover:bg-[#1a1a1a] transition"
-        >
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.
+      <div className="flex flex-col items-center justify-center h-[650px] px-4 md:px-6 text-white bg-black">
+        {/* Welcome Text */}
+        <div className="w-full max-w-5xl text-center">
+          <Welcome />
         </div>
-      ))}
-    </div>
-  </div>
-);
 
+        {/* Input Bar */}
+        <div className="w-full max-w-3xl mt-10">
+          <InputBar
+            chatbotSessionId={chatbotSessionId}
+            setMessages={setMessages}
+            hasStartedChat={hasStartedChat}
+            setHasStartedChat={setHasStartedChat}
+            setIsTyping={setIsTyping}
+          />
+        </div>
 
+        {/* Suggested Boxes */}
+        <div className="w-full max-w-3xl mt-10 grid grid-cols-1 sm:grid-cols-3 gap-4">
+          {[1, 2, 3].map((_, idx) => (
+            <div
+              key={idx}
+              className="bg-[#11111146] text-zinc-300 p-4 rounded-lg shadow-md text-[10px] text-center hover:bg-[#1a1a1a] transition"
+            >
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod.
+            </div>
+          ))}
+        </div>
+      </div>
+    );
   }
 
   return (
