@@ -14,7 +14,7 @@
 //         <div>
 //             <DropdownMenu>
 //                 <DropdownMenuTrigger><AlignJustify/></DropdownMenuTrigger>
-//                 <DropdownMenuContent className="mt-4 bg-gradient-to-b text-white from-[#000000] via-[#2f2f2f3e] to-[#292929af] border-t border-[#ffffff28]">  
+//                 <DropdownMenuContent className="mt-4 bg-gradient-to-b text-white from-[#000000] via-[#2f2f2f3e] to-[#292929af] border-t border-[#ffffff28]">
 //                 <DropdownMenuItem>
 //                         <a href="/dashboard" className="flex items-center">
 //                             <MdDashboard className="text-xl" />
@@ -54,31 +54,49 @@
 
 import { useState } from "react";
 import {
-    Users,
-    ClipboardList,
-    Calendar,
-    BookMarked,
-    Briefcase,
-    MessageSquare,
-    ChevronRight,
-    ChevronLeft,
-    Menu,
+  Users,
+  ClipboardList,
+  Calendar,
+  BookMarked,
+  Briefcase,
+  MessageSquare,
+  ChevronRight,
+  ChevronLeft,
+  Menu,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function Sidebar() {
-    const [expanded, setExpanded] = useState(false);
-    const [selectedIndex, setSelectedIndex] = useState<number | null>(null); // track selected item
 
-    const navItems = [
-        { icon: <Users size={20} />, label: "Alumni", href: "/dashboard/alumini" },
-        { icon: <ClipboardList size={20} />, label: "Application Builder", href: "/dashboard/introForm" },
-        { icon: <Calendar size={20} />, label: "Calendar", href: "/dashboard/calender" },
-        { icon: <BookMarked size={20} />, label: "Courses", href: "/dashboard/courses" },
-        { icon: <Briefcase size={20} />, label: "Jobs", href: "/dashboard/addresume" },
-        { icon: <MessageSquare size={20} />, label: "Chat History", href: "#" },
-    ];
+  const [expanded, setExpanded] = useState(false);
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null); // track selected item
+
+
+  const navItems = [
+    { icon: <Users size={20} />, label: "Alumni", href: "/dashboard/alumini" },
+    {
+      icon: <ClipboardList size={20} />,
+      label: "Application Builder",
+      href: "/dashboard/introForm",
+    },
+    {
+      icon: <Calendar size={20} />,
+      label: "Calendar",
+      href: "/dashboard/calender",
+    },
+    {
+      icon: <BookMarked size={20} />,
+      label: "Courses",
+      href: "/dashboard/courses",
+    },
+    {
+      icon: <Briefcase size={20} />,
+      label: "Jobs",
+      href: "/dashboard/addresume",
+    },
+    { icon: <MessageSquare size={20} />, label: "Chat History", href: "#" },
+  ];
 
     return (
         <>

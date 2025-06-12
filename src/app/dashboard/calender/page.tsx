@@ -4,17 +4,17 @@ import { useEffect, useState } from "react";
 import { Calendar } from "./partials/calendar";
 import { ImportantDates } from "./partials/important-date";
 
-import { useMobile } from "@/hooks/use-mobile";
+import { useIsMobile } from "@/hooks/use-mobile";
 import { Event } from "./calender.schema";
 
 export default function CalendarPage() {
   const [activeTab, setActiveTab] = useState<"calendar" | "important-dates">(
-    "calendar"
+    "calendar",
   );
-  const isMobile = useMobile();
+  const isMobile = useIsMobile();
 
   // Combined events and reminders data
-  
+
   // const [events, setEvents] = useState<Event[]>([
   //   {
   //     id: "1",
@@ -57,47 +57,46 @@ export default function CalendarPage() {
 
   const [events, setEvents] = useState<Event[]>([]);
 
-const [hydrated, setHydrated] = useState(false);
+  const [hydrated, setHydrated] = useState(false);
 
-const addEvent = (event: Omit<Event, "id">) => {
-  const newEvent = {
-    ...event,
-    id: Date.now().toString(),
-  };
-  setEvents((prev) => [...prev, newEvent]);
-};
-
-const deleteEvent = (id: string) => {
-  setEvents((prev) => prev.filter((event) => event.id !== id));
-};
-
-useEffect(() => {
-  const itemFromLocalStorage = localStorage.getItem("calenderReminders");
-  if (!itemFromLocalStorage) {
-    setHydrated(true); // allow future saves
-    return;
-  }
-
-  try {
-    const parsed = JSON.parse(itemFromLocalStorage);
-    const hydratedEvents = parsed.map((event: any) => ({
+  const addEvent = (event: Omit<Event, "id">) => {
+    const newEvent = {
       ...event,
-      date: new Date(event.date),
-    }));
+      id: Date.now().toString(),
+    };
+    setEvents((prev) => [...prev, newEvent]);
+  };
 
-    setEvents(hydratedEvents);
-  } catch (err) {
-    console.error("Error parsing events from localStorage:", err);
-  } finally {
-    setHydrated(true); // allow future saves
-  }
-}, []);
+  const deleteEvent = (id: string) => {
+    setEvents((prev) => prev.filter((event) => event.id !== id));
+  };
 
-useEffect(() => {
-  if (!hydrated) return; // skip first render
-  localStorage.setItem("calenderReminders", JSON.stringify(events));
-}, [events, hydrated]);
+  useEffect(() => {
+    const itemFromLocalStorage = localStorage.getItem("calenderReminders");
+    if (!itemFromLocalStorage) {
+      setHydrated(true); // allow future saves
+      return;
+    }
 
+    try {
+      const parsed = JSON.parse(itemFromLocalStorage);
+      const hydratedEvents = parsed.map((event: any) => ({
+        ...event,
+        date: new Date(event.date),
+      }));
+
+      setEvents(hydratedEvents);
+    } catch (err) {
+      console.error("Error parsing events from localStorage:", err);
+    } finally {
+      setHydrated(true); // allow future saves
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!hydrated) return; // skip first render
+    localStorage.setItem("calenderReminders", JSON.stringify(events));
+  }, [events, hydrated]);
 
   return (
     <div className="flex flex-col min-h-screen">
