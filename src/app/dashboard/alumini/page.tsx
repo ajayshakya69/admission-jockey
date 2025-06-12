@@ -74,7 +74,7 @@ const AlumniCardGrid = () => {
       </div>
       <div className="absolute inset-0 bg-black/60 backdrop-blur-sm z-10"></div>
 
-      <div className="flex-1 overflow-y-auto px-4 text-white text-center bg-black">
+      <div className="flex-1 overflow-y-auto custom-scroll px-4 text-white text-center bg-black">
         <div className="flex flex-col items-center justify-center min-h-[90%]">
           <h1 className="text-xl md:text-3xl font-bold mb-2">
             Graphic Era, Dehradun Alumnis

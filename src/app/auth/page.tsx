@@ -109,7 +109,7 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="md:px-10 py-8 px-2 grid md:grid-cols-2 grid-cols-1 min-h-screen overflow-y-auto gap-10">
+    <div className="md:px-10 py-8 px-2 grid md:grid-cols-2 grid-cols-1 min-h-screen overflow-y-auto gap-10 custom-scroll">
       {/* Left Side */}
       {isOptSent ? (
         <OTPPage ispending={ispending} setOtp={setOtp} onSubmit={submitOtp} />
