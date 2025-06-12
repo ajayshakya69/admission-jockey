@@ -3,6 +3,7 @@ import {
   Briefcase,
   Calendar,
   ClipboardList,
+  UserPen,
   Users,
 } from "lucide-react";
 
@@ -18,8 +19,13 @@ export const store_constants = {
 export const navbarItems = [
   {
     title: "Alumni",
-    url: "/dashboard/register",
+    url: "/dashboard/alimni",
     icon: Users,
+  },
+  {
+    title: "Register",
+    url: "/dashboard/register",
+    icon: UserPen,
   },
   {
     title: "Application Builder",
