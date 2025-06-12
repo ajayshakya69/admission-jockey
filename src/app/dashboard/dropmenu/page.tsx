@@ -14,7 +14,7 @@
 //         <div>
 //             <DropdownMenu>
 //                 <DropdownMenuTrigger><AlignJustify/></DropdownMenuTrigger>
-//                 <DropdownMenuContent className="mt-4 bg-gradient-to-b text-white from-[#000000] via-[#2f2f2f3e] to-[#292929af] border-t border-[#ffffff28]">  
+//                 <DropdownMenuContent className="mt-4 bg-gradient-to-b text-white from-[#000000] via-[#2f2f2f3e] to-[#292929af] border-t border-[#ffffff28]">
 //                 <DropdownMenuItem>
 //                         <a href="/dashboard" className="flex items-center">
 //                             <MdDashboard className="text-xl" />
@@ -54,6 +54,7 @@
 
 import { useState } from "react";
 import {
+<<<<<<< HEAD
     Users,
     ClipboardList,
     Calendar,
@@ -64,14 +65,24 @@ import {
     ChevronLeft,
     Menu,
     Home,
+=======
+  Users,
+  ClipboardList,
+  Calendar,
+  BookMarked,
+  Briefcase,
+  MessageSquare,
+  ChevronRight,
+  ChevronLeft,
+  Menu,
+>>>>>>> 7fbc1f35a03a72fed907b5202a8d79e20bb18b7b
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function Sidebar() {
-    const [expanded, setExpanded] = useState(false);
-    const [selectedIndex, setSelectedIndex] = useState<number | null>(null); // track selected item
 
+<<<<<<< HEAD
     const navItems = [
         { icon: <Home size={20} />, label: "Home", href: "/dashboard" },
         { icon: <Users size={20} />, label: "Alumni", href: "/dashboard/alumini" },
@@ -80,6 +91,36 @@ export default function Sidebar() {
         { icon: <BookMarked size={20} />, label: "Courses", href: "/dashboard/courses" },
         { icon: <Briefcase size={20} />, label: "Jobs", href: "/dashboard/addresume" },
     ];
+=======
+  const [expanded, setExpanded] = useState(false);
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null); // track selected item
+
+
+  const navItems = [
+    { icon: <Users size={20} />, label: "Alumni", href: "/dashboard/alumini" },
+    {
+      icon: <ClipboardList size={20} />,
+      label: "Application Builder",
+      href: "/dashboard/introForm",
+    },
+    {
+      icon: <Calendar size={20} />,
+      label: "Calendar",
+      href: "/dashboard/calender",
+    },
+    {
+      icon: <BookMarked size={20} />,
+      label: "Courses",
+      href: "/dashboard/courses",
+    },
+    {
+      icon: <Briefcase size={20} />,
+      label: "Jobs",
+      href: "/dashboard/addresume",
+    },
+    { icon: <MessageSquare size={20} />, label: "Chat History", href: "#" },
+  ];
+>>>>>>> 7fbc1f35a03a72fed907b5202a8d79e20bb18b7b
 
     return (
         <>

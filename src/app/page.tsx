@@ -35,6 +35,7 @@ export default function Home() {
             built to help students discover the right colleges, courses,
             internships, and career paths with hyper-personalized guidance.
           </span>
+<<<<<<< HEAD
           
           <div className="lg:w-3/4">
             <a href="/auth">
@@ -42,6 +43,8 @@ export default function Home() {
             </a>
           </div>
           
+=======
+>>>>>>> 7fbc1f35a03a72fed907b5202a8d79e20bb18b7b
           {/* <div className="lg:w-3/4">
             <InputBar  />
           </div> */}

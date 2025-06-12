@@ -117,18 +117,10 @@ export default function MessageComponent({
                 </AvatarFallback>
               </Avatar>
             </div>
-            <div className="bg-gray-800 text-white p-3 rounded-lg rounded-bl-sm">
-              <div className="flex space-x-1">
-                <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
-                <div
-                  className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"
-                  style={{ animationDelay: "0.1s" }}
-                ></div>
-                <div
-                  className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"
-                  style={{ animationDelay: "0.2s" }}
-                ></div>
-              </div>
+            <div className="backdrop-blur-sm bg-white/10 border border-white/20 text-white px-4 py-2 rounded-lg shadow-md">
+              <p className="animate-pulse text-sm font-medium">
+                Thinking<span className="animate-dots">...</span>
+              </p>
             </div>
           </div>
         </div>
