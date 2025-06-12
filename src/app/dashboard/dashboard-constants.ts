@@ -18,8 +18,8 @@ export const store_constants = {
 
 export const navbarItems = [
   {
-    title: "Alumni",
-    url: "/dashboard/alimni",
+    title: "Alumini",
+    url: "/dashboard/alumini",
     icon: Users,
   },
   {
