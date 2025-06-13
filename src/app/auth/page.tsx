@@ -30,7 +30,6 @@ export default function LoginPage() {
   const initMessage = searchParams.get("initMessage");
 
   function SignUPHandler() {
-    console.log("singup hadler called");
     startTransition(async () => {
       try {
         const { data, error } = await supabase.auth.signUp({
@@ -42,7 +41,7 @@ export default function LoginPage() {
             },
           },
         });
-        console.log("Sign Up Data:", data);
+
         if (error) {
           console.error(error.message);
         } else {
@@ -103,7 +102,6 @@ export default function LoginPage() {
           type: "email",
         });
         if (data) {
-          console.log(data);
           refreshSession();
           // toast.success("Loggged In successfully");
           if (initMessage && redirectTo)

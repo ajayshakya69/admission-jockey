@@ -1,10 +1,11 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+
 import { Star } from "lucide-react";
 import Link from "next/link";
 import InputBar from "@/app/dashboard/partials/inputBar";
 
 const AlumniCard = () => (
+  // <div className="min-h-screen overflow-y-scroll custom-scroll">
   <Card className="bg-gradient-to-b from-[#111] to-[#000] border border-zinc-800 text-white rounded-xl shadow-md">
     <CardContent className="px-5 flex flex-col items-center text-center gap-4">
       <div className="flex items-center justify-around w-full gap-5">
@@ -43,6 +44,7 @@ const AlumniCard = () => (
       </div>
     </CardContent>
   </Card>
+  // </div>
 );
 
 const AlumniCardGrid = () => {

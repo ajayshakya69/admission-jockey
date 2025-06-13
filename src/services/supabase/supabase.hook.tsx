@@ -18,7 +18,6 @@ export function useSupabase(props?: PropsHook) {
   );
   useEffect(() => {
     if (!props?.required || context.isLoading) return;
-    console.log("redirect url", props?.redirect);
     if (!context.session || !authorised) {
       router.replace(props?.redirect ?? "/");
     }

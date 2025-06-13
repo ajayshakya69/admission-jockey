@@ -33,7 +33,6 @@ export default function LoginPage() {
         if (error) {
           console.error(error.message);
         } else {
-          console.log(data);
           setIsOptSent(true);
         }
       } catch (error) {
@@ -44,15 +43,12 @@ export default function LoginPage() {
 
   async function googleLogin() {
     try {
-      console.log("Google Login Clicked");
       const { data, error } = await supabase.auth.signInWithOAuth({
         provider: "google",
         options: {
           redirectTo: `$(process.env.SITE_URL)/auth/callback?next=/dashboard`,
         },
       });
-     
-      console.log(data);
     } catch (error) {
       console.log(error);
     }
@@ -68,7 +64,6 @@ export default function LoginPage() {
           type: "email",
         });
         if (data) {
-          console.log(data);
           await refreshSession();
           // toast.success("Loggged In successfully");
           router.push("/dashboard");
@@ -134,7 +129,7 @@ export default function LoginPage() {
 
                 <Button
                   type="submit"
-                  className="w-full py-3 mt-7 text-white font-semibold rounded-md 
+                  className="w-full py-3 mt-7 text-white font-semibold rounded-md
                       bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] hover:brightness-110 hover:text-shadow active:scale-95 transition-all duration-200"
                   disabled={ispending}
                   onClick={sendOtp}

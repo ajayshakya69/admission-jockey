@@ -45,7 +45,7 @@ const InputBar: React.FC<InputBarProps> = ({
 
     if (onSubmit) {
       onSubmit(inputValue.trim());
-      console.log("redirected");
+
       return; // 🚫 Don't continue normal behavior
     }
 
@@ -91,7 +91,6 @@ const InputBar: React.FC<InputBarProps> = ({
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
-    console.log("sldkfsldfj");
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
       handleSendMessage();
@@ -99,7 +98,6 @@ const InputBar: React.FC<InputBarProps> = ({
   };
 
   useEffect(() => {
-    console.log("init message in inut", initMessage);
     const newParams = new URLSearchParams(searchParams.toString());
     newParams.delete("initMessage");
     router.replace(`?${newParams.toString()}`);

@@ -1,13 +1,12 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { BellRing } from "lucide-react";
-import UserDropDown from "./partials/userDropdone";
 import { useSupabase } from "@/services/supabase/supabase.hook";
-import { DropdownMenuDemo } from "./partials/userDropDown";
+
 import Loader from "@/components/ui/loader";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/app/dashboard/partials/app-sidebar";
+import NotificationDropdown from "./partials/notification.dropdown";
+import { UserDropDown } from "./partials/userDropDown";
 
 export default function DashboardLayout({
   children,
@@ -25,7 +24,7 @@ export default function DashboardLayout({
   return (
     <SidebarProvider>
       <AppSidebar />
-      <div className="flex h-screen overflow-hidden bg-black text-white w-full">
+      <div className="flex  bg-black text-white w-full">
         {/* Left Sidebar */}
 
         {/* Main content area */}
@@ -39,7 +38,7 @@ export default function DashboardLayout({
                 <SidebarTrigger className=" w-10 h-10 rounded-full bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] text-white flex items-center justify-center shadow-md" />
               </div>
               {/* Desktop header controls */}
-              <div className="hidden md:flex items-center gap-4">
+              <div className=" mr-5 flex items-center gap-4">
                 {/* <Button
                   className="px-6 py-2 rounded-lg font-semibold text-white text-base
                bg-[linear-gradient(90deg,#A07DF1,#F69DBA)]
@@ -50,28 +49,16 @@ export default function DashboardLayout({
                   <span className="hidden sm:block">New Chat</span>
                 </Button> */}
 
-                <button className="rounded-full flex items-center justify-center h-10 w-10 p-[1px] bg-[linear-gradient(90deg,#A07DF1,#F69DBA)]">
-                  <div className="rounded-full h-full w-full bg-black flex justify-center items-center">
-                    <BellRing className="h-[18px] text-[#f2acc3]" />
-                  </div>
-                </button>
-
+                <NotificationDropdown />
                 <div className="rounded-full h-10 w-10 bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] flex items-center justify-center">
-                  <DropdownMenuDemo />
+                  <UserDropDown />
                 </div>
-              </div>
-
-              {/* Mobile dropdown */}
-              <div className="md:hidden">
-                <UserDropDown />
               </div>
             </div>
           </header>
 
           {/* Page Content */}
-          <main className="flex-1 overflow-y-auto px-6 py-2 custom-scroll">
-            {children}
-          </main>
+          <main className="flex-1 px-6 py-2 ">{children}</main>
         </div>
       </div>
     </SidebarProvider>

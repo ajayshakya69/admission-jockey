@@ -38,7 +38,7 @@ export default function AlumniForm() {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white flex justify-center px-4 py-4">
+    <div className="h-full overflow-y-scroll custom-scroll bg-black text-white flex justify-center px-4 py-4">
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
