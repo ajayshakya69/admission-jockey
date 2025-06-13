@@ -21,8 +21,8 @@ export async function GET(request: NextRequest) {
 
   if (initMessage) {
     next += next.includes("?")
-      ? `&initMessage=${initMessage}`
-      : `?initMessage=${initMessage}`;
+      ? `&initMessage=${encodeURIComponent(initMessage)}`
+      : `?initMessage=${encodeURIComponent(initMessage)}`;
   }
 
   try {

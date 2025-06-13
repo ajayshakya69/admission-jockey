@@ -38,11 +38,11 @@ export default function AlumniForm() {
   };
 
   return (
-    <div className="h-full overflow-y-scroll custom-scroll bg-black text-white flex justify-center px-4 py-4">
+    <div className=" bg-black text-white flex justify-center px-4 py-4">
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="w-full max-w-[635px] space-y-6"
+          className="w-full max-w-[635px] space-y-6 overflow-y-scroll min-[600px]"
         >
           <div className="text-center space-y-2">
             <h1 className="text-[32px] font-bold">Alumni Community</h1>
