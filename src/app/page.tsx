@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 import InputBar from "./dashboard/partials/inputBar";
 import HowAjWork from "./HomeComponents/howAjWork";
 import Faq from "./HomeComponents/faqs";

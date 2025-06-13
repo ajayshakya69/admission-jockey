@@ -78,7 +78,7 @@ export function NavMain({
               key={item.title}
               className={
                 path === item.url
-                  ? " bg-gray-900 border-l-2 border-l-fuchsia-800  flex items-center justify-center"
+                  ? " bg-gray-900 border-l border-l-fuchsia-800"
                   : ""
               }
             >
