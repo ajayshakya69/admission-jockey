@@ -17,8 +17,8 @@ const Navbar: React.FC = () => {
     <nav className=" lg:py-8 py-4 text-white flex justify-between items-center">
       <div className="lg:text-lg text-sm lg:font-bold font-medium">
         <img
-          src="/homepage-logo.png"
-          className="md:w-[200px] w-[120px] h-[25px] md:h-[40px]"
+          src="/logo.jpg"
+          className="md:w-[220px] w-[120px]"
           alt=""
         />
       </div>

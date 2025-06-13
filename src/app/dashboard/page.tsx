@@ -7,7 +7,6 @@ import { Message } from "./dashboard.type";
 import InputBar from "./partials/inputBar";
 import MessageComponent from "./partials/messageComponent";
 import Loader from "@/components/ui/loader";
-import { useAxios } from "@/services/axios/axios.hook";
 import { useChatbotId } from "@/hooks/chatbot/chatbot.hook";
 
 export default function ChatInterface() {
@@ -57,7 +56,6 @@ export default function ChatInterface() {
           </div>
         </div>
         {/* Input Section */}
-        );
         {/* Suggested Boxes */}
       </>
     );

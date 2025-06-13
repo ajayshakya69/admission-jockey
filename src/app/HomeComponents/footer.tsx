@@ -1,3 +1,7 @@
+
+import React from 'react';
+import { Instagram, Twitter, Linkedin } from 'lucide-react';
+import Link from 'next/link';
 export default function Footer() {
     return (
         <div className="min-h-screen" >
@@ -6,16 +10,44 @@ export default function Footer() {
                 <div className=" flex flex-col  gap-5 ">
                     <h1 className="lg:text-[40px] text-[27px] font-semibold ">Lost in Choices? Let AI Be <br /> Your Guide</h1>
                     <span>Explore the smartest way to plan your education and <br className="lg:block hidden" /> career — all in one place.</span>
-                    <button className="px-6 py-3 lg:w-35 w-27 mt-5 rounded-lg font-semibold text-white lg:text-base text-[12px] bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] border-t border-[#ffffff36] shadow-[0_0_11px_0_rgba(160,125,241,0.3)]  hover:opacity-90 transition-all duration-300">
+                    <button className="px-[24px] py-[10px] lg:w-[128px] w-27 mt-5 rounded-lg font-semibold text-white lg:text-base text-[12px] bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] border-t border-[#ffffff36] shadow-[0_0_11px_0_rgba(160,125,241,0.3)]  hover:opacity-90 transition-all duration-300">
                         Try It Now
                     </button>
                 </div>
-                <div className="bg-[#ffffff0f] w-full rounded-lg lg:h-[300px] h-[200px] "></div>
+                <div className="relative w-full flex justify-center items-center">
+                    {/* Glow Effect */}
+                    <div className="absolute w-[130%] h-[130%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 blur-3xl opacity-15 rounded-full bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] z-0" />
+
+                    {/* Image Container */}
+                    <div className="relative w-full rounded-lg lg:h-[400px] h-[200px] overflow-hidden bg-[#ffffff2f] flex justify-center p-[2px] z-10">
+                        <img src="/footer.png" alt="img" className="rounded-lg" />
+                    </div>
+                </div>
+
 
             </div>
 
-            <div className="lg:block  hidden place-items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" width="1560" height="400" viewBox="0 0 1514 400" fill="none">
+            <div className="lg:block relative hidden place-items-center scroll-none overflow-y-clip">
+                <div className="absolute flex top-[75px] left-[75px] justify-between gap-50 items-center w-full h-full">
+                    
+                    <img src="/croplogo.png" alt="logo" className='w-[550px]' />
+                    
+                    <div className="w-full text-white text-center py-4 bg-transparent">
+                        <div className="flex justify-center items-center space-x-6 mb-2">
+                            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+                                <Instagram className="w-7 h-7 hover:opacity-80 transition-opacity" />
+                            </a>
+                            <a href="https://x.com" target="_blank" rel="noopener noreferrer">
+                                <Twitter className="w-7 h-7 hover:opacity-80 transition-opacity" />
+                            </a>
+                            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+                                <Linkedin className="w-7 h-7 hover:opacity-80 transition-opacity" />
+                            </a>
+                        </div>
+                        <p className="text-[14px] text-gray-400">© 2025 alumna.ai. All rights reserved.</p>
+                    </div>
+                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="1512" height="423" viewBox="0 0 1514 400" fill="none">
                     <g filter="url(#filter0_ii_679_90)">
                         <path
                             d="M248.5 6.28176C231.026 7.70096 57.0741 30.2549 1 85.612V424H1513V57.413C1324.78 94.8717 1270.35 103.173 1116.43 116.228C1076.27 116.228 977.996 139.483 727 75.431L723.408 74.3451C510.419 9.94891 445.397 -9.71017 248.5 6.28176Z"
