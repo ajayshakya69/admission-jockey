@@ -1,18 +1,16 @@
 "use client";
-import { Button } from "@/components/ui/button";
+
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useSupabase } from "@/services/supabase/supabase.hook";
 import { LogOut, User } from "lucide-react";
 import { useRouter } from "next/navigation";
 
-export function DropdownMenuDemo() {
+export function UserDropDown() {
   const { logout } = useSupabase();
   const router = useRouter();
   return (
@@ -20,10 +18,10 @@ export function DropdownMenuDemo() {
       <DropdownMenuTrigger>
         <User />
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="bg-white">
+      <DropdownMenuContent className=" mt-3 bg-black border border-gray-700">
         <DropdownMenuItem>
           <User className="mr-2 h-4 w-4" />
-          <span>Profile</span>
+          <span className="text-white">Profile</span>
         </DropdownMenuItem>
 
         <DropdownMenuItem

@@ -6,6 +6,7 @@ import {
   ClipboardList,
   UserPen,
   Users,
+  HomeIcon,
 } from "lucide-react";
 
 export const store_constants = {
@@ -21,7 +22,7 @@ export const navbarItems = [
   {
     title: "Home",
     url: "/dashboard",
-    icon: Users,
+    icon: HomeIcon,
   },
   {
     title: "Alumini",

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Message } from "../dashboard.type";
 import { Avatar } from "@radix-ui/react-avatar";
 import { AvatarFallback } from "@/components/ui/avatar";
@@ -13,32 +13,47 @@ export default function MessageComponent({
   messagesEndRef,
   isTyping,
 }: pageProps) {
+  function TypingMessage({ content }: { content: string }) {
+    const [displayedText, setDisplayedText] = useState("");
+
+    useEffect(() => {
+      let index = 0;
+
+      const interval = setInterval(() => {
+        if (index < content.length - 1) {
+          setDisplayedText((prev) => prev + content[index]);
+          index++;
+        } else {
+          clearInterval(interval);
+        }
+      }, 10);
+
+      return () => clearInterval(interval);
+    }, [content]);
+
+    return (
+      <div className="bg-black poppins-faimly font-poppins inline-block border border-white/20 text-white leading-relaxed p-3 md:p-4 rounded-lg shadow-md space-y-2 text-sm md:text-base">
+        <span className="whitespace-pre-wrap">{displayedText}</span>
+        <span className="animate-pulse">|</span>
+      </div>
+    );
+  }
+
   return (
-    <div className="flex-1  overflow-y-scroll h-[80%] px-4 md:px-16  py-20 space-y-4 hide-scroll">
+    <div className="flex flex-col justify-start px-4">
       {messages.map((message) => (
         <div
           key={message.id}
-          className={`flex py-2 ${message.sender == "user" ? "justify-end" : "justify-start"}`}
+          className={`flex py-2 ${message.sender === "user" ? "justify-end" : "justify-start"}`}
         >
           <div
-            className={`flex ${message.sender == "user" ? "flex-row-reverse" : "flex-row"} gap-2 md:gap-5 max-w-[85%] md:max-w-[80%]`}
+            className={`flex ${message.sender === "user" ? "flex-row-reverse" : "flex-row"} gap-2 md:gap-5 max-w-[85%] md:max-w-[80%]`}
           >
-            {message.sender === "user" ? (
-              <Avatar
-                className={`w-10 h-10 md:w-12 md:h-12 flex-shrink-0 rounded-full`}
-                style={{
-                  background:
-                    "linear-gradient(180deg, rgba(232, 125, 179, 0.5) 0%, rgba(140, 103, 226, 0.5) 100%)",
-                }}
-              >
-                <AvatarFallback className="text-white font-bold text-sm md:text-xl bg-transparent">
-                  {message.sender === "user" ? "A" : "AI"}
-                </AvatarFallback>
-              </Avatar>
-            ) : (
-              <div className="rounded-full flex items-center justify-center h-10 w-24  p-[1px]  bg-[linear-gradient(90deg,#A07DF1,#F69DBA)]">
+            {/* Avatar */}
+            {message.sender !== "user" ? (
+              <div className="rounded-full flex items-center justify-center h-10 w-12  p-[1px]  bg-[linear-gradient(90deg,#A07DF1,#F69DBA)]">
                 <Avatar className=" rounded-full w-full h-full bg-black flex justify-center items-center">
-                  <AvatarFallback className="  text-white font-bold text-sm md:text-xl bg-transparent">
+                  <AvatarFallback className="text-white font-bold text-sm md:text-xl bg-transparent">
                     <svg width="30" height="30" viewBox="0 0 25 25" fill="none">
                       <defs>
                         <linearGradient
@@ -63,26 +78,44 @@ export default function MessageComponent({
                   </AvatarFallback>
                 </Avatar>
               </div>
+            ) : (
+              <Avatar
+                className="w-10 h-10 md:w-12 md:h-12 rounded-full flex-shrink-0"
+                style={{
+                  background:
+                    "linear-gradient(180deg, rgba(232, 125, 179, 0.5) 0%, rgba(140, 103, 226, 0.5) 100%)",
+                }}
+              >
+                <AvatarFallback className="text-white font-bold text-sm md:text-xl bg-transparent">
+                  A
+                </AvatarFallback>
+              </Avatar>
             )}
 
-            <div className={`space-y-2`}>
-              <div
-                className={`inline-block p-3 md:p-4 rounded-lg text-sm md:text-base  leading-relaxed ${
-                  message.sender === "user"
-                    ? "bg-gray-800 text-white rounded-br-sm"
-                    : "bg-gray-900 text-white rounded-bl-sm"
-                }`}
-              >
-                {message.content.split("\n").map((item, key) => {
-                  return (
+            {/* Message bubble */}
+            {message.sender !== "user" ? (
+              message.id === messages[messages.length - 1]?.id ? (
+                <TypingMessage content={message.content} />
+              ) : (
+                <div className="bg-black inline-block border border-white/20 text-white leading-relaxed p-3 md:p-4 rounded-lg shadow-md space-y-2 text-sm md:text-base font-poppins">
+                  {message.content.split("\n").map((item, key) => (
                     <span key={key}>
                       {item}
                       <br />
                     </span>
-                  );
-                })}
+                  ))}
+                </div>
+              )
+            ) : (
+              <div className=" font-poppins bg-black inline-block border border-white/20 text-white leading-relaxed p-3 md:p-4 rounded-lg shadow-md space-y-2 text-sm md:text-base">
+                {message.content.split("\n").map((item, key) => (
+                  <span key={key}>
+                    {item}
+                    <br />
+                  </span>
+                ))}
               </div>
-            </div>
+            )}
           </div>
         </div>
       ))}
@@ -126,6 +159,7 @@ export default function MessageComponent({
         </div>
       )}
 
+      {/* Scroll anchor */}
       <div ref={messagesEndRef} />
     </div>
   );

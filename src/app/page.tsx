@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import InputBar from "./dashboard/partials/inputBar";
 import HowAjWork from "./HomeComponents/howAjWork";
@@ -5,10 +6,30 @@ import Faq from "./HomeComponents/faqs";
 import KeyFeatures from "./HomeComponents/features";
 import Footer from "./HomeComponents/footer";
 import Navbar from "./navbar/homeNav";
-import Model from "./HomeComponents/3dmodel";
+
+import { useSupabase } from "@/services/supabase/supabase.hook";
+import { useRouter } from "next/navigation";
+import dynamic from "next/dynamic";
+import { Suspense } from "react";
 // import Partners from "./(components)/partersBar/page";
 
+const Model = dynamic(() => import("./HomeComponents/3dmodel"), {
+  ssr: false,
+});
+
 export default function Home() {
+  const { session } = useSupabase();
+  const router = useRouter();
+
+  const handleLandingSubmit = (message: string) => {
+    if (session) {
+      router.push(`/dashboard?initMessage=${encodeURIComponent(message)}`);
+    } else {
+      router.push(
+        `/auth?redirectTo=/dashboard&initMessage=${encodeURIComponent(message)}`,
+      );
+    }
+  };
   return (
     <div className="lg:px-20 px-5 overflow-x-hidden">
       <Navbar />
@@ -35,9 +56,11 @@ export default function Home() {
             built to help students discover the right colleges, courses,
             internships, and career paths with hyper-personalized guidance.
           </span>
-          {/* <div className="lg:w-3/4">
-            <InputBar  />
-          </div> */}
+          <div className="lg:w-3/4">
+            <Suspense fallback={<div>Loading...</div>}>
+              <InputBar onSubmit={handleLandingSubmit} />
+            </Suspense>
+          </div>
         </div>
         <div className="flex flex-1 lg:justify-end  ">
           <Model />

@@ -17,9 +17,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
-  const { isMobile, state, openMobile, setOpenMobile } = useSidebar();
-
-  console.log(state);
+  const { state } = useSidebar();
 
   return (
     <Sidebar
@@ -30,7 +28,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 
       // onCollapseChange={(isCollapsed) => setExpanded(!isCollapsed)}
     >
-      <SidebarHeader className="w-full h-20 flex items-center justify-center">
+      <SidebarHeader className="w-full h-10 mt-6 flex items-center justify-center">
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton
@@ -47,8 +45,8 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                   <Image
                     src="/miniLogo.png"
                     alt="Icon"
-                    width={45}
-                    height={45}
+                    width={100}
+                    height={100}
                   />
                 )}
               </Link>
