@@ -32,7 +32,7 @@ export default function MessageComponent({
     }, [content]);
 
     return (
-      <div className="bg-black inline-block border border-white/20 text-white leading-relaxed p-3 md:p-4 rounded-lg shadow-md space-y-2 text-sm md:text-base">
+      <div className="bg-black poppins-faimly font-poppins inline-block border border-white/20 text-white leading-relaxed p-3 md:p-4 rounded-lg shadow-md space-y-2 text-sm md:text-base">
         <span className="whitespace-pre-wrap">{displayedText}</span>
         <span className="animate-pulse">|</span>
       </div>
@@ -97,7 +97,7 @@ export default function MessageComponent({
               message.id === messages[messages.length - 1]?.id ? (
                 <TypingMessage content={message.content} />
               ) : (
-                <div className="bg-black inline-block border border-white/20 text-white leading-relaxed p-3 md:p-4 rounded-lg shadow-md space-y-2 text-sm md:text-base">
+                <div className="bg-black inline-block border border-white/20 text-white leading-relaxed p-3 md:p-4 rounded-lg shadow-md space-y-2 text-sm md:text-base font-poppins">
                   {message.content.split("\n").map((item, key) => (
                     <span key={key}>
                       {item}
@@ -107,7 +107,7 @@ export default function MessageComponent({
                 </div>
               )
             ) : (
-              <div className="bg-black inline-block border border-white/20 text-white leading-relaxed p-3 md:p-4 rounded-lg shadow-md space-y-2 text-sm md:text-base">
+              <div className=" font-poppins bg-black inline-block border border-white/20 text-white leading-relaxed p-3 md:p-4 rounded-lg shadow-md space-y-2 text-sm md:text-base">
                 {message.content.split("\n").map((item, key) => (
                   <span key={key}>
                     {item}

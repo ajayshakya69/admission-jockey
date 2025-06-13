@@ -10,6 +10,7 @@ import Navbar from "./navbar/homeNav";
 import { useSupabase } from "@/services/supabase/supabase.hook";
 import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
+import { Suspense } from "react";
 // import Partners from "./(components)/partersBar/page";
 
 const Model = dynamic(() => import("./HomeComponents/3dmodel"), {
@@ -56,7 +57,9 @@ export default function Home() {
             internships, and career paths with hyper-personalized guidance.
           </span>
           <div className="lg:w-3/4">
-            <InputBar onSubmit={handleLandingSubmit} />
+            <Suspense fallback={<div>Loading...</div>}>
+              <InputBar onSubmit={handleLandingSubmit} />
+            </Suspense>
           </div>
         </div>
         <div className="flex flex-1 lg:justify-end  ">
