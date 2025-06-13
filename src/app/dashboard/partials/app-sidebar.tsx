@@ -38,7 +38,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               className="data-[state=open]:bg-gray-900 data-[state=open]:text-gray-400 hover:bg-transparent"
             >
               <Link
-                href="/dashboard"
+                href="/"
                 className="flex aspect-square items-center justify-center rounded-lg  text-sidebar-primary-foreground"
               >
                 {state === "expanded" ? (

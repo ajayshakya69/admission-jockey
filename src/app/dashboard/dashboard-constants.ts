@@ -1,4 +1,5 @@
 import {
+  Home,
   BookMarked,
   Briefcase,
   Calendar,
@@ -17,6 +18,11 @@ export const store_constants = {
 };
 
 export const navbarItems = [
+  {
+    title: "Home",
+    url: "/dashboard",
+    icon: Users,
+  },
   {
     title: "Alumini",
     url: "/dashboard/alumini",
