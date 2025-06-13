@@ -31,7 +31,7 @@ export default function ChatInterface() {
     return (
       <>
         {/* Welcome Text */}
-        <div className="flex-1 flex flex-col justify-center gap-5 h-[90%] overflow-hidden md:w-3/4 w-[90%] mx-auto px-4 pb-32">
+        <div className="flex-1 flex flex-col justify-center gap-5 md:min-h-fit min-h-screen overflow-y-scroll hide-scroll md:w-3/4 w-full mx-auto my-auto md:px-4 px-1 lg:mt-24">
           <Welcome />
           <div className="p-4 md:p-6">
             <div className="w-full mx-auto">
@@ -64,9 +64,9 @@ export default function ChatInterface() {
   }
   return (
     <>
-      <div className="flex flex-col h-[90%] overflow-hidden w-[85%] mx-auto ">
+      <div className="flex flex-col h-[90%] overflow-hidden w-full md:w-[85%] mx-auto ">
         <div className="flex-1 overflow-y-auto px-4 text-white  bg-black custom-scroll">
-          <div className="flex flex-col  justify-start min-h-[95%]">
+          <div className="flex flex-col  justify-start min-h-[90%]">
             <MessageComponent
               messages={messages}
               messagesEndRef={messagesEndRef}

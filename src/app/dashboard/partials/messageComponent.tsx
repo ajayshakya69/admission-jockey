@@ -40,7 +40,7 @@ export default function MessageComponent({
   }
 
   return (
-    <div className="flex flex-col justify-start px-4">
+    <div className="flex flex-col justify-start md:px-4 px-1">
       {messages.map((message) => (
         <div
           key={message.id}

@@ -58,7 +58,7 @@ export default function DashboardLayout({
           </header>
 
           {/* Page Content */}
-          <main className="flex-1 overflow-y-auto px-6 py-2 hide-scroll">
+          <main className="flex-1 overflow-y-auto px-0 md:px-2 py-2 hide-scroll overflow-x-hidden">
             {children}
           </main>
         </div>
