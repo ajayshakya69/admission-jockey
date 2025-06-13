@@ -8,7 +8,7 @@ import OTPPage from "./register/partials/otp";
 import { Button } from "@/components/ui/button";
 import { Loader, Refrigerator } from "lucide-react";
 import { useSupabase } from "@/services/supabase/supabase.hook";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 export default function LoginPage() {
   const [isOptSent, setIsOptSent] = useState(false);
@@ -23,6 +23,11 @@ export default function LoginPage() {
   const { supabase, refreshSession } = useSupabase();
 
   const router = useRouter();
+
+  const searchParams = useSearchParams();
+
+  const redirectTo = searchParams.get("redirectTo");
+  const initMessage = searchParams.get("initMessage");
 
   function SignUPHandler() {
     console.log("singup hadler called");
@@ -60,7 +65,8 @@ export default function LoginPage() {
           console.error(error.message);
         } else {
           refreshSession();
-          router.push("/dashboard");
+          if (initMessage) router.push("/dashboard?initMessage=" + initMessage);
+          else router.push("/dashboard");
         }
       } catch (error) {
         console.error(error);
@@ -68,15 +74,16 @@ export default function LoginPage() {
     });
   }
 
-  console.log(process.env.SITE_URL);
-
   async function googleLogin() {
     try {
-      console.log("Google Login Clicked");
+      let callBackUrl = `${process.env.NEXT_PUBLIC_URL}/auth/callback?next=/dashboard`;
+      if (initMessage && redirectTo) {
+        callBackUrl = `${process.env.NEXT_PUBLIC_URL}/auth/callback?next=/dashboard&initMessage=${initMessage}`;
+      }
       const { data, error } = await supabase.auth.signInWithOAuth({
         provider: "google",
         options: {
-          redirectTo: `${process.env.NEXT_PUBLIC_URL}/auth/callback?next=/dashboard`,
+          redirectTo: callBackUrl,
         },
       });
     } catch (error) {
@@ -99,11 +106,24 @@ export default function LoginPage() {
           console.log(data);
           refreshSession();
           // toast.success("Loggged In successfully");
-          router.push("/auth");
+          if (initMessage && redirectTo)
+            router.push(
+              "/dashboard?redirectTo=" +
+                redirectTo +
+                "&initMessage=" +
+                initMessage,
+            );
+          else router.push("/dashboard");
+          setIsOptSent(false);
           console.log("email verification done ");
         }
       } catch (error) {
         console.error(error);
+        if (initMessage && redirectTo)
+          router.push(
+            "/auth?redirectTo=" + redirectTo + "&initMessage=" + initMessage,
+          );
+        else router.push("/auth");
       }
     });
   }

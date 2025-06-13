@@ -13,11 +13,22 @@ export async function GET(request: NextRequest) {
   const url = new URL(request.url);
   // if "next" is in param, use it as the redirect URL
   let next = searchParams.get("next") ?? "/";
-  console.log({ next });
+  let initMessage = searchParams.get("initMessage");
+
   if (!next.startsWith("/")) {
     // if "next" is not a relative URL, use the default
     next = "/";
   }
+
+  if (initMessage) {
+    next += next.includes("?")
+      ? `&initMessage=${initMessage}`
+      : `?initMessage=${initMessage}`;
+  }
+
+  console.log("in the calback url ", next);
+  console.log("in the calback ualskjdf ", initMessage);
+
   try {
     if (code) {
       const supabase = await supabaseClient.createServer();

@@ -6,7 +6,6 @@ import UserDropDown from "./partials/userDropdone";
 import { useSupabase } from "@/services/supabase/supabase.hook";
 import { DropdownMenuDemo } from "./partials/userDropDown";
 import Loader from "@/components/ui/loader";
-import Sidebar from "./dropmenu/page";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/app/dashboard/partials/app-sidebar";
 
@@ -28,7 +27,6 @@ export default function DashboardLayout({
       <AppSidebar />
       <div className="flex h-screen overflow-hidden bg-black text-white w-full">
         {/* Left Sidebar */}
-        {/* <Sidebar /> */}
 
         {/* Main content area */}
         <div className="flex flex-col flex-1 overflow-hidden">

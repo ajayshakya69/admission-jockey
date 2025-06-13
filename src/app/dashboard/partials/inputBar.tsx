@@ -1,6 +1,5 @@
 "use client";
-
-import React, { useState, ReactNode, useEffect } from "react";
+import React, { useState, ReactNode, useEffect, useRef } from "react";
 import { GrAttachment } from "react-icons/gr";
 import { MdOutlineMicNone } from "react-icons/md";
 import { Send } from "lucide-react";
@@ -8,6 +7,8 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Message } from "../dashboard.type";
 import axios from "axios";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useChatbotId } from "@/hooks/chatbot/chatbot.hook";
 
 interface InputBarProps {
   placeholder?: string;
@@ -15,10 +16,10 @@ interface InputBarProps {
   handleKeyPress?: (e: React.KeyboardEvent) => void;
   setMessages?: React.Dispatch<React.SetStateAction<Message[]>>;
   setIsTyping?: React.Dispatch<React.SetStateAction<boolean>>;
-  chatbotSessionId?: string | null;
   hasStartedChat?: boolean;
   setHasStartedChat?: React.Dispatch<React.SetStateAction<boolean>>;
-  customButton?: ReactNode; // ✅ New custom button (e.g. emoji picker, image upload, etc.)
+  customButton?: ReactNode;
+  onSubmit?: (message: string) => void; // ✅ New custom button (e.g. emoji picker, image upload, etc.)
 }
 
 const InputBar: React.FC<InputBarProps> = ({
@@ -29,12 +30,24 @@ const InputBar: React.FC<InputBarProps> = ({
   setIsTyping,
   setHasStartedChat,
   hasStartedChat,
-  chatbotSessionId,
+  onSubmit,
 }) => {
   const [inputValue, setInputValue] = useState("");
-  const [sessionId, setSessionId] = useState("");
+  const searchParams = useSearchParams();
+  const initMessage = searchParams.get("initMessage");
+  const hasHandledInit = useRef(false);
+
+  const { sessionId } = useChatbotId();
+
+  const router = useRouter();
   const handleSendMessage = async () => {
     if (!inputValue.trim()) return;
+
+    if (onSubmit) {
+      onSubmit(inputValue.trim());
+      console.log("redirected");
+      return; // 🚫 Don't continue normal behavior
+    }
 
     if (!hasStartedChat) {
       setHasStartedChat && setHasStartedChat(true);
@@ -54,7 +67,6 @@ const InputBar: React.FC<InputBarProps> = ({
       setIsTyping(true);
     }
     setInputValue("");
-
 
     const resMessage = await axios.post(
       `${process.env.NEXT_PUBLIC_ML_URL}/chat`,
@@ -79,6 +91,7 @@ const InputBar: React.FC<InputBarProps> = ({
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
+    console.log("sldkfsldfj");
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
       handleSendMessage();
@@ -86,8 +99,43 @@ const InputBar: React.FC<InputBarProps> = ({
   };
 
   useEffect(() => {
-    if (chatbotSessionId != null) setSessionId(chatbotSessionId);
-  }, [chatbotSessionId]);
+    console.log("init message in inut", initMessage);
+    const newParams = new URLSearchParams(searchParams.toString());
+    newParams.delete("initMessage");
+    router.replace(`?${newParams.toString()}`);
+
+    if (initMessage && sessionId && !hasHandledInit.current) {
+      setHasStartedChat && setHasStartedChat(true);
+      hasHandledInit.current = true;
+      const userMessage: Message = {
+        id: Date.now().toString(),
+        content: initMessage,
+        sender: "user",
+        timestamp: new Date(),
+      };
+      setMessages && setMessages([userMessage]);
+      // Simulate sending
+      setIsTyping && setIsTyping(true);
+      axios
+        .post(`${process.env.NEXT_PUBLIC_ML_URL}/chat`, {
+          session_id: sessionId,
+          message: initMessage,
+          history: ["string"],
+        })
+        .then((res) => {
+          const botMessage: Message = {
+            id: (Date.now() + 1).toString(),
+            content: res.data.response,
+            sender: "bot",
+            timestamp: new Date(),
+          };
+          setMessages && setMessages((prev) => [...prev, botMessage]);
+        })
+        .finally(() => {
+          setIsTyping && setIsTyping(false);
+        });
+    }
+  }, [sessionId]);
 
   return (
     <div className="bg-gradient-to-b from-[#ffffff0d] border-t border-[#ffffff14] to-[#ffffff04] rounded-lg h-14 px-5 my-4 flex items-center gap-3">
@@ -119,7 +167,6 @@ const InputBar: React.FC<InputBarProps> = ({
           showMicButton && <MdOutlineMicNone size={26} color="#FFFFFF" />
         )}
       </Button>
-
     </div>
   );
 };

@@ -8,40 +8,25 @@ import InputBar from "./partials/inputBar";
 import MessageComponent from "./partials/messageComponent";
 import Loader from "@/components/ui/loader";
 import { useAxios } from "@/services/axios/axios.hook";
+import { useChatbotId } from "@/hooks/chatbot/chatbot.hook";
 
 export default function ChatInterface() {
   const [messages, setMessages] = useState<Message[]>([]);
-  const [chatbotSessionId, setChatbotSessionId] = useState<string | null>(null);
   const [isTyping, setIsTyping] = useState(false);
   const [hasStartedChat, setHasStartedChat] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  const { axios } = useAxios();
+  const { sessionId } = useChatbotId();
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
-  async function fetchSessionId() {
-    const res = await axios.post(
-      `${process.env.NEXT_PUBLIC_ML_URL}/init_session`,
-      {
-        name: "",
-      },
-    );
-
-    setChatbotSessionId(res.data.session_id);
-  }
-
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
 
-  useEffect(() => {
-    fetchSessionId();
-  }, []);
-
-  if (!chatbotSessionId) return <Loader />;
+  if (!sessionId) return <Loader />;
 
   if (!hasStartedChat) {
     return (
@@ -52,7 +37,6 @@ export default function ChatInterface() {
           <div className="p-4 md:p-6">
             <div className="w-full mx-auto">
               <InputBar
-                chatbotSessionId={chatbotSessionId}
                 setMessages={setMessages}
                 hasStartedChat={hasStartedChat}
                 setHasStartedChat={setHasStartedChat}
@@ -95,7 +79,6 @@ export default function ChatInterface() {
         <div className=" pb-20 shadow-md">
           <div className="w-full mx-auto">
             <InputBar
-              chatbotSessionId={chatbotSessionId}
               setMessages={setMessages}
               hasStartedChat={hasStartedChat}
               setHasStartedChat={setHasStartedChat}

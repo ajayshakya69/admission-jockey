@@ -1,4 +1,4 @@
-import Spline from "@splinetool/react-spline/next";
+import Spline from "@splinetool/react-spline";
 
 export default function Model() {
   return (
@@ -7,7 +7,6 @@ export default function Model() {
         <Spline
           scene="https://prod.spline.design/GJ6cSezNyXe5qF-D/scene.splinecode"
           className=" h-full w-full"
-
         />
       </div>
     </main>
