@@ -36,9 +36,9 @@ export default function KeyFeatures() {
         {/* Tab Content */}
         <div className="bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] border-transparent rounded-lg p-[1px] lg:mt-0 mt-30">
           <TabsContent value="application">
-            <div className="bg-black rounded-lg lg:py-10 py-5 px-5 lg:px-15 flex lg:flex-row flex-col-reverse gap-6 ">
-              <div className="flex-1">
-                <h3 className="lg:text-3xl text-lg font-bold text-transparent bg-clip-text bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] mb-2">Application Builder</h3>
+            <div className="bg-black rounded-lg lg:py-8 py-5 px-5 lg:px-5 flex lg:flex-row flex-col-reverse ">
+              <div className="lg:w-1/2 w-full flex flex-col justify-center lg:pl-10">
+                <h3 className="lg:text-[32px] text-[16px] font-bold text-transparent bg-clip-text bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] mb-2">Application Builder</h3>
                 <p className="text-white font-semibold my-4 lg:text-base text-sm">Nail Every Application With AI</p>
                 <p className="text-gray-300 mb-4 text-sm lg:text-base">
                   From SOPs to resumes, Alumna.ai helps you write, polish, and submit standout
@@ -63,17 +63,18 @@ export default function KeyFeatures() {
                   </div>
                 </Card>
               </div>
-              <div className="lg:w-100 relative w-full flex justify-center place-items-center">
-                <div className="absolute w-[110%] h-[90%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 blur-3xl opacity-20 rounded-full bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] z-0" />
-                <img  src="/feature/first.png" alt="applicaton" className="w-full h[345px]  z-10 rounded-lg border-[2px] border-[#ffffff48]" />
+              <div className="lg:w-1/2 w-full lg:h-auto h-[270px] relative flex justify-center place-items-center">
+              <div className="absolute w-[100%] h-[80%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 blur-3xl opacity-20 rounded-full bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] z-0" />
+                <img  src="/feature/Group1.png" alt="applicaton" className="w-full lg:scale-90  z-10 rounded-lg  " />
+
               </div>
             </div>
           </TabsContent>
 
           <TabsContent value="dates">
-           <div className="bg-black rounded-lg lg:py-10 py-5 px-5 lg:px-15 flex lg:flex-row flex-col-reverse gap-6 ">
-              <div className="flex-1">
-                <h3 className="lg:text-3xl text-lg font-bold text-transparent bg-clip-text bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] mb-2">Important Dates</h3>
+           <div className="bg-black rounded-lg lg:py-8 py-5 px-5 lg:px-5 flex lg:flex-row flex-col-reverse ">
+              <div className="lg:w-1/2 w-full flex flex-col justify-center lg:pl-10">
+                <h3 className="lg:text-[32px] text-base font-bold text-transparent bg-clip-text bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] mb-2">Important Dates</h3>
                 <p className="text-white font-semibold my-4 lg:text-base text-sm">Stay on Track Without Stress</p>
                 <p className="text-gray-300 mb-4 text-sm lg:text-base">
                   Never miss a deadline — Alumna.ai keeps you organized with smart reminders and a personalized calendar.
@@ -97,17 +98,17 @@ export default function KeyFeatures() {
                   </div>
                 </Card>
               </div>
-              <div className="lg:w-100 relative w-full flex justify-center place-items-center">
-                <div className="absolute w-[110%] h-[90%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 blur-3xl opacity-20 rounded-full bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] z-0" />
-                <img  src="/feature/second.png" alt="applicaton" className="w-full h[345px]  z-10 rounded-lg border-[2px] border-[#ffffff48]" />
+              <div className="lg:w-1/2 w-full lg:h-auto h-[270px] relative flex justify-center place-items-center">
+                <div className="absolute w-[100%] h-[80%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 blur-3xl opacity-20 rounded-full bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] z-0" />
+                <img  src="/feature/Group2.png" alt="applicaton" className="w-full lg:scale-90  z-10 rounded-lg " />
               </div>
             </div>
           </TabsContent>
 
           <TabsContent value="alumni">
-            <div className="bg-black rounded-lg lg:py-10 py-5 px-5 lg:px-15 flex lg:flex-row flex-col-reverse gap-6 ">
-              <div className="flex-1">
-                <h3 className="lg:text-3xl text-lg font-bold text-transparent bg-clip-text bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] mb-2">Job & Internship Finder</h3>
+            <div className="bg-black rounded-lg lg:py-8 py-5 px-5 lg:px-5 flex lg:flex-row flex-col-reverse ">
+              <div className="lg:w-1/2 w-full flex flex-col justify-center lg:pl-10">
+                <h3 className="lg:text-[32px] text-base font-bold text-transparent bg-clip-text bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] mb-2">Job & Internship Finder</h3>
                 <p className="text-white font-semibold my-4 lg:text-base text-sm">Opportunities, Tailored for You</p>
                 <p className="text-gray-300 mb-4 text-sm lg:text-base">
                   Discover the right roles with AI-matched internships and jobs based on your skills, interests, and goals.
@@ -131,9 +132,9 @@ export default function KeyFeatures() {
                   </div>
                 </Card>
               </div>
-              <div className="lg:w-100 relative w-full flex justify-center place-items-center">
-                <div className="absolute w-[110%] h-[90%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 blur-3xl opacity-20 rounded-full bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] z-0" />
-                <img  src="/feature/third.png" alt="applicaton" className="w-full h[345px]  z-10 rounded-lg border-[2px] border-[#ffffff48]" />
+              <div className="lg:w-1/2 w-full lg:h-auto h-[270px] relative flex justify-center place-items-center">
+                <div className="absolute w-[100%] h-[80%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 blur-3xl opacity-20 rounded-full bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] z-0" />
+                <img  src="/feature/Group3.png" alt="applicaton" className="w-full lg:scale-90  z-10 rounded-lg" />
               </div>
             </div>
           </TabsContent>
