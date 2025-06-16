@@ -1,7 +1,9 @@
 
 import React from 'react';
-import { Instagram, Twitter, Linkedin } from 'lucide-react';
 import Link from 'next/link';
+import { FaLinkedin } from "react-icons/fa6";
+import { BsTwitterX, BsInstagram } from "react-icons/bs";
+
 export default function Footer() {
     return (
         <div className="min-h-screen" >
@@ -20,7 +22,7 @@ export default function Footer() {
 
                     {/* Image Container */}
                     <div className="relative w-full rounded-lg lg:h-[400px] h-[200px] overflow-hidden bg-[#ffffff2f] flex justify-center p-[2px] z-10">
-                        <img src="/footer.png" alt="img" className="rounded-lg" />
+                        <img src="/footer.png" alt="img" className="rounded-lg lg:w-auto w-full" />
                     </div>
                 </div>
 
@@ -28,23 +30,23 @@ export default function Footer() {
             </div>
 
             <div className="lg:block relative hidden place-items-center scroll-none overflow-y-clip">
-                <div className="absolute flex top-[75px] left-[75px] justify-between gap-50 items-center w-full h-full">
+                <div className="absolute flex top-[75px] justify-between px-10 items-center w-full h-full">
                     
                     <img src="/croplogo.png" alt="logo" className='w-[550px]' />
                     
                     <div className="w-full text-white text-center py-4 bg-transparent">
-                        <div className="flex justify-center items-center space-x-6 mb-2">
+                        <div className="flex justify-end items-center space-x-6 mb-2">
                             <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-                                <Instagram className="w-7 h-7 hover:opacity-80 transition-opacity" />
+                                <BsInstagram className="w-7 h-7 hover:opacity-80 transition-opacity" />
                             </a>
                             <a href="https://x.com" target="_blank" rel="noopener noreferrer">
-                                <Twitter className="w-7 h-7 hover:opacity-80 transition-opacity" />
+                                <BsTwitterX className="w-7 h-7 hover:opacity-80 transition-opacity" />
                             </a>
                             <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
-                                <Linkedin className="w-7 h-7 hover:opacity-80 transition-opacity" />
+                                <FaLinkedin className="w-7 h-7 hover:opacity-80 transition-opacity" />
                             </a>
                         </div>
-                        <p className="text-[14px] text-gray-400">© 2025 alumna.ai. All rights reserved.</p>
+                        <p className="text-[14px] text-white text-end">© 2025 alumna.ai. All rights reserved.</p>
                     </div>
                 </div>
                 <svg xmlns="http://www.w3.org/2000/svg" width="1512" height="423" viewBox="0 0 1514 400" fill="none">
@@ -104,7 +106,26 @@ export default function Footer() {
                 </svg>
             </div>
 
-            <div className="lg:hidden block place-items-center mt-25 ">
+            <div className="lg:hidden relative block place-items-center scroll-none overflow-y-clip mt-25 ">
+                <div className="absolute flex justify-between top-[25px]  items-center w-full h-full">
+                    
+                    <img src="/croplogo.png" alt="logo" className='w-[180px]' />
+                    
+                    <div className="w-full text-white text-center py-4 bg-transparent">
+                        <div className="flex justify-end items-center space-x-3 mb-2">
+                            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+                                <BsInstagram className="w-[14px] h-[14px] hover:opacity-80 transition-opacity" />
+                            </a>
+                            <a href="https://x.com" target="_blank" rel="noopener noreferrer">
+                                <BsTwitterX className="w-[14px] h-[14px] hover:opacity-80 transition-opacity" />
+                            </a>
+                            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+                                <FaLinkedin className="w-[14px] h-[14px] hover:opacity-80 transition-opacity" />
+                            </a>
+                        </div>
+                        <p className="text-[8px] text-white text-end">© 2025 alumna.ai. All rights reserved.</p>
+                    </div>
+                </div>
                 <svg xmlns="http://www.w3.org/2000/svg" width="375" height="171" viewBox="0 0 375 171" fill="none">
                     <g filter="url(#filter0_ii_1459_4604)">
                         <path d="M60.7113 3.12133C56.3351 3.51631 12.9814 12.7559 -1 35.0035V170.999H376V23.6705C329.069 38.7249 333.878 37.7534 295.5 43C285.487 43 248.083 55.2419 185.5 29.5C131.679 3.27223 123 -2.50059 60.7113 3.12133Z" fill="white" fillOpacity="0.01" />

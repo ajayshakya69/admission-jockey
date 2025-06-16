@@ -18,7 +18,7 @@ const Navbar: React.FC = () => {
       <div className="lg:text-lg text-sm lg:font-bold font-medium">
         <img
           src="/logo.jpg"
-          className="md:w-[220px] w-[120px]"
+          className="md:w-[220px] w-[170px]"
           alt=""
         />
       </div>
