@@ -52,11 +52,11 @@ const Faq: React.FC = () => {
                                 key={index}
                                 className="fancy-border mx-auto pb-2"
                             >
-                                <AccordionTrigger className="text-left text-base lg:text-lg font-medium text-white hover:no-underline flex items-center justify-between">
+                                <AccordionTrigger className="text-left text-sm lg:text-lg font-medium text-white hover:no-underline flex items-center justify-between">
                                     <span>{item.question}</span>
                                 </AccordionTrigger>
 
-                                <AccordionContent className="text-gray-400 mt-2">
+                                <AccordionContent className="text-gray-400 lg:text-base text-sm lg:mt-2">
                                     {item.answer || "Answer coming soon..."}
                                 </AccordionContent>
 
