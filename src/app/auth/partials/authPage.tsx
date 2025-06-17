@@ -4,11 +4,12 @@ import { Card, CardContent } from "@/components/ui/card";
 // import ImageGrid from "../(components)/grid";
 import SlicedImageGrid from "../../(components)/grid";
 import { useEffect, useState, useTransition } from "react";
-import OTPPage from "../register/partials/otp";
+import OTPPage from "./otp";
 import { Button } from "@/components/ui/button";
 import { Loader, Refrigerator } from "lucide-react";
 import { useSupabase } from "@/services/supabase/supabase.hook";
 import { useRouter, useSearchParams } from "next/navigation";
+import { toast } from "react-toastify";
 
 export default function AuthPage() {
   const [isOptSent, setIsOptSent] = useState(false);
@@ -43,13 +44,17 @@ export default function AuthPage() {
         });
 
         if (error) {
-          console.error(error.message);
+          toast.error("Error creating user, try again");
         } else {
           setIsOptSent(true);
           console.log({ data });
         }
       } catch (error) {
         console.error(error);
+      } finally {
+        setEmail("");
+        setPassword("");
+        setName("");
       }
     });
   }
@@ -61,7 +66,7 @@ export default function AuthPage() {
           password,
         });
         if (error) {
-          console.error(error.message);
+          toast.warn(error.message);
         } else {
           refreshSession();
           if (initMessage)
@@ -72,6 +77,9 @@ export default function AuthPage() {
         }
       } catch (error) {
         console.error(error);
+      } finally {
+        setEmail("");
+        setPassword("");
       }
     });
   }
