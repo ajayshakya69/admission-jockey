@@ -17,7 +17,7 @@ interface CollegeCardProps {
 
 export function CollegeCard({ college }: CollegeCardProps) {
   return (
-    <Card className="bg-[#ffffff05] bg-gradient-to-l from-[#ffffff06] via-[#ffffff02] to-[#ffffff06] rounded-[8px] overflow-hidden lg:h-[426px] h-[331px] py-0 ">
+    <Card className="bg-[#ffffff05] bg-gradient-to-l from-[#ffffff06] via-[#ffffff02] to-[#ffffff06] rounded-[8px] overflow-hidden lg:h-[435px] h-[350px] py-0 ">
       <CardContent className="p-0">
         {/* College Image */}
         <div className="relative lg:h-[208px] h-[165px] w-full overflow-hidden rounded-t-[8px]">

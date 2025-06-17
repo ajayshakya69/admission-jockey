@@ -34,7 +34,7 @@ const colleges = [
     name: "Global Institute of Business Studies",
     image: "/collegeimg/gi.png",
     description:
-      "Global Institute of Business Studies (GIBS) is where talents are nurtured, ambitions cherished, and dreams transformed into reality through qua...",
+      "Global Institute of Business Studies (GIBS) is where talents are nurtured, ambitions cherished, and dreams transform...",
     referenceCode: "admission jockey",
     link: "https://www.gibs.edu.in/apply-online/",
   },

@@ -25,7 +25,7 @@ const Navbar: React.FC = () => {
       {user ? (
         <Link href="/dashboard">
           <Button
-            className="lg:px-6 lg:py-2 px-6 py-1 lg:rounded-lg rounded-sm font-semibold text-white lg:text-base text-[16px] 
+            className="lg:px-6 lg:py-2 px-4 py-[2px] lg:rounded-lg rounded-sm font-semibold text-white lg:text-base text-[12px] 
           bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] 
           border-t border-[#ffffff36] 
           shadow-[0_0_11px_0_rgba(160,125,241,0.3)] 
@@ -37,7 +37,7 @@ const Navbar: React.FC = () => {
       ) : (
         <Link href="/auth">
           <Button
-            className="lg:px-6 lg:py-2 px-6 py-1 lg:rounded-lg rounded-sm font-semibold text-white lg:text-base text-[16px] 
+            className="lg:px-6 lg:py-2 px-4 py-[2px] lg:rounded-lg rounded-sm font-semibold text-white lg:text-base text-[12px] 
             bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] 
             border-t border-[#ffffff36] 
             shadow-[0_0_11px_0_rgba(160,125,241,0.3)] 

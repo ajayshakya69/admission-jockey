@@ -3,9 +3,9 @@ import { Card, CardContent } from "@/components/ui/card"
 export function MoreInstitutions() {
   return (
     <div className="overflow-hidden rounded-[8px]">
-      <Card className="relative bg-transparent rounded-2xl h-full flex items-center justify-center lg:min-h-[426px] min-h-[331px]">
+      <Card className="relative bg-transparent rounded-2xl h-full flex items-center justify-center lg:min-h-[435px] min-h-[331px]">
         {/* Blurred Background Layer */}
-        <div className="absolute inset-0 bg-[#ffffff06] blur-lg rounded-[8px] z-0" />
+        <div className="absolute inset-0 bg-[#ffffff10] blur-lg rounded-[8px] z-0" />
 
         {/* Foreground Text Content */}
         <CardContent className="relative z-10 p-8 text-center">
