@@ -17,21 +17,22 @@ const faqItems: FaqItem[] = [
     {
         question: "How does Alumna.ai work?",
         answer:
-            "It uses a powerful foundation AI model trained on educational journeys, counsellor advice, and student data to give personalized recommendations in seconds",
+            "It’s an AI counselor that chats with you, understands your profile and emotions, and gives personalized college suggestions, application help, and alumni connections.",
     },
     {
         question: "Is it really free?",
         answer:
-            "",
+            "Yes, it’s completely free for students — no hidden charges.",
     },
     {
         question: "Who is it for?",
         answer:
-            "",
+            "Students in Classes 11–12, recent pass-outs, and anyone exploring colleges, courses, internships, or job opportunities.",
     },
     {
         question: "How is this different from search engines or portals?",
-        answer: "", // can be filled later
+        answer:
+            "Alumna.ai gives personalized, emotionally-aware guidance — not just lists. It feels like talking to a smart, helpful friend who understands your journey.",
     },
 ];
 
@@ -51,11 +52,11 @@ const Faq: React.FC = () => {
                                 key={index}
                                 className="fancy-border mx-auto pb-2"
                             >
-                                <AccordionTrigger className="text-left text-base lg:text-lg font-medium text-white hover:no-underline flex items-center justify-between">
+                                <AccordionTrigger className="text-left text-sm lg:text-lg font-medium text-white hover:no-underline flex items-center justify-between">
                                     <span>{item.question}</span>
                                 </AccordionTrigger>
 
-                                <AccordionContent className="text-gray-400 mt-2">
+                                <AccordionContent className="text-gray-400 lg:text-base text-sm lg:mt-2">
                                     {item.answer || "Answer coming soon..."}
                                 </AccordionContent>
 

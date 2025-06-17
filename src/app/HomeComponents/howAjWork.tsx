@@ -26,13 +26,13 @@ export default function HowAjWork() {
     return (
         <div>
             <div className="flex flex-col items-center justify-center gap-5 mb-10">
-                <h1 className="lg:text-[40px] text-[20px] tracking-wide leading-13 font-semibold">How Alumna.ai Works</h1>
-                <span className="lg:text-base text-[16px] text-center">Built for Indian students. Backed by AI. Designed to give you answers that actually help — no  <br />agendas, no ads, no noise.</span>
+                <h1 className="lg:text-[40px] text-[24px] tracking-wide leading-13 font-semibold">How Alumna.ai Works</h1>
+                <span className="lg:text-base text-[14px] text-center">Built for Indian students. Backed by AI. Designed to give you answers that actually help — no  <br className="lg:block hidden" />agendas, no ads, no noise.</span>
             </div>
             <div className="flex lg:flex-row flex-col items-center justify-between gap-5">
-                <div className="px-10">
+                <div className="lg:px-10">
                     <Image
-                        src="/Image/image.png"
+                        src="/Group631.png"
                         alt="Hero Image"
                         width="500"
                         height="500"
@@ -48,10 +48,10 @@ export default function HowAjWork() {
                             <div className="p-[1px] bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] rounded-lg h-full">
                                 <CardContent className="bg-black rounded-[10px] p-5 space-y-2 flex flex-col justify-between min-h-[180px]">
                                     <p className="text-sm text-white">{step.step}</p>
-                                    <h3 className="text-2xl font-semibold bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] bg-clip-text text-transparent">
+                                    <h3 className="lg:text-2xl text-[16px] font-semibold bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] bg-clip-text text-transparent">
                                         {step.title}
                                     </h3>
-                                    <p className="text-base text-gray-300 whitespace-pre-line flex-1">
+                                    <p className="lg:text-base text-[14px] text-gray-300 whitespace-pre-line flex-1">
                                         {step.description}
                                     </p>
                                 </CardContent>

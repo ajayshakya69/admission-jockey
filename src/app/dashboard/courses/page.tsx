@@ -42,15 +42,18 @@ export default function CourseCardsPage() {
             {courses.map((course, i) => (
               <Card
                 key={i}
-                className="bg-zinc-900 border border-zinc-800 text-white"
+                className="bg-zinc-900 border border-zinc-800 text-white p-0"
               >
-                <Image
-                  src={course.image}
-                  alt={course.title}
-                  width={500}
-                  height={350}
-                  className="rounded-t-md mt-0"
-                />
+                <div className="w-full h-48 relative">
+                  <Image
+                    src={course.image}
+                    alt={course.title}
+                    fill
+                    className="rounded-t-md object-cover"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    priority={i === 0}
+                  />
+                </div>
                 <CardContent className="p-4 space-y-2">
                   <h3 className="text-lg font-semibold text-pink-300">
                     {course.title}
@@ -58,20 +61,21 @@ export default function CourseCardsPage() {
                   <p className="text-sm text-zinc-300">{course.description}</p>
                 </CardContent>
                 <CardFooter className="flex items-center justify-between p-4">
-                  <div className="flex items-center gap-1 text-purple-400">
-                    {Array.from({ length: 5 }).map((_, index) => (
-                      <Star
-                        key={index}
-                        className={`w-4 h-4 ${
-                          index < course.rating
-                            ? "fill-purple-500"
-                            : "text-zinc-600"
-                        }`}
-                        fill={index < course.rating ? "#a78bfa" : "none"}
-                      />
-                    ))}
+                  <div className="flex flex-col gap-2">
+                    <div className="flex items-center gap-1 text-purple-400">
+                      {Array.from({ length: 5 }).map((_, index) => (
+                        <Star
+                          key={index}
+                          className={`w-4 h-4 ${index < course.rating
+                              ? "fill-purple-500"
+                              : "text-zinc-600"
+                            }`}
+                          fill={index < course.rating ? "#a78bfa" : "none"}
+                        />
+                      ))}
+                    </div>
+                    <div className="text-xs text-zinc-400">{course.learners}</div>
                   </div>
-                  <div className="text-xs text-zinc-400">{course.learners}</div>
                   <Button
                     variant="outline"
                     className="border-purple-600 bg-pink-400  hover:bg-purple-600"

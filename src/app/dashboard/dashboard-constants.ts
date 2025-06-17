@@ -7,6 +7,7 @@ import {
   UserPen,
   Users,
   HomeIcon,
+  GraduationCapIcon
 } from "lucide-react";
 
 export const store_constants = {
@@ -25,9 +26,14 @@ export const navbarItems = [
     icon: HomeIcon,
   },
   {
-    title: "Alumini",
+    title: "Alumni",
     url: "/dashboard/alumini",
     icon: Users,
+  },
+  {
+    title: "Find Colleges",
+    url: "/dashboard/collegefinder",
+    icon: GraduationCapIcon,
   },
   {
     title: "Register",
