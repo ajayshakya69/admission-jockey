@@ -35,11 +35,11 @@ export const navbarItems = [
     url: "/dashboard/collegefinder",
     icon: GraduationCapIcon,
   },
-  {
-    title: "Register",
-    url: "/dashboard/register",
-    icon: UserPen,
-  },
+  // {
+  //   title: "Register",
+  //   url: "/dashboard/register",
+  //   icon: UserPen,
+  // },
   {
     title: "Application Builder",
     url: "/dashboard/introForm",

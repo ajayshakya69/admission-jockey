@@ -1,48 +1,3 @@
-// "use client"
-// import * as React from "react"
-// import { useState } from "react"
-
-// import { Button } from "@/components/ui/button"
-// import { Input } from "@/components/ui/input"
-// import { Label } from "@/components/ui/label"
-
-// import {
-//   Form,
-//   FormControl,
-//   FormItem,
-//   FormLabel,
-//   FormMessage,
-// } from "@/components/ui/form"
-
-// type IntroFormValues = {
-//   name: string
-//   percentage: string
-//   stream: string
-//   exam: string
-//   location: string
-//   budget: string
-//   learningStyle: string
-// }
-
-// const initialFormValues: IntroFormValues = {
-//   name: "",
-//   percentage: "",
-//   stream: "",
-//   exam: "",
-//   location: "",
-//   budget: "",
-//   learningStyle: "",
-// }
-
-// const fields = [
-//   { name: "name", label: "Hey there! What’s your name?", placeholder: "Name" },
-//   { name: "percentage", label: "What is your academic percentage?", placeholder: "Percentage" },
-//   { name: "stream", label: "What stream are you interested in?", placeholder: "Engineering, Arts, Commerce, etc." },
-//   { name: "exam", label: "What’s your target entrance exam", placeholder: "JEE, CUET, NEET, etc." },
-//   { name: "location", label: "What’s your preferred study location?", placeholder: "Any city, state..." },
-//   { name: "budget", label: "What’s your budget per year for college?", placeholder: "Average amount" },
-//   { name: "learningStyle", label: "How would you describe your learning style?", placeholder: "Visual, Auditory, Practical" },
-// ] as const
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -50,10 +5,10 @@ import { Label } from "@/components/ui/label";
 
 export default function IntroForm() {
   return (
-    <div className="space-y-6 max-w-2xl mx-auto flex flex-col gap-4 rounded-lg shadow-sm min-h-screen custom-scroll">
-      <h1 className="text-3xl font-bold text-center">Quick intro about you?</h1>
+    <div className="space-y-6 max-w-2xl mx-auto flex flex-col gap-4 rounded-lg shadow-sm min-h-screen custom-scroll lg:p-0 p-5">
+      <h1 className="lg:text-[24px] font-bold text-center">Quick intro about you?</h1>
 
-      <div className="space-y-6">
+      <div className="space-y-6 lg:text-base text-sm">
         <div className="space-y-2">
           <Label htmlFor="name">Hey there! What's your name?</Label>
           <Input id="name" placeholder="Name" className="" />

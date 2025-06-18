@@ -32,7 +32,7 @@ export default function HowAjWork() {
             <div className="flex lg:flex-row flex-col items-center justify-between gap-5">
                 <div className="lg:px-10">
                     <Image
-                        src="/Group631.png"
+                        src="/Group.png"
                         alt="Hero Image"
                         width="500"
                         height="500"

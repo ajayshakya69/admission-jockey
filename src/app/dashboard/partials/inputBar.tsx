@@ -156,14 +156,9 @@ const InputBar: React.FC<InputBarProps> = ({
 
       <Button
         onClick={handleSendMessage}
-        disabled={!inputValue.trim() && !showMicButton}
         className="lg:w-12 lg:h-12 w-10 h-10 rounded-full flex items-center justify-center border-t border-[#ffffff3f] bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] hover:opacity-90 transition-opacity"
       >
-        {inputValue.trim() ? (
-          <Send size={26} color="#FFFFFF" />
-        ) : (
-          showMicButton && <MdOutlineMicNone size={26} color="#FFFFFF" />
-        )}
+        <Send size={26} color="#FFFFFF" />
       </Button>
     </div>
   );
