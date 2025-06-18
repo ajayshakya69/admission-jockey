@@ -28,11 +28,11 @@ export default function Footer() {
 
             {/* pc footer */}
             <div className="lg:block relative hidden place-items-center scroll-none overflow-y-clip w-full">
-                <div className="absolute flex top-[75px] justify-between px-20 items-center w-full h-full">
+                <div className="absolute flex place-items-center top-[75px] justify-between px-20 items-center w-full h-full">
 
-                    <img src="/croplogo.png" alt="logo" className='w-[550px]' />
+                    <img src="/footerlogo.png" alt="logo" className='w-[550px]' />
 
-                    <div className="w-full text-white text-center py-4 bg-transparent">
+                    <div className="w-full text-white text-center py-4 mt-3 bg-transparent">
                         <div className="flex justify-end items-center space-x-6 mb-2">
                             <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
                                 <BsInstagram className="w-7 h-7 hover:opacity-80 transition-opacity" />
@@ -105,11 +105,11 @@ export default function Footer() {
             </div>
             {/* mobile footer */}
             <div className="lg:hidden relative block place-items-center scroll-none overflow-y-clip mt-10 w-full">
-                <div className="absolute flex justify-between top-[25px]  items-center w-full h-full px-5">
+                <div className="absolute flex justify-between top-[25px]  items-center w-full h-full px-5 ">
 
-                    <img src="/croplogo.png" alt="logo" className='w-[180px]' />
+                    <img src="/footerlogo.png" alt="logo" className='w-[180px]' />
 
-                    <div className="w-full text-white text-center py-4 bg-transparent">
+                    <div className="w-full text-white text-center py-4 mt-2 bg-transparent ">
                         <div className="flex justify-end items-center space-x-3 mb-2">
                             <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
                                 <BsInstagram className="w-[14px] h-[14px] hover:opacity-80 transition-opacity" />
