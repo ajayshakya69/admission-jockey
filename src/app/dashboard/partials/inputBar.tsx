@@ -136,9 +136,9 @@ const InputBar: React.FC<InputBarProps> = ({
   }, [sessionId]);
 
   return (
-    <div className="bg-gradient-to-b from-[#ffffff0d] border-t border-[#ffffff14] to-[#ffffff04] rounded-lg h-14 px-5 my-4 flex items-center  gap-3">
+    <div className="bg-gradient-to-b from-white to-white dark:bg-gradient-to-b dark:from-[#ffffff0d] border-t dark:border-[#ffffff14] dark:to-[#ffffff04] rounded-lg h-14 px-5 my-4 flex items-center shadow-[0_0_10px_6px_rgba(142,142,142,0.15)] dark:shadow-none gap-3">
       <button>
-        <GrAttachment size={20} color="#fff" />
+        <GrAttachment size={20}  className="dark:text-white text-black" />
       </button>
 
       {/* ✅ Optional custom button (emoji, image, etc.) */}

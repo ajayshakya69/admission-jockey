@@ -22,7 +22,7 @@ export default function OTPPage({ setOtp, onSubmit, ispending }: pageProps) {
           <img src="/logo.jpg" width={200} height={40} alt="" />
         </div>
         <div className="flex flex-col justify-center place-items-center gap-10">
-          <h1 className="text-3xl font-bold">Verify your Account</h1>
+          <h1 className="text-3xl dark:text-white text-black font-bold">Verify your Account</h1>
           <div className="flex flex-col gap-2 mt-5">
             <form
               onSubmit={(e) => e.preventDefault()}

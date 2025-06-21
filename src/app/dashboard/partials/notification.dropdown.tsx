@@ -17,13 +17,13 @@ export default function NotificationDropdown() {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <button className="rounded-full flex items-center justify-center h-10 w-10 p-[1px] bg-[linear-gradient(90deg,#A07DF1,#F69DBA)]">
-          <div className="rounded-full h-full w-full bg-black flex justify-center items-center">
+          <div className="rounded-full h-full w-full dark:bg-black bg-white flex justify-center items-center">
             <BellRing className="h-[18px] text-[#f2acc3]" />
           </div>
         </button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-60 bg-black text-white border border-neutral-800 mr-3">
-        <DropdownMenuLabel className="text-white">
+      <DropdownMenuContent className="w-60 dark:bg-black bg-white text-white border border-neutral-800 mr-3">
+        <DropdownMenuLabel className="dark:text-white text-black">
           Notifications
         </DropdownMenuLabel>
         <DropdownMenuSeparator className="bg-neutral-700" />

@@ -5,12 +5,12 @@ export function MoreInstitutions() {
     <div className="overflow-hidden rounded-[8px]">
       <Card className="relative bg-transparent rounded-2xl h-full flex items-center justify-center lg:min-h-[435px] min-h-[331px]">
         {/* Blurred Background Layer */}
-        <div className="absolute inset-0 bg-[#ffffff10] blur-lg rounded-[8px] z-0" />
+        <div className="absolute inset-0 dark:bg-[#ffffff10] bg-[#00000023] blur-lg rounded-[8px] z-0" />
 
         {/* Foreground Text Content */}
         <CardContent className="relative z-10 p-8 text-center">
           <div className="space-y-4">
-            <h3 className="text-2xl md:text-3xl font-bold text-gray-300 leading-tight">
+            <h3 className="text-2xl md:text-3xl font-bold dark:text-gray-300 text-[#000000b6] leading-tight">
               More institutions
               <br />
               being added soon.

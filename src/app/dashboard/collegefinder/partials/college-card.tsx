@@ -17,7 +17,7 @@ interface CollegeCardProps {
 
 export function CollegeCard({ college }: CollegeCardProps) {
   return (
-    <Card className="bg-[#ffffff05] bg-gradient-to-l from-[#ffffff06] via-[#ffffff02] to-[#ffffff06] rounded-[8px] overflow-hidden lg:h-[435px] h-[350px] py-0 ">
+    <Card className=" dark:bg-gradient-to-l dark:from-[#ffffff06] dark:via-[#ffffff02] dark:to-[#ffffff06] bg-gradient-to-l from-white via-white to-white rounded-[8px] overflow-hidden lg:h-[435px] h-[350px] py-0 shadow-[0_0_10px_6px_rgba(142,142,142,0.15)] dark:shadow-none ">
       <CardContent className="p-0">
         {/* College Image */}
         <div className="relative lg:h-[208px] h-[165px] w-full overflow-hidden rounded-t-[8px]">
@@ -30,13 +30,13 @@ export function CollegeCard({ college }: CollegeCardProps) {
           <h3 className="lg:text-xl text-lg font-semibold text-transparent bg-clip-text bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] lg:mb-4 mb-2">{college.name}</h3>
 
           {/* Description */}
-          <p className="text-gray-300 lg:text-sm text-xs lg:leading-relaxed lg:mb-6 mb-2 line-clamp-4">{college.description}</p>
+          <p className="dark:text-gray-300 text-black lg:text-sm text-xs lg:leading-relaxed lg:mb-6 mb-2 line-clamp-4">{college.description}</p>
 
           {/* Reference Code Section */}
           <div className="space-y-3 flex justify-between place-items-center mb-4">
             <div>
-              <p className="text-gray-400 text-xs font-medium">Use Reference Code</p>
-              <p className="text-gray-300 text-sm italic">{college.referenceCode}</p>
+              <p className="dark:text-gray-400 text-[#00000087] text-xs font-medium">Use Reference Code</p>
+              <p className="dark:text-gray-300  text-[#00000064] text-sm italic">{college.referenceCode}</p>
             </div>
 
             {/* Apply Button */}

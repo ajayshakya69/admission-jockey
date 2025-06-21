@@ -40,14 +40,20 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 className="flex aspect-square items-center justify-center rounded-lg  text-sidebar-primary-foreground"
               >
                 {state === "expanded" ? (
-                  <Image src="/logo.jpg" alt="Logo" width={200} height={100} />
+                  <div className=" ml-2">
+                    <Image src="/croplogo.png" alt="Logo" width={225} height={100} className="dark:block hidden" />
+                    <Image src="/lightlogo.png" alt="Logo" width={225} height={100} className="dark:hidden block" />
+                  </div>
                 ) : (
-                  <Image
+                  <div>
+                    <Image
                     src="/miniLogo.png"
                     alt="Icon"
                     width={100}
                     height={100}
                   />
+                  </div>
+                  
                 )}
               </Link>
               {/* <ChevronsUpDown className="ml-auto" /> */}

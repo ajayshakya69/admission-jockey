@@ -32,7 +32,7 @@ export default function MessageComponent({
     }, [content]);
 
     return (
-      <div className="bg-black poppins-faimly font-poppins inline-block border border-white/20 text-white leading-relaxed p-3 md:p-4 rounded-lg shadow-md space-y-2 text-sm md:text-base">
+      <div className="dark:bg-black bg-white poppins-faimly font-poppins inline-block border border-white/20 dark:text-white text-black leading-relaxed p-3 md:p-4 rounded-lg shadow-md space-y-2 text-sm md:text-base">
         <span className="whitespace-pre-wrap">{displayedText}</span>
         <span className="animate-pulse">|</span>
       </div>
@@ -52,7 +52,7 @@ export default function MessageComponent({
             {/* Avatar */}
             {message.sender !== "user" ? (
               <div className="rounded-full flex items-center justify-center h-10 w-12  p-[1px]  bg-[linear-gradient(90deg,#A07DF1,#F69DBA)]">
-                <Avatar className=" rounded-full w-full h-full bg-black flex justify-center items-center">
+                <Avatar className=" rounded-full w-full h-full dark:bg-black bg-white flex justify-center items-center">
                   <AvatarFallback className="text-white font-bold text-sm md:text-xl bg-transparent">
                     <svg width="30" height="30" viewBox="0 0 25 25" fill="none">
                       <defs>
@@ -97,7 +97,7 @@ export default function MessageComponent({
               message.id === messages[messages.length - 1]?.id ? (
                 <TypingMessage content={message.content} />
               ) : (
-                <div className="bg-black inline-block border border-white/20 text-white leading-relaxed p-3 md:p-4 rounded-lg shadow-md space-y-2 text-sm md:text-base font-poppins">
+                <div className="dark:bg-black bg-white inline-block border border-white/20 dark:text-white text-black leading-relaxed p-3 md:p-4 rounded-lg shadow-md space-y-2 text-sm md:text-base font-poppins">
                   {message.content.split("\n").map((item, key) => (
                     <span key={key}>
                       {item}
@@ -107,7 +107,7 @@ export default function MessageComponent({
                 </div>
               )
             ) : (
-              <div className=" font-poppins bg-black inline-block border border-white/20 text-white leading-relaxed p-3 md:p-4 rounded-lg shadow-md space-y-2 text-sm md:text-base">
+              <div className=" font-poppins dark:bg-black bg-white inline-block border border-white/20 dark:text-white text-black leading-relaxed p-3 md:p-4 rounded-lg shadow-md space-y-2 text-sm md:text-base">
                 {message.content.split("\n").map((item, key) => (
                   <span key={key}>
                     {item}
@@ -124,8 +124,8 @@ export default function MessageComponent({
         <div className="flex justify-start">
           <div className="flex gap-2 md:gap-3">
             <div className="rounded-full flex items-center justify-center h-10 w-12  p-[1px]  bg-[linear-gradient(90deg,#A07DF1,#F69DBA)]">
-              <Avatar className=" rounded-full w-full h-full bg-black flex justify-center items-center">
-                <AvatarFallback className="  text-white font-bold text-sm md:text-xl bg-transparent">
+              <Avatar className=" rounded-full w-full h-full dark:bg-black bg-white flex justify-center items-center">
+                <AvatarFallback className="  dark:text-white text-black font-bold text-sm md:text-xl bg-transparent">
                   <svg width="30" height="30" viewBox="0 0 25 25" fill="none">
                     <defs>
                       <linearGradient
@@ -150,7 +150,7 @@ export default function MessageComponent({
                 </AvatarFallback>
               </Avatar>
             </div>
-            <div className="backdrop-blur-sm bg-white/10 border border-white/20 text-white px-4 py-2 rounded-lg shadow-md">
+            <div className="backdrop-blur-sm bg-white/10 border border-white/20 dark:text-white text-black px-4 py-2 rounded-lg shadow-md">
               <p className="animate-pulse text-sm font-medium">
                 Thinking<span className="animate-dots">...</span>
               </p>

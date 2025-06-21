@@ -51,11 +51,11 @@ const colleges = [
 
 export default function CollegesPage() {
   return (
-    <div className="min-h-screen text-white">
+    <div className="min-h-screen dark:text-white text-black dark:bg-gradient-b dark:from-[#000000b0] dark:via-[#000000b0] dark:to-[#000000b0] bg-gradient-to-b from-[#F6F6F6] via-[#fef4f7] to-[#efeafe]">
       <div className="container mx-auto p-4 lg:px-15">
         {/* Header */}
         <div className="text-center mb-12">
-          <h1 className="text-[18px] md:text-[24px] lg:text-[32px] font-bold text-center text-white mb-4">
+          <h1 className="text-[18px] md:text-[24px] lg:text-[32px] font-bold text-center text-black dark:text-white mb-4">
             Your Gateway to India's Best <br className="lg:hidden block" />Colleges
           </h1>
         </div>

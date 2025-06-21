@@ -89,7 +89,7 @@ export default function LoginPage() {
             <h1 className="text-3xl font-bold">Join Alumna.ai</h1>
             <Card className="border border-transparent w-3/4  text-center bg-opacity-30 rounded-lg">
               <div className="p-[1px]  bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] rounded-lg">
-                <CardContent className="bg-black rounded-[10px] p-2 space-y-2">
+                <CardContent className="dark:bg-black bg-[#F6F6F6] rounded-[10px] p-2 space-y-2">
                   <Button
                     onClick={googleLogin}
                     className="text-sm text-transparent bg-clip-text bg-[linear-gradient(90deg,#A07DF1,#F69DBA)]"
@@ -109,7 +109,7 @@ export default function LoginPage() {
                 <div className="flex flex-col gap-3">
                   <label
                     htmlFor="email"
-                    className="text-white text-sm font-medium"
+                    className="dark:text-white text-sm font-medium"
                   >
                     Email ID
                   </label>
@@ -146,7 +146,7 @@ export default function LoginPage() {
               </form>
 
               {/* Already have an account line */}
-              <p className="text-center text-white text-sm">
+              <p className="text-center dark:text-white text-sm">
                 Already have an account?{" "}
                 <span className="text-pink-400 font-semibold cursor-pointer hover:underline">
                   Log in
@@ -162,5 +162,5 @@ export default function LoginPage() {
         <SlicedImageGrid />
       </div>
     </div>
-  );
+  )
 }

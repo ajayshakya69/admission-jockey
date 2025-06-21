@@ -99,7 +99,7 @@ export default function CalendarPage() {
   }, [events, hydrated]);
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen dark:bg-gradient-b dark:from-[#000000b0] dark:via-[#000000b0] dark:to-[#000000b0] bg-gradient-to-b from-[#F6F6F6] via-[#fef4f7] to-[#efeafe]">
       {/* Main content */}
       <main className="flex-1">
         {isMobile ? (
@@ -147,7 +147,7 @@ export default function CalendarPage() {
               onAddEvent={addEvent}
               onDeleteEvent={deleteEvent}
             />
-            <div className="w-full md:w-[400px] bg-gray-900 rounded-xl p-4">
+            <div className="w-full md:w-[400px] dark:bg-[#ffffff09] bg-[#ffffff] rounded-xl p-4">
               <h2 className="text-2xl font-bold mb-4">Important Dates</h2>
               <ImportantDates events={events} onDeleteEvent={deleteEvent} />
             </div>

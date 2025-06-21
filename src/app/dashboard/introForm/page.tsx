@@ -5,8 +5,9 @@ import { Label } from "@/components/ui/label";
 
 export default function IntroForm() {
   return (
-    <div className="space-y-6 max-w-2xl mx-auto flex flex-col gap-4 rounded-lg shadow-sm min-h-screen custom-scroll lg:p-0 p-5">
-      <h1 className="lg:text-[24px] font-bold text-center">Quick intro about you?</h1>
+    <div className="dark:bg-gradient-b dark:from-[#000000b0] dark:via-[#000000b0] dark:to-[#000000b0] bg-gradient-to-b from-[#F6F6F6] via-[#fef4f7] to-[#efeafe]">
+    <div className="space-y-6 max-w-2xl mx-auto flex flex-col gap-4 min-h-screen custom-scroll lg:p-0 p-5 ">
+      <h1 className="lg:text-[30px] font-bold text-center">Quick intro about you?</h1>
 
       <div className="space-y-6 lg:text-base text-sm">
         <div className="space-y-2">
@@ -53,7 +54,7 @@ export default function IntroForm() {
 
         <div className="flex justify-center space-x-4 pt-4">
           <button className="rounded-[5px] flex items-center justify-center w-30 text-sm p-[1px] bg-[linear-gradient(90deg,#A07DF1,#F69DBA)]">
-            <div className="rounded-[5px] h-full w-full bg-black flex justify-center items-center">
+            <div className="rounded-[5px] h-full w-full dark:bg-black bg-[#F6F6F6] flex justify-center items-center">
               View
             </div>
           </button>
@@ -65,6 +66,7 @@ export default function IntroForm() {
           </Button>
         </div>
       </div>
+    </div>
     </div>
   );
 }

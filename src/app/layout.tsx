@@ -34,8 +34,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`dark ${poppins.className}`}>
+    <html lang="en" suppressHydrationWarning>
+      <body className={poppins.className}>
         <ToastContainer
           position="top-right"
           autoClose={5000}
