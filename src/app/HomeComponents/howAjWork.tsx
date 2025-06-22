@@ -36,7 +36,14 @@ export default function HowAjWork() {
                         alt="Hero Image"
                         width="500"
                         height="500"
-                        className="rounded-lg"
+                        className="rounded-lg dark:block hidden"
+                    />
+                    <Image
+                        src="/lightmodeillustration.svg"
+                        alt="Hero Image Light"
+                        width={500}
+                        height={500}
+                        className="rounded-lg block dark:hidden"
                     />
                 </div>
                 <div className="flex flex-col lg:w-1/2 lg:px-10">
