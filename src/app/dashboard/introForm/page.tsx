@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useTransition } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -17,6 +17,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useSupabase } from "@/services/supabase/supabase.hook";
 import { toast } from "react-toastify";
+import { Loader2 } from "lucide-react";
 
 const formSchema = z.object({
   name: z.string().min(1),
@@ -32,6 +33,8 @@ type FormSchema = z.infer<typeof formSchema>;
 
 export default function IntroForm() {
   const { session, supabase } = useSupabase();
+
+  const [isPending, startTransition] = useTransition();
   const form = useForm<FormSchema>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -64,35 +67,39 @@ export default function IntroForm() {
           stream: data.stream ?? "",
           entrance_exam: data.entrance_exam ?? "",
           study_location: data.study_location ?? "",
-          budget_per_year: data.budger_per_year ?? "",
+          budget_per_year: data.budget_per_year ?? "",
           learning_style: data.learning_style ?? "",
         });
       }
     };
-
+    console.log("sdjfh");
     fetchData();
   }, [userId, supabase, form]);
 
   const onSubmit = async (values: FormSchema) => {
     if (!userId) return;
+    startTransition(async () => {
+      const { error } = await supabase.from("application_builder").upsert(
+        {
+          name: values.name,
+          academic_percentage: values.academic_percentage,
+          stream: values.stream,
+          entrance_exam: values.entrance_exam,
+          study_location: values.study_location,
+          budget_per_year: values.budget_per_year,
+          learning_style: values.learning_style,
+          user: userId,
+        },
+        { onConflict: "user" },
+      );
 
-    const { error } = await supabase.from("application_builder").upsert({
-      name: values.name,
-      academic_percentage: values.academic_percentage,
-      stream: values.stream,
-      entrance_exam: values.entrance_exam,
-      study_location: values.study_location,
-      budger_per_year: values.budget_per_year,
-      learning_style: values.learning_style,
-      user: userId,
+      if (error) {
+        console.log(error);
+        toast.error("Something went wrong!");
+      } else {
+        toast.success("Saved successfully!");
+      }
     });
-
-    if (error) {
-      console.log(error);
-      toast.error("Something went wrong!");
-    } else {
-      toast.success("Saved successfully!");
-    }
   };
 
   return (
@@ -216,8 +223,24 @@ export default function IntroForm() {
             />
 
             <div className="flex justify-center space-x-4 pt-4">
-              <Button type="submit" className="w-30 rounded-[5px] px-6">
-                Submit
+              {/* <Button
+                type="button"
+                className="rounded-[5px] flex items-center justify-center w-30 text-sm p-[1px] bg-[linear-gradient(90deg,#A07DF1,#F69DBA)]"
+              >
+                <div className="rounded-[5px] h-full w-full dark:bg-white bg-[#F6F6F6] flex justify-center items-center">
+                  View
+                </div>
+              </Button> */}
+              <Button
+                type="submit"
+                disabled={isPending}
+                className="w-30 rounded-[5px] p-4 bg-[linear-gradient(90deg,#A07DF1,#F69DBA)]"
+              >
+                {isPending ? (
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                ) : (
+                  "Submit"
+                )}
               </Button>
             </div>
           </form>
