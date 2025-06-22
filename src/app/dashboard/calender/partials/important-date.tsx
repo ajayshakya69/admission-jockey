@@ -64,11 +64,11 @@ export function ImportantDates({ events, onDeleteEvent }: ImportantDatesProps) {
               </button>
             )}
             {event.type === "event" ? (
-              <Badge className=" w-24 text-center text-white bg-gradient-to-r from-purple-500 to-pink-500">
+              <Badge className=" w-24 text-center text-white bg-[linear-gradient(90deg,#A07DF1,#F69DBA)]">
                 Event
               </Badge>
             ) : (
-              <Badge className="bg-gradient-to-r from-blue-500 to-cyan-500 w-24 text-center text-white ">
+              <Badge className="bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] w-24 text-center text-white ">
                 Reminder
               </Badge>
             )}

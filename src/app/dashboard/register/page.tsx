@@ -38,11 +38,11 @@ export default function AlumniForm() {
   };
 
   return (
-    <div className=" bg-black text-white flex justify-center px-4 py-4">
+    <div className=" dark:bg-gradient-b dark:from-[#000000b0] dark:via-[#000000b0] dark:to-[#000000b0] bg-gradient-to-b from-[#F6F6F6] via-[#fef4f7] to-[#efeafe] dark:text-white text-black flex justify-center px-4 py-4">
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="w-full max-w-[635px] space-y-6 overflow-y-scroll min-[600px]"
+           className="w-full max-w-[635px] space-y-6 overflow-y-scroll hide-scrollbar custom-scroll"
         >
           <div className="text-center space-y-2">
             <h1 className="text-[32px] font-bold">Alumni Community</h1>
@@ -120,10 +120,10 @@ export default function AlumniForm() {
                 <FormItem>
                   <FormLabel>Add your profile image</FormLabel>
                   <div className="flex justify-center place-items-center py-[24px] px-[32px] h-[181px] rounded-sm bg-[#ffffff0f] relative">
-                    <Card className="bg-[#0a0a0a] border-dashed border-2 w-full h-full rounded-sm border-[#A07DF1]">
+                    <Card className="dark:bg-[#0a0a0a] bg-white border-dashed border-2 w-full h-full rounded-sm border-[#A07DF1]">
                       <CardContent className="p-6 text-center space-y-2 relative">
                         <UploadCloud className="mx-auto w-8 h-8 text-purple-300" />
-                        <p className="text-sm text-gray-400">
+                        <p className="text-sm dark:text-gray-400 text-black">
                           Drop your file here, or{" "}
                           <span className="text-transparent bg-clip-text bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] underline cursor-pointer">
                             click to browse

@@ -10,6 +10,7 @@ import { Loader, Refrigerator } from "lucide-react";
 import { useSupabase } from "@/services/supabase/supabase.hook";
 import { useRouter, useSearchParams } from "next/navigation";
 import { toast } from "react-toastify";
+import ThemeToggle from "@/app/(components)/themetoggle";
 
 export default function AuthPage() {
   const [isOptSent, setIsOptSent] = useState(false);
@@ -141,25 +142,26 @@ export default function AuthPage() {
   }
 
   return (
-    <div className="md:px-10 py-8 px-2 grid md:grid-cols-2 grid-cols-1 min-h-screen overflow-y-auto gap-10 custom-scroll">
+    <div className="md:px-10 py-8 px-2 grid md:grid-cols-2 grid-cols-1 min-h-screen overflow-y-auto gap-10 custom-scroll dark:bg-black bg-[#F6F6F6]">
       {/* Left Side */}
       {isOptSent ? (
         <OTPPage ispending={ispending} setOtp={setOtp} onSubmit={submitOtp} />
       ) : (
         <div className="py-5 md:px-15 px-0 flex flex-col gap-10 md-gap:20">
           <div className=" mx-auto">
-            <img src="/logo.jpg" width={200} height={40} alt="" />
+            <img src="/logo.jpg" width={200} height={40} alt="" className="dark:block hidden" />
+            <img src="/lightlogo.png" width={200} height={40} alt="" className="dark:hidden block" />
           </div>
           <div className="flex flex-col justify-center place-items-center gap-3 md:gap-10">
-            <h1 className="text-3xl font-bold">
+            <h1 className="text-3xl font-bold dark:text-white text-black">
               {isLogin ? "Welcome Back!" : "Join Alumna.ai"}
             </h1>
-            <Card className="border border-transparent w-3/4  text-center bg-opacity-30 rounded-lg">
+            <Card className="border border-transparent w-3/4  text-center bg-transparent shadow-none">
               <div className="p-[1px]  bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] rounded-lg">
-                <CardContent className="bg-black rounded-[10px] p-2 space-y-2">
+                <CardContent className="dark:bg-black bg-[#F6F6F6] rounded-[10px] p-2 space-y-2">
                   <Button
                     onClick={googleLogin}
-                    className="text-sm text-transparent bg-clip-text bg-[linear-gradient(90deg,#A07DF1,#F69DBA)]"
+                    className="text-sm text-transparent bg-clip-text bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] shadow-none"
                   >
                     {isLogin ? "Login with Google" : "Signup with Google"}
                   </Button>
@@ -167,9 +169,9 @@ export default function AuthPage() {
               </div>
             </Card>
             <div className="flex flex-row gap-2 w-3/4 justify-center items-center">
-              <div className="h-[1px] w-1/2 bg-[radial-gradient(closest-side,#FFFFFF_20%,#FFFFFF_70%,transparent_100%)]" />
-              <h1>or</h1>
-              <div className="h-[1px] w-1/2 bg-[radial-gradient(closest-side,#FFFFFF_20%,#FFFFFF_70%,transparent_100%)]" />
+              <div className="h-[1px] w-1/2 dark:bg-[radial-gradient(closest-side,#FFFFFF_10%,#FFFFFF_10%,transparent_100%)] bg-[radial-gradient(closest-side,#000000_10%,#000000_10%,transparent_100%)]" />
+              <h1 className="dark:text-white text-black">or</h1>
+              <div className="h-[1px] w-1/2 dark:bg-[radial-gradient(closest-side,#FFFFFF_10%,#FFFFFF_10%,transparent_100%)] bg-[radial-gradient(closest-side,#000000_10%,#000000_10%,transparent_100%)]" />
             </div>
             <div className="flex flex-col gap-10 w-3/4">
               <form onSubmit={(e) => e.preventDefault()}>
@@ -179,7 +181,7 @@ export default function AuthPage() {
                       {" "}
                       <label
                         htmlFor="name"
-                        className="text-white text-sm font-medium"
+                        className="dark:text-white text-black text-sm font-medium"
                       >
                         Name
                       </label>
@@ -190,13 +192,13 @@ export default function AuthPage() {
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         placeholder="Enter your Name"
-                        className="w-full px-4 py-3 bg-gradient-to-b from-[#ffffff0d] border-t border-[#ffffff14] to-[#ffffff04] rounded-lg"
+                        className="w-full px-4 py-3 bg-gradient-to-b dark:text-white text-black  from-[#ffffff0d] border-t border-[#ffffff14] to-[#ffffff04] shadow-[0_0_10px_6px_rgba(142,142,142,0.15)] dark:shadow-none  rounded-lg"
                       />
                     </>
                   )}
                   <label
                     htmlFor="email"
-                    className="text-white text-sm font-medium"
+                    className="dark:text-white text-black text-sm font-medium"
                   >
                     Email ID
                   </label>
@@ -208,12 +210,12 @@ export default function AuthPage() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Enter your email"
-                    className="w-full px-4 py-3 bg-gradient-to-b from-[#ffffff0d] border-t border-[#ffffff14] to-[#ffffff04] rounded-lg"
+                    className="w-full px-4 py-3 dark:text-white text-black bg-gradient-to-b from-[#ffffff0d] border-t border-[#ffffff14] to-[#ffffff04] shadow-[0_0_10px_6px_rgba(142,142,142,0.15)] dark:shadow-none  rounded-lg"
                   />
 
                   <label
                     htmlFor="password"
-                    className="text-white text-sm font-medium"
+                    className="dark:text-white text-black text-sm font-medium"
                   >
                     Password
                   </label>
@@ -224,7 +226,7 @@ export default function AuthPage() {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="Enter your Password"
-                    className="w-full px-4 py-3 bg-gradient-to-b from-[#ffffff0d] border-t border-[#ffffff14] to-[#ffffff04] rounded-lg"
+                    className="w-full px-4 py-3 bg-gradient-to-b dark:text-white text-black from-[#ffffff0d] border-t border-[#ffffff14] to-[#ffffff04] shadow-[0_0_10px_6px_rgba(142,142,142,0.15)] dark:shadow-none  rounded-lg"
                   />
                 </div>
 
@@ -232,7 +234,7 @@ export default function AuthPage() {
 
                 <Button
                   type="submit"
-                  className="w-full py-3 mt-7 text-white font-semibold rounded-md
+                  className="w-full py-3 mt-7 text-white  font-semibold rounded-md
                       bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] hover:brightness-110 hover:text-shadow active:scale-95 transition-all duration-200"
                   disabled={ispending}
                   onClick={isLogin ? LoginHandler : SignUPHandler}
@@ -251,7 +253,7 @@ export default function AuthPage() {
               </form>
 
               {/* Already have an account line */}
-              <p className="text-center text-white text-sm">
+              <p className="text-center dark:text-white text-black text-sm">
                 {isLogin
                   ? "Don't have an account?"
                   : "Already have an account?"}{" "}
@@ -268,9 +270,9 @@ export default function AuthPage() {
       )}
 
       {/* Right Side */}
-      <div className="hidden md:flex ">
+      <div className="hidden md:flex  ">
         <SlicedImageGrid />
       </div>
     </div>
-  );
+  )
 }

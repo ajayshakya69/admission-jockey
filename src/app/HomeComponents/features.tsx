@@ -6,27 +6,27 @@ import { Card, CardContent } from "@/components/ui/card";
 
 export default function KeyFeatures() {
   return (
-    <section className="bg-black text-white min-h-screen py-16 ">
-      <h2 className="md:text-4xl text-2xl font-bold text-center lg:mb-20 mb-10">Key Features</h2>
+    <section className="dark:bg-black bg-transparent text-white min-h-screen py-16 ">
+      <h2 className="md:text-4xl text-2xl font-bold text-center lg:mb-20 mb-10 dark:text-white text-black">Key Features</h2>
 
       <Tabs defaultValue="application" className="max-w-6xl mx-auto">
         {/* Top Button Row */}
-        <TabsList className="flex flex-wrap justify-center gap-4 sm:gap-6 lg:gap-8 mb-4 lg:mb-8 bg-transparent">
+        <TabsList className="flex flex-wrap justify-center gap-4 sm:gap-6 lg:gap-8 mb-4 lg:mb-15 bg-transparent">
           <TabsTrigger
             value="application"
-            className="rounded-lg lg:w-[198px] px-6 sm:px-8 py-5 sm:py-6 bg-gradient-to-b from-[#ffffff0d] to-[#ffffff04] border-t border-[#ffffff14] text-white w-full sm:w-auto text-center"
+            className="rounded-lg lg:w-[198px] px-6 sm:px-8 py-5 sm:py-6 bg-gradient-to-b from-[#f0f0f003] to-[#eaeaea0a] border-t border-[#0000003f] dark:from-[#ffffff0d] dark:to-[#ffffff04] dark:border-t dark:border-[#ffffff14] text-black dark:text-white w-full sm:w-auto text-center shadow-[0_0_24px_8px_rgba(199,211,234,0.25)] dark:shadow-none "
           >
             Application Builder
           </TabsTrigger>
           <TabsTrigger
             value="dates"
-            className="rounded-lg lg:w-[198px] px-6 sm:px-8 py-5 sm:py-6 bg-gradient-to-b from-[#ffffff0d] to-[#ffffff04] border-t border-[#ffffff14] text-white w-full sm:w-auto text-center"
+            className="rounded-lg lg:w-[198px] px-6 sm:px-8 py-5 sm:py-6 bg-gradient-to-b from-[#f0f0f003] to-[#eaeaea0a] border-t border-[#0000003f] dark:from-[#ffffff0d] dark:to-[#ffffff04] dark:border-t dark:border-[#ffffff14] text-black dark:text-white w-full sm:w-auto text-center shadow-[0_0_24px_8px_rgba(199,211,234,0.25)] dark:shadow-none "
           >
             Important Dates
           </TabsTrigger>
           <TabsTrigger
             value="alumni"
-            className="rounded-lg lg:w-[198px] px-6 sm:px-8 py-5 sm:py-6 bg-gradient-to-b from-[#ffffff0d] to-[#ffffff04] border-t border-[#ffffff14] text-white w-full sm:w-auto text-center"
+            className="rounded-lg lg:w-[198px] px-6 sm:px-8 py-5 sm:py-6 bg-gradient-to-b from-[#f0f0f003] to-[#eaeaea0a] border-t border-[#0000003f] dark:from-[#ffffff0d] dark:to-[#ffffff04] dark:border-t dark:border-[#ffffff14] text-black dark:text-white w-full sm:w-auto text-center shadow-[0_0_24px_8px_rgba(199,211,234,0.25)] dark:shadow-none "
           >
             Search Jobs
           </TabsTrigger>
@@ -34,107 +34,109 @@ export default function KeyFeatures() {
 
 
         {/* Tab Content */}
-        <div className="bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] border-transparent rounded-lg p-[1px] lg:mt-0 mt-30">
+       <div className="bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] border-transparent rounded-lg p-[1px] lg:mt-0 mt-30 shadow-[0_0_20px_6px_rgba(199,211,234,0.15)] dark:shadow-[0_0_20px_6px_rgba(255,255,255,0.1)]">
+
+
           <TabsContent value="application">
-            <div className="bg-black rounded-lg lg:py-8 py-5 px-5 lg:px-5 flex lg:flex-row flex-col-reverse ">
+            <div className="dark:bg-black bg-[#FEFEFE] rounded-lg lg:py-8 py-5 px-5 lg:px-5 flex lg:flex-row flex-col-reverse">
               <div className="lg:w-1/2 w-full flex flex-col justify-center lg:pl-10">
-                <h3 className="lg:text-[32px] text-[16px] font-bold text-transparent bg-clip-text bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] mb-2">Application Builder</h3>
-                <p className="text-white font-semibold my-4 lg:text-base text-sm">Nail Every Application With AI</p>
-                <p className="text-gray-300 mb-4 text-sm lg:text-base">
-                  From SOPs to resumes, Alumna.ai helps you write, polish, and submit standout
-                  applications — fast and stress-free.
-                </p>
-                <ul className="list-disc list-inside text-gray-300 space-y-2 text-sm lg:text-base">
-                  <li>
-                    <strong>SOP & LOR Drafts</strong> — AI-generated, reviewed, and optimized for impact.
-                  </li>
-                  <li>
-                    <strong>Resume Assistant</strong> — Tailored resumes for college, internships, or job roles.
-                  </li>
-                  <li>
-                    <strong>Auto-Fill Applications</strong> — Save time and reduce errors with smart autofill for forms.
-                  </li>
-                </ul>
-                <Card className=" lg:w-60 text-center shadow-none bg-transparent rounded-lg">
-                  <div className="p-[1px]  bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] rounded-lg">
-                    <CardContent className="bg-black rounded-lg p-2 space-y-2">
-                      <span className="text-sm text-transparent bg-clip-text bg-[linear-gradient(90deg,#A07DF1,#F69DBA)]">Build My Application Now</span>
-                    </CardContent>
-                  </div>
-                </Card>
+          <h3 className="lg:text-[32px] text-[16px] font-bold text-transparent bg-clip-text bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] mb-2">Application Builder</h3>
+          <p className="dark:text-white text-black font-semibold my-4 lg:text-base text-sm">Nail Every Application With AI</p>
+          <p className="dark:text-white text-black mb-4 text-sm lg:text-base">
+            From SOPs to resumes, Alumna.ai helps you write, polish, and submit standout
+            applications — fast and stress-free.
+          </p>
+          <ul className="list-disc list-inside dark:text-white text-black space-y-2 text-sm lg:text-base">
+            <li>
+              <strong>SOP & LOR Drafts</strong> — AI-generated, reviewed, and optimized for impact.
+            </li>
+            <li>
+              <strong>Resume Assistant</strong> — Tailored resumes for college, internships, or job roles.
+            </li>
+            <li>
+              <strong>Auto-Fill Applications</strong> — Save time and reduce errors with smart autofill for forms.
+            </li>
+          </ul>
+          <Card className=" lg:w-60 text-center shadow-none bg-transparent rounded-lg">
+            <div className="p-[1px]  bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] rounded-lg">
+              <CardContent className="dark:bg-black bg-[#FEFEFE] rounded-lg p-2 space-y-2">
+                <span className="text-sm text-transparent bg-clip-text bg-[linear-gradient(90deg,#A07DF1,#F69DBA)]">Build My Application Now</span>
+              </CardContent>
+            </div>
+          </Card>
               </div>
               <div className="lg:w-1/2 w-full lg:h-auto h-[270px] relative flex justify-center place-items-center">
-              <div className="absolute w-[100%] h-[80%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 blur-3xl opacity-20 rounded-full bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] z-0" />
-                <img  src="/feature/Group1.png" alt="applicaton" className="w-full lg:scale-90  z-10 rounded-lg  " />
+              <div className="absolute w-[100%] h-[80%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 blur-3xl dark:opacity-20 opacity-40 rounded-full bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] z-0" />
+          <img  src="/feature/Group1.png" alt="applicaton" className="w-full lg:scale-90  z-10 rounded-lg  " />
 
               </div>
             </div>
           </TabsContent>
 
           <TabsContent value="dates">
-           <div className="bg-black rounded-lg lg:py-8 py-5 px-5 lg:px-5 flex lg:flex-row flex-col-reverse ">
+           <div className="dark:bg-black bg-[#FEFEFE] rounded-lg lg:py-8 py-5 px-5 lg:px-5 flex lg:flex-row flex-col-reverse">
               <div className="lg:w-1/2 w-full flex flex-col justify-center lg:pl-10">
-                <h3 className="lg:text-[32px] text-base font-bold text-transparent bg-clip-text bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] mb-2">Important Dates</h3>
-                <p className="text-white font-semibold my-4 lg:text-base text-sm">Stay on Track Without Stress</p>
-                <p className="text-gray-300 mb-4 text-sm lg:text-base">
-                  Never miss a deadline — Alumna.ai keeps you organized with smart reminders and a personalized calendar.
-                </p>
-                <ul className="list-disc list-inside text-gray-300 space-y-2 text-sm lg:text-base">
-                    <li>
-                    <strong>Deadline Alerts</strong> — Get notified for application dates, exams, and alumni meets.
-                    </li>
-                    <li>
-                    <strong>One-Click Sync</strong> — Add important events to your phone or Google Calendar instantly.
-                    </li>
-                    <li>
-                    <strong>Personalized Planner</strong> — Auto-schedule key tasks based on your application journey.
-                    </li>
-                </ul>
-                <Card className=" lg:w-[140px] text-center shadow-none bg-transparent rounded-lg">
-                  <div className="p-[1px]  bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] rounded-lg">
-                    <CardContent className="bg-black rounded-lg p-2 space-y-2">
-                      <span className="text-sm text-transparent bg-clip-text bg-[linear-gradient(90deg,#A07DF1,#F69DBA)]">Add Dates</span>
-                    </CardContent>
-                  </div>
-                </Card>
+          <h3 className="lg:text-[32px] text-base font-bold text-transparent bg-clip-text bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] mb-2">Important Dates</h3>
+          <p className="dark:text-white text-black font-semibold my-4 lg:text-base text-sm">Stay on Track Without Stress</p>
+          <p className="dark:text-white text-black  mb-4 text-sm lg:text-base">
+            Never miss a deadline — Alumna.ai keeps you organized with smart reminders and a personalized calendar.
+          </p>
+          <ul className="list-disc list-inside dark:text-white text-black space-y-2 text-sm lg:text-base">
+              <li>
+              <strong>Deadline Alerts</strong> — Get notified for application dates, exams, and alumni meets.
+              </li>
+              <li>
+              <strong>One-Click Sync</strong> — Add important events to your phone or Google Calendar instantly.
+              </li>
+              <li>
+              <strong>Personalized Planner</strong> — Auto-schedule key tasks based on your application journey.
+              </li>
+          </ul>
+          <Card className=" lg:w-[140px] text-center shadow-none bg-transparent rounded-lg">
+            <div className="p-[1px]  bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] rounded-lg">
+              <CardContent className="dark:bg-black bg-[#FEFEFE] rounded-lg p-2 space-y-2">
+                <span className="text-sm text-transparent bg-clip-text bg-[linear-gradient(90deg,#A07DF1,#F69DBA)]">Add Dates</span>
+              </CardContent>
+            </div>
+          </Card>
               </div>
               <div className="lg:w-1/2 w-full lg:h-auto h-[270px] relative flex justify-center place-items-center">
-                <div className="absolute w-[100%] h-[80%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 blur-3xl opacity-20 rounded-full bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] z-0" />
-                <img  src="/feature/Group2.png" alt="applicaton" className="w-full lg:scale-90  z-10 rounded-lg " />
+          <div className="absolute w-[100%] h-[80%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 blur-3xl dark:opacity-20 opacity-40 rounded-full bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] z-0" />
+          <img  src="/feature/Group2.png" alt="applicaton" className="w-full lg:scale-90  z-10 rounded-lg " />
               </div>
             </div>
           </TabsContent>
 
           <TabsContent value="alumni">
-            <div className="bg-black rounded-lg lg:py-8 py-5 px-5 lg:px-5 flex lg:flex-row flex-col-reverse ">
+            <div className="dark:bg-black bg-[#FEFEFE] rounded-lg lg:py-8 py-5 px-5 lg:px-5 flex lg:flex-row flex-col-reverse">
               <div className="lg:w-1/2 w-full flex flex-col justify-center lg:pl-10">
-                <h3 className="lg:text-[32px] text-base font-bold text-transparent bg-clip-text bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] mb-2">Job & Internship Finder</h3>
-                <p className="text-white font-semibold my-4 lg:text-base text-sm">Opportunities, Tailored for You</p>
-                <p className="text-gray-300 mb-4 text-sm lg:text-base">
-                  Discover the right roles with AI-matched internships and jobs based on your skills, interests, and goals.
-                </p>
-                <ul className="list-disc list-inside text-gray-300 space-y-2 text-sm lg:text-base">
-                    <li>
-                    <strong>Smart Matching</strong> — Get curated roles that align with your profile and aspirations.
-                    </li>
-                    <li>
-                    <strong>Auto-Apply Ready</strong> — One-click application support with pre-filled info and resume help.
-                    </li>
-                    <li>
-                    <strong>Skill-Fit Filters</strong> — Find what suits you from beginner-friendly internships to entry-level jobs.
-                    </li>
-                </ul>
-                <Card className="  lg:w-[140px] text-center shadow-none bg-transparent rounded-lg">
-                  <div className="p-[1px]  bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] rounded-lg">
-                    <CardContent className="bg-black rounded-lg p-2 space-y-2">
-                      <span className="text-sm text-transparent bg-clip-text bg-[linear-gradient(90deg,#A07DF1,#F69DBA)]">Search Jobs</span>
-                    </CardContent>
-                  </div>
-                </Card>
+          <h3 className="lg:text-[32px] text-base font-bold text-transparent bg-clip-text bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] mb-2">Job & Internship Finder</h3>
+          <p className="dark:text-white text-black font-semibold my-4 lg:text-base text-sm">Opportunities, Tailored for You</p>
+          <p className="dark:text-white text-black mb-4 text-sm lg:text-base">
+            Discover the right roles with AI-matched internships and jobs based on your skills, interests, and goals.
+          </p>
+          <ul className="list-disc list-inside dark:text-white text-black space-y-2 text-sm lg:text-base">
+              <li>
+              <strong>Smart Matching</strong> — Get curated roles that align with your profile and aspirations.
+              </li>
+              <li>
+              <strong>Auto-Apply Ready</strong> — One-click application support with pre-filled info and resume help.
+              </li>
+              <li>
+              <strong>Skill-Fit Filters</strong> — Find what suits you from beginner-friendly internships to entry-level jobs.
+              </li>
+          </ul>
+          <Card className="  lg:w-[140px] text-center shadow-none bg-transparent rounded-lg">
+            <div className="p-[1px]  bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] rounded-lg">
+              <CardContent className="dark:bg-black bg-[#FEFEFE] rounded-lg p-2 space-y-2">
+                <span className="text-sm text-transparent bg-clip-text bg-[linear-gradient(90deg,#A07DF1,#F69DBA)]">Search Jobs</span>
+              </CardContent>
+            </div>
+          </Card>
               </div>
               <div className="lg:w-1/2 w-full lg:h-auto h-[270px] relative flex justify-center place-items-center">
-                <div className="absolute w-[100%] h-[80%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 blur-3xl opacity-20 rounded-full bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] z-0" />
-                <img  src="/feature/Group3.png" alt="applicaton" className="w-full lg:scale-90  z-10 rounded-lg" />
+          <div className="absolute w-[100%] h-[80%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 blur-3xl dark:opacity-20 opacity-40 rounded-full bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] z-0" />
+          <img  src="/feature/Group3.png" alt="applicaton" className="w-full lg:scale-90  z-10 rounded-lg" />
               </div>
             </div>
           </TabsContent>

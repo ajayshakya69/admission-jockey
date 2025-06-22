@@ -87,19 +87,19 @@ export function Calendar({ events, onAddEvent, onDeleteEvent }: CalendarProps) {
 
   return (
     <>
-      <div className="bg-gray-900 rounded-xl p-4 md:p-6">
+      <div className="dark:bg-[#ffffff09] bg-[#ffffff] rounded-xl p-4 md:p-6">
         {/* Calendar header */}
         <div className="flex items-center justify-between mb-6">
           <button
             onClick={prevMonth}
-            className="p-1 rounded-full hover:bg-gray-800"
+            className="p-1 rounded-full dark:hover:bg-[#ffffff05] hover:bg-[#00000005] "
           >
             <ChevronLeft className="w-5 h-5" />
           </button>
           <h2 className="text-xl md:text-2xl font-bold">{monthYear}</h2>
           <button
             onClick={nextMonth}
-            className="p-1 rounded-full hover:bg-gray-800"
+            className="p-1 rounded-full dark:hover:bg-[#ffffff05] hover:bg-[#00000005]"
           >
             <ChevronRight className="w-5 h-5" />
           </button>
@@ -140,7 +140,7 @@ export function Calendar({ events, onAddEvent, onDeleteEvent }: CalendarProps) {
                 key={`day-${day}`}
                 onClick={() => handleDateClick(day)}
                 className={cn(
-                  "aspect-square flex flex-col p-1 relative rounded-md border border-gray-800 cursor-pointer hover:bg-gray-800 transition-colors",
+                  "aspect-square flex flex-col p-1 relative rounded-md border border-gray-800 cursor-pointer dark:hover:bg-[#ffffff18] hover:bg-[#00000018] transition-colors",
                   hasEvents && "border-purple-500",
                   isToday && "bg-gray-800",
                 )}

@@ -16,12 +16,12 @@ export function UserDropDown() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
-        <User />
+        <User className="text-white" />
       </DropdownMenuTrigger>
-      <DropdownMenuContent className=" mt-3 bg-black border border-gray-700">
+      <DropdownMenuContent className=" mt-3 dark:bg-black bg-white border border-gray-700">
         <DropdownMenuItem>
           <User className="mr-2 h-4 w-4" />
-          <span className="text-white">Profile</span>
+          <span className="dark:text-white text-black">Profile</span>
         </DropdownMenuItem>
 
         <DropdownMenuItem

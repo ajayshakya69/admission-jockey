@@ -22,11 +22,11 @@ export default function ResumeDrop() {
   }
 
   return (
-    <div className='flex flex-col max-h-screen place-items-center lg:p-0 p-5'>
+    <div className='flex flex-col h-[100%] overflow-hidden place-items-center lg:p-0 p-5 dark:bg-gradient-b dark:from-[#000000b0] dark:via-[#000000b0] dark:to-[#000000b0] bg-gradient-to-b from-[#F6F6F6] via-[#fef4f7] to-[#efeafe]'>
       <div className='lg:mt-20 mt-10'>
-        <h2 className="lg:text-[32px] text-base font-bold text-center">Drop Your Resume & Let the Right Job Find You</h2>
-        <div className=" lg:w-[634px] w-full mx-auto mt-10 p-6 rounded-lg shadow-xl text-white space-y-8 bg-gradient-to-t from-[#0c0c0c82] via-[#2f2f2f23] to-[#2929294f] border-t border-[#ffffff28]">
-          <div className="text-sm text-zinc-400">Add your document here</div>
+        <h2 className="lg:text-[32px] text-base dark:text-white text-black font-bold text-center">Drop Your Resume & Let the Right Job Find You</h2>
+        <div className=" lg:w-[634px] w-full mx-auto mt-10 p-6 rounded-lg text-white space-y-8 bg-gradient-to-t from-white via-white to-white dark:bg-gradient-to-t dark:from-[#0c0c0c82] dark:via-[#2f2f2f23] dark:to-[#2929294f] border-t border-[#ffffff28] shadow-[0_0_10px_6px_rgba(142,142,142,0.15)] dark:shadow-none ">
+          <div className="text-sm dark:text-white text-black">Add your document here</div>
           <label
             htmlFor="file-upload"
             className={cn(
@@ -34,9 +34,9 @@ export default function ResumeDrop() {
             )}
           >
             <UploadCloud className="w-8 h-8 text-violet-300" />
-            <p className="text-sm text-white">
+            <p className="text-sm dark:text-white text-black">
               {fileName ? fileName : "Drop your file here,"}{" "}
-              <span className="text-transparent bg-clip-text bg-[linear-gradient(90deg,#A07DF1,#F69DBA)]">or click to browse</span>
+              <span className="text-transparent bg-clip-text bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] ">or click to browse</span>
             </p>
             <input
               id="file-upload"

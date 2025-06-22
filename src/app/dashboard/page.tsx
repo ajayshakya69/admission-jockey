@@ -31,8 +31,11 @@ export default function ChatInterface() {
     return (
       <>
         {/* Welcome Text */}
-        <div className="flex-1 flex flex-col justify-center gap-5 md:min-h-fit min-h-screen overflow-y-scroll hide-scroll md:w-3/4 w-full mx-auto my-auto md:px-4 px-1 lg:mt-24">
-          <Welcome />
+        <div className="dark:bg-gradient-b dark:from-[#000000b0] dark:via-[#000000b0] dark:to-[#000000b0] bg-gradient-to-b from-[#F6F6F6] via-[#fef4f7] to-[#efeafe] h-[100%] overflow-hidden">
+        <div className="flex-1 flex flex-col justify-center gap-5 md:min-h-fit overflow-y-scroll hide-scroll md:w-3/4 w-full mx-auto my-auto md:px-4 px-1 lg:mt-24">
+          <div className="lg:mt-0 mt-30">
+            <Welcome />
+          </div>
           <div className="p-4 md:p-6">
             <div className="w-full mx-auto">
               <Suspense fallback={<div>Loading...</div>}>
@@ -45,17 +48,18 @@ export default function ChatInterface() {
               </Suspense>
             </div>
           </div>
-          <div className="w-full max-w-4xl mt-10 grid grid-cols-1 sm:grid-cols-3 mx-auto gap-4">
+          <div className="w-full max-w-4xl lg:grid  hidden grid-cols-1 sm:grid-cols-3 mx-auto gap-4 ">
             {[1, 2, 3].map((_, idx) => (
               <div
                 key={idx}
-                className="bg-[#11111146] text-zinc-300 p-4 rounded-lg shadow-md text-[13px] text-center hover:bg-[#1a1a1a] transition"
+                className="dark:bg-[#11111146] bg-white dark:text-white text-black p-4 rounded-lg shadow-[0_0_20px_6px_rgba(199,211,234,0.15)] dark:shadow-none text-[10px] text-center dark:hover:bg-[#1a1a1a] hover:bg-[#1a1a1a34] transition"
               >
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod.
               </div>
             ))}
           </div>
+        </div>
         </div>
         {/* Input Section */}
         {/* Suggested Boxes */}
@@ -64,8 +68,8 @@ export default function ChatInterface() {
   }
   return (
     <>
-      <div className="flex flex-col h-[90%] overflow-hidden w-full md:w-[85%] mx-auto ">
-        <div className="flex-1 overflow-y-auto px-4 text-white  bg-black custom-scroll">
+      <div className="flex flex-col  h-[100%] overflow-hidden w-full mx-auto lg:px-15 dark:bg-gradient-b dark:from-[#000000b0] dark:via-[#000000b0] dark:to-[#000000b0] bg-gradient-to-b from-[#F6F6F6] via-[#fef4f7] to-[#efeafe]">
+        <div className="flex-1 overflow-y-auto px-4 text-white custom-scroll">
           <div className="flex flex-col  justify-start min-h-[90%]">
             <MessageComponent
               messages={messages}
@@ -76,7 +80,7 @@ export default function ChatInterface() {
         </div>
 
         {/* Fixed bottom input */}
-        <div className=" pb-0 shadow-md">
+        <div className=" lg:pb-10 lg:px-0 px-5">
           <div className="w-full mx-auto">
             <Suspense fallback={<div>Loading...</div>}>
               <InputBar

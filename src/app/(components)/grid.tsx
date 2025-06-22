@@ -7,16 +7,16 @@ const SlicedImageGrid = () => {
 
   const getOverlayClass = (i: number) => {
     if (groupPinkPurple.includes(i)) {
-      return 'bg-gradient-to-b from-[#946DF0] to-[#3A2669]';
+      return 'bg-gradient-to-b from-[#946DF0] to-[#3A2669] dark:brightnes-100 brightness-125';
     } else if (groupBlueCyan.includes(i)) {
-      return 'bg-gradient-to-b from-[#E87DB3] to-[#AB4277]';
+      return 'bg-gradient-to-b from-[#E87DB3] to-[#AB4277] dark:brightnes-100 brightness-125';
     } else {
-      return 'bg-white/15'; // default for uncolored
+      return 'dark:bg-white/15 bg-black/10'; // default for uncolored
     }
   };
 
   return (
-    <div className="w-full max-h-screen overflow-y-hidden flex items-center justify-center bg-black">
+    <div className="w-full max-h-screen overflow-y-hidden flex items-center justify-center dark:bg-black bg-[#F6F6F6]">
       <div
         className="grid gap-2"
         style={{

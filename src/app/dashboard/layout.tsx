@@ -7,6 +7,7 @@ import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/app/dashboard/partials/app-sidebar";
 import NotificationDropdown from "./partials/notification.dropdown";
 import { UserDropDown } from "./partials/userDropDown";
+import ThemeToggle from "../(components)/themetoggle";
 
 export default function DashboardLayout({
   children,
@@ -24,7 +25,7 @@ export default function DashboardLayout({
   return (
     <SidebarProvider>
       <AppSidebar />
-      <div className="flex h-screen overflow-hidden bg-black text-white w-full">
+      <div className="flex h-screen overflow-hidden dark:bg-black bg-[#F6F6F6] dark:text-white text-black w-full">
         {/* Left Sidebar */}
 
         {/* Main content area */}
@@ -34,11 +35,11 @@ export default function DashboardLayout({
             {/* <SidebarTrigger /> */}
             <div className="flex items-center justify-end relative">
               {/* Left logo area */}
-              <div className=" flex items-center absolute top-2 left-0">
+              <div className=" flex items-center absolute top-[1px] left-0">
                 <SidebarTrigger className=" w-10 h-10 rounded-full bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] text-white flex items-center justify-center shadow-md" />
               </div>
               {/* Desktop header controls */}
-              <div className=" mr-5 flex items-center gap-4">
+              <div className=" lg:mr-5 mr-0 flex items-center gap-4">
                 {/* <Button
                   className="px-6 py-2 rounded-lg font-semibold text-white text-base
                bg-[linear-gradient(90deg,#A07DF1,#F69DBA)]
@@ -48,7 +49,7 @@ export default function DashboardLayout({
                 >
                   <span className="hidden sm:block">New Chat</span>
                 </Button> */}
-
+                <ThemeToggle />
                 <NotificationDropdown />
                 <div className="rounded-full h-10 w-10 bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] flex items-center justify-center">
                   <UserDropDown />
@@ -58,7 +59,7 @@ export default function DashboardLayout({
           </header>
 
           {/* Page Content */}
-          <main className="flex-1 overflow-y-auto px-0 md:px-2 py-2 hide-scroll overflow-x-hidden">
+          <main className="flex-1 overflow-y-auto hide-scroll overflow-x-hidden">
             {children}
           </main>
         </div>
