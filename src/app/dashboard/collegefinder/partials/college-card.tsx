@@ -32,7 +32,7 @@ export function CollegeCard({ college }: CollegeCardProps) {
           </h3>
 
           {/* Scrollable Description */}
-          <div className="text-black dark:text-gray-300 text-xs lg:text-sm leading-relaxed mb-3 overflow-y-auto max-h-[72px] pr-1 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-transparent">
+          <div className="text-black dark:text-gray-300 text-xs lg:text-sm leading-relaxed mb-3 overflow-y-auto max-h-[72px] pr-1 scrollbar-thin scrollbar-thumb-gray-200 scrollbar-track-transparent custom-scrollbar">
             {college.description}
           </div>
 
