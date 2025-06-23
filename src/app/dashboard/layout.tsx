@@ -35,7 +35,7 @@ export default function DashboardLayout({
             {/* <SidebarTrigger /> */}
             <div className="flex items-center justify-end relative">
               {/* Left logo area */}
-              <div className=" flex items-center absolute top-[1px] left-0">
+              <div className=" flex items-center absolute top-[1px] left-[-25px]">
                 <SidebarTrigger className=" w-10 h-10 rounded-full bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] text-white flex items-center justify-center shadow-md" />
               </div>
               {/* Desktop header controls */}
