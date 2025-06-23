@@ -3,7 +3,7 @@ import { Card, CardContent } from "@/components/ui/card"
 export function MoreInstitutions() {
   return (
     <div className="overflow-hidden rounded-[8px]">
-      <Card className="relative bg-transparent rounded-2xl h-full flex items-center justify-center lg:min-h-[435px] min-h-[331px]">
+      <Card className="relative bg-transparent rounded-2xl h-full flex items-center justify-center lg:min-h-[400px] min-h-[300px]">
         {/* Blurred Background Layer */}
         <div className="absolute inset-0 dark:bg-[#ffffff10] bg-[#00000023] blur-lg rounded-[8px] z-0" />
 
