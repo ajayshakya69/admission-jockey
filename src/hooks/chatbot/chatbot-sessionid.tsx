@@ -21,12 +21,9 @@ export function ChatbotSessionIdProvider({
     queryKey: ["chatbot"],
     queryFn: async () => {
       if (!session) return Promise.resolve(null);
-      const res = await axios.post(
-        `${process.env.NEXT_PUBLIC_ML_URL}/init_session`,
-        {
-          name: "",
-        },
-      );
+      const res = await axios.post(`${process.env.NEXT_PUBLIC_ML_URL}/chat`, {
+        message: " ",
+      });
       return res.data.session_id ?? null;
     },
   });
