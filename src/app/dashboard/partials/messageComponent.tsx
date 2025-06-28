@@ -18,7 +18,6 @@ export default function MessageComponent({
 
     useEffect(() => {
       let index = 0;
-
       const interval = setInterval(() => {
         if (index < content.length - 1) {
           setDisplayedText((prev) => prev + content[index]);
@@ -31,10 +30,28 @@ export default function MessageComponent({
       return () => clearInterval(interval);
     }, [content]);
 
+    function renderWithBold(text: string) {
+      return text.split("\n").map((line, idx) => (
+        <span key={idx}>
+          {line
+            .split(/(\*\*.*?\*\*)/g)
+            .map((part, i) =>
+              part.startsWith("**") && part.endsWith("**") ? (
+                <strong key={i}>{part.slice(2, -2)}</strong>
+              ) : (
+                part
+              ),
+            )}
+          <br />
+        </span>
+      ));
+    }
+
     return (
       <div className="dark:bg-black bg-white poppins-faimly font-poppins inline-block border border-white/20 dark:text-white text-black leading-relaxed p-3 md:p-4 rounded-lg shadow-md space-y-2 text-sm md:text-base">
-        <span className="whitespace-pre-wrap">{displayedText}</span>
-        <span className="animate-pulse">|</span>
+        <span className="whitespace-pre-wrap">
+          {renderWithBold(displayedText)}
+        </span>
       </div>
     );
   }
@@ -100,7 +117,15 @@ export default function MessageComponent({
                 <div className="dark:bg-black bg-white inline-block border border-white/20 dark:text-white text-black leading-relaxed p-3 md:p-4 rounded-lg shadow-md space-y-2 text-sm md:text-base font-poppins">
                   {message.content.split("\n").map((item, key) => (
                     <span key={key}>
-                      {item}
+                      {item
+                        .split(/(\*\*.*?\*\*)/g)
+                        .map((part, index) =>
+                          part.startsWith("**") && part.endsWith("**") ? (
+                            <strong key={index}>{part.slice(2, -2)}</strong>
+                          ) : (
+                            part
+                          ),
+                        )}
                       <br />
                     </span>
                   ))}
