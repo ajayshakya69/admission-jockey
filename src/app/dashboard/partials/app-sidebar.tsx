@@ -41,7 +41,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               >
                 {state === "expanded" ? (
                   <div className=" ml-2">
-                    <Image src="/croplogo.png" alt="Logo" width={225} height={100} className="dark:block hidden" />
+                    <Image src="/01logo.png" alt="Logo" width={225} height={100} className="dark:block hidden" />
                     <Image src="/lightlogo.png" alt="Logo" width={225} height={100} className="dark:hidden block" />
                   </div>
                 ) : (

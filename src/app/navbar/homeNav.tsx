@@ -22,10 +22,9 @@ const Navbar: React.FC = () => {
 
   return (
     <nav className="lg:py-8 py-4 dark:text-white text-black flex justify-between items-center">
-      <div className="lg:text-lg text-sm lg:font-bold font-medium">
         <img
-          src="/croplogo.png"
-          className="dark:block hidden md:w-[250px] w-[170px]"
+          src="/01logo.png"
+          className="dark:block hidden md:w-[250px] w-[170px] mt-[1px]"
           alt="logo"
         />
         <img
@@ -33,7 +32,6 @@ const Navbar: React.FC = () => {
           className="dark:hidden block md:w-[250px] w-[170px]"
           alt="logo"
         />
-      </div>
 
       {/* Desktop Buttons */}
       <div className="hidden lg:flex items-center gap-4">
