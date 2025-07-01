@@ -16,5 +16,5 @@ export default function LoginPage({
     if (session) router.push("/dashboard");
   }, [session]);
   if (isLoading) return <Loader />;
-  return <>{children};</>;
+  return <>{children}</>;
 }
