@@ -103,7 +103,7 @@ export default function IntroForm() {
   };
 
   return (
-    <div className="dark:bg-gradient-b dark:from-[#000000b0] dark:via-[#000000b0] dark:to-[#000000b0] bg-gradient-to-b from-[#F6F6F6] via-[#fef4f7] to-[#efeafe]">
+    <div className="dark:bg-gradient-b dark:from-[#000000b0] dark:via-[#000000b0] dark:to-[#000000b0] bg-gradient-to-b from-[#F6F6F6] via-[#fef4f7] to-[#efeafe] max-h-screen overflow-y-scroll hide-scroll">
       <div className="space-y-6 max-w-2xl mx-auto flex flex-col gap-4 min-h-screen custom-scroll lg:p-0 p-5 ">
         <h1 className="lg:text-[30px] font-bold text-center">
           Quick intro about you?
