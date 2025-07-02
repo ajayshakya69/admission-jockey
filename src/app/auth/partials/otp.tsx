@@ -43,7 +43,7 @@ export default function OTPPage({ setOtp, onSubmit, ispending }: pageProps) {
 
               <Button
                 onClick={onSubmit}
-                className="w-full py-3 mt-7 text-white font-semibold rounded-md 
+                className="w-full py-3 mt-7 dark:text-white text-black font-semibold rounded-md 
                           bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] hover:brightness-110 hover:text-shadow active:scale-95 transition-all duration-200"
               >
                 {ispending ? (
@@ -57,7 +57,7 @@ export default function OTPPage({ setOtp, onSubmit, ispending }: pageProps) {
               </Button>
             </form>
 
-            <p className="text-center mt-10 text-white text-sm">
+            <p className="text-center mt-10 dark:text-white text-black text-sm">
               Didn’t get the code?{" "}
               <span className="text-pink-400 font-semibold cursor-pointer hover:underline">
                 Resend OTP
