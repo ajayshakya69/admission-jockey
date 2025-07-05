@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, ReactNode, useEffect, useRef } from "react";
+import { GrAttachment } from "react-icons/gr";
 import { MdOutlineMicNone } from "react-icons/md";
 import { Send } from "lucide-react";
 import { Input } from "@/components/ui/input";
@@ -18,9 +19,7 @@ interface InputBarProps {
   hasStartedChat?: boolean;
   setHasStartedChat?: React.Dispatch<React.SetStateAction<boolean>>;
   customButton?: ReactNode;
-  onSubmit?: (message: string) => void;
-  inputValue?: string; // ✅ NEW
-  setInputValue?: (value: string) => void; // ✅ NEW
+  onSubmit?: (message: string) => void; // ✅ New custom button (e.g. emoji picker, image upload, etc.)
 }
 
 const InputBar: React.FC<InputBarProps> = ({
@@ -32,26 +31,22 @@ const InputBar: React.FC<InputBarProps> = ({
   setHasStartedChat,
   hasStartedChat,
   onSubmit,
-  inputValue,
-  setInputValue,
 }) => {
-  const [internalInputValue, setInternalInputValue] = useState("");
-  const value = inputValue ?? internalInputValue; // ✅ fallback to internal
-  const setValue = setInputValue ?? setInternalInputValue;
-
+  const [inputValue, setInputValue] = useState("");
   const searchParams = useSearchParams();
   const initMessage = searchParams.get("initMessage");
   const hasHandledInit = useRef(false);
 
   const { sessionId } = useChatbotId();
-  const router = useRouter();
 
+  const router = useRouter();
   const handleSendMessage = async () => {
-    if (!value.trim()) return;
+    if (!inputValue.trim()) return;
 
     if (onSubmit) {
-      onSubmit(value.trim());
-      return;
+      onSubmit(inputValue.trim());
+
+      return; // 🚫 Don't continue normal behavior
     }
 
     if (!hasStartedChat) {
@@ -60,25 +55,31 @@ const InputBar: React.FC<InputBarProps> = ({
 
     const userMessage: Message = {
       id: Date.now().toString(),
-      content: value,
+      content: inputValue,
       sender: "user",
       timestamp: new Date(),
     };
 
-    setMessages && setMessages((prev) => [...prev, userMessage]);
-    setIsTyping && setIsTyping(true);
-    setValue(""); // ✅ clear input
+    if (setMessages) {
+      setMessages((prev) => [...prev, userMessage]);
+    }
+    if (setIsTyping) {
+      setIsTyping(true);
+    }
+    setInputValue("");
 
     const resMessage = await axios.post(
       `${process.env.NEXT_PUBLIC_ML_URL}/chat`,
       {
         session_id: sessionId,
-        message: value,
+        message: inputValue,
         history: ["string"],
-      }
+      },
     );
 
-    const botResponse: Message = {
+    let botResponse: Message;
+
+    botResponse = {
       id: (Date.now() + 1).toString(),
       content: resMessage.data.response,
       sender: "bot",
@@ -111,6 +112,7 @@ const InputBar: React.FC<InputBarProps> = ({
         timestamp: new Date(),
       };
       setMessages && setMessages([userMessage]);
+      // Simulate sending
       setIsTyping && setIsTyping(true);
       axios
         .post(`${process.env.NEXT_PUBLIC_ML_URL}/chat`, {
@@ -135,15 +137,20 @@ const InputBar: React.FC<InputBarProps> = ({
 
   return (
     <div className="bg-gradient-to-b from-white to-white dark:bg-gradient-to-b dark:from-[#ffffff0d] border-t dark:border-[#ffffff14] dark:to-[#ffffff04] rounded-lg h-14 px-5 my-4 flex items-center shadow-[0_0_10px_6px_rgba(142,142,142,0.15)] dark:shadow-none gap-3">
+      {/* <button>
+        <GrAttachment size={20}  className="dark:text-white text-black" />
+      </button> */}
+
+      {/* ✅ Optional custom button (emoji, image, etc.) */}
       {customButton && customButton}
 
       <Input
         type="text"
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
+        value={inputValue}
+        onChange={(e) => setInputValue(e.target.value)}
         onKeyUp={handleKeyPress}
         placeholder={placeholder}
-        className="lg:text-lg text-sm dark:text-white text-black outline-none border-none"
+        className="lg:text-lg text-sm outline-none border-none"
         style={{ flex: 1, padding: "8px", borderRadius: "4px" }}
       />
 
