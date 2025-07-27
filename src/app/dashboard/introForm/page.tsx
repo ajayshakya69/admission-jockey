@@ -104,7 +104,7 @@ export default function IntroForm() {
 
   return (
     <div className="dark:bg-gradient-b dark:from-[#000000b0] dark:via-[#000000b0] dark:to-[#000000b0] bg-gradient-to-b from-[#F6F6F6] via-[#fef4f7] to-[#efeafe] max-h-screen overflow-y-scroll hide-scroll">
-      <div className="space-y-6 max-w-2xl mx-auto flex flex-col gap-4 min-h-screen custom-scroll lg:p-0 p-5 ">
+      <div className="space-y-6 max-w-2xl mx-auto flex flex-col gap-4 min-h-screen custom-scroll lg:py-10 p-5 text-black dark:text-white ">
         <h1 className="lg:text-[30px] font-bold text-center">
           Quick intro about you?
         </h1>
@@ -234,7 +234,7 @@ export default function IntroForm() {
               <Button
                 type="submit"
                 disabled={isPending}
-                className="w-30 rounded-[5px] p-4 bg-[linear-gradient(90deg,#A07DF1,#F69DBA)]"
+                className="w-30 rounded-[5px] p-4 text-white bg-[linear-gradient(90deg,#A07DF1,#F69DBA)]"
               >
                 {isPending ? (
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />

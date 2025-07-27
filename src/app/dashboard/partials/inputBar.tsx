@@ -150,7 +150,7 @@ const InputBar: React.FC<InputBarProps> = ({
         onChange={(e) => setInputValue(e.target.value)}
         onKeyUp={handleKeyPress}
         placeholder={placeholder}
-        className="lg:text-lg text-sm outline-none border-none"
+        className="lg:text-lg text-sm text-black dark:text-white outline-none border-none"
         style={{ flex: 1, padding: "8px", borderRadius: "4px" }}
       />
 
