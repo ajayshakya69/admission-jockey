@@ -30,7 +30,7 @@ export default function Footer() {
             <div className="lg:block relative hidden place-items-center scroll-none overflow-y-clip w-full">
                 <div className="absolute flex place-items-center top-[75px] justify-between px-20 items-center w-full h-full">
                     <div>
-                        <img src="/footerlogo.png" alt="logo" className='w-[950px] dark:block hidden' />
+                        <img src="/01logo.png" alt="logo" className='w-[950px] dark:block hidden' />
                         <img
                             src="/lightlogo.png"
                             alt="Logo"

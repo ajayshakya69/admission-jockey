@@ -105,8 +105,8 @@ const AlumniCard = ({ alumni }: { alumni: typeof alumniList[0] }) => (
 const AlumniCardGrid = () => {
   return (
     <div className="flex flex-col lg:max-h-screen relative dark:bg-gradient-b dark:from-[#000000b0] dark:via-[#000000b0] dark:to-[#000000b0] bg-gradient-to-b from-[#F6F6F6] via-[#fef4f7] to-[#efeafe] ">
-      <div className="inset-0 z-20 flex flex-col items-center px-4 text-center overflow-y-scroll hide-scroll pb-10 pt-5">
-        <p className="text-md md:text-xl font-semibold">
+      <div className="inset-0 z-20 flex flex-col items-center px-4 text-center overflow-y-scroll hide-scroll pb-10 pt-5 lg:py-10">
+        <p className="text-md md:text-xl dark:text-white text-black font-semibold">
           Soon you'll be chatting with your future seniors
         </p>
         <h2 className="text-xl md:text-3xl font-bold text-transparent bg-clip-text bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] my-2">
@@ -114,7 +114,7 @@ const AlumniCardGrid = () => {
         </h2>
         <div className="h-[1px] lg:w-1/2 w-full dark:bg-[radial-gradient(closest-side,#FFFFFF_10%,#FFFFFF_10%,transparent_100%)] bg-[radial-gradient(closest-side,#000000_10%,#000000_10%,transparent_100%)] lg:my-10 my-5" />
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-5xl mx-auto lg:mb-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto lg:mb-10">
           {alumniList.map((alumni, index) => (
             <AlumniCard key={index} alumni={alumni} />
           ))}

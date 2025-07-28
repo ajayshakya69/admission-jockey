@@ -99,9 +99,9 @@ export default function CalendarPage() {
   }, [events, hydrated]);
 
   return (
-    <div className="flex flex-col min-h-screen dark:bg-gradient-b dark:from-[#000000b0] dark:via-[#000000b0] dark:to-[#000000b0] bg-gradient-to-b from-[#F6F6F6] via-[#fef4f7] to-[#efeafe]">
+    <div className="flex flex-col min-h-screen dark:bg-gradient-b dark:from-[#000000b0] dark:via-[#000000b0] dark:to-[#000000b0] bg-gradient-to-b from-[#F6F6F6] via-[#fef4f7] to-[#efeafe] dark:text-white text-black">
       {/* Main content */}
-      <main className="flex-1">
+      <main className="flex-1 lg:px-20 lg:py-10">
         {isMobile ? (
           <div className="flex flex-col h-full">
             {/* Mobile view - show active tab */}

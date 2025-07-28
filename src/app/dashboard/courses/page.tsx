@@ -1,100 +1,250 @@
 "use client";
 
-import { Card, CardContent, CardFooter } from "@/components/ui/card";
+import { useEffect, useTransition } from "react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+
+import {
+  Form,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormControl,
+  FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Star } from "lucide-react";
-import Image from "next/image";
-import InputBar from "../partials/inputBar";
+import { useSupabase } from "@/services/supabase/supabase.hook";
+import { toast } from "react-toastify";
+import { Loader2 } from "lucide-react";
 
-const courses = [
-  {
-    title: "The Data Science Course",
-    description:
-      "Complete Data Science Training: Math, Statistics, Python, Advanced...",
-    learners: "126, 125 Learners",
-    image: "/Image/dataengineer.png", // Replace with actual static files
-    rating: 3,
-  },
-  {
-    title: "The Data Science Course",
-    description:
-      "Complete Data Science Training: Math, Statistics, Python, Advanced...",
-    learners: "126, 125 Learners",
-    image: "/Image/dataanalytic.png",
-    rating: 4,
-  },
-  {
-    title: "The Data Science Course",
-    description:
-      "Complete Data Science Training: Math, Statistics, Python, Advanced...",
-    learners: "126, 125 Learners",
-    image: "/Image/datascience.png",
-    rating: 4,
-  },
-];
+const formSchema = z.object({
+  name: z.string().min(1),
+  academic_percentage: z.string().min(1),
+  stream: z.string().min(1),
+  entrance_exam: z.string().min(1),
+  study_location: z.string().min(1),
+  budget_per_year: z.string().min(1),
+  learning_style: z.string().min(1),
+});
 
-export default function CourseCardsPage() {
+type FormSchema = z.infer<typeof formSchema>;
+
+export default function IntroForm() {
+  const { session, supabase } = useSupabase();
+
+  const [isPending, startTransition] = useTransition();
+  const form = useForm<FormSchema>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      name: "",
+      academic_percentage: "",
+      stream: "",
+      entrance_exam: "",
+      study_location: "",
+      budget_per_year: "",
+      learning_style: "",
+    },
+  });
+
+  const userId = session?.user?.id;
+
+  useEffect(() => {
+    if (!userId) return;
+
+    const fetchData = async () => {
+      const { data, error } = await supabase
+        .from("application_builder")
+        .select("*")
+        .eq("user", userId)
+        .single();
+
+      if (data) {
+        form.reset({
+          name: data.name ?? "",
+          academic_percentage: data.academic_percentage ?? "",
+          stream: data.stream ?? "",
+          entrance_exam: data.entrance_exam ?? "",
+          study_location: data.study_location ?? "",
+          budget_per_year: data.budget_per_year ?? "",
+          learning_style: data.learning_style ?? "",
+        });
+      }
+    };
+    console.log("sdjfh");
+    fetchData();
+  }, [userId, supabase, form]);
+
+  const onSubmit = async (values: FormSchema) => {
+    if (!userId) return;
+    startTransition(async () => {
+      const { error } = await supabase.from("application_builder").upsert(
+        {
+          name: values.name,
+          academic_percentage: values.academic_percentage,
+          stream: values.stream,
+          entrance_exam: values.entrance_exam,
+          study_location: values.study_location,
+          budget_per_year: values.budget_per_year,
+          learning_style: values.learning_style,
+          user: userId,
+        },
+        { onConflict: "user" },
+      );
+
+      if (error) {
+        console.log(error);
+        toast.error("Something went wrong!");
+      } else {
+        toast.success("Saved successfully!");
+      }
+    });
+  };
+
   return (
-    <div className="flex flex-col lg:px-15  h-[100%] overflow-hidden relative dark:bg-gradient-b dark:from-[#000000b0] dark:via-[#000000b0] dark:to-[#000000b0] bg-gradient-to-b from-[#F6F6F6] via-[#fef4f7] to-[#efeafe]">
-      <div className="flex-1 overflow-y-auto custom-scroll px-4 text-white text-center">
-        <div className="flex flex-col items-center justify-center min-h-[90%] gap-5">
-          <h2 className="lg:text-[32px] text-base dark:text-white text-black font-bold text-center" >Pick a Course, Level Up Your Career</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            {courses.map((course, i) => (
-              <Card
-                key={i}
-                className="dark:bg-zinc-900 bg-[#ffffff] border dark:border-zinc-800 text-white p-0 shadow-[0_0_10px_6px_rgba(142,142,142,0.15)] dark:shadow-none"
-              >
-                <div className="w-full h-48 relative">
-                  <Image
-                    src={course.image}
-                    alt={course.title}
-                    fill
-                    className="rounded-t-md object-cover"
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                    priority={i === 0}
-                  />
-                </div>
-                <CardContent className="p-4 space-y-2">
-                  <h3 className="text-lg font-semibold text-pink-300">
-                    {course.title}
-                  </h3>
-                  <p className="text-sm dark:text-zinc-300 text-black">{course.description}</p>
-                </CardContent>
-                <CardFooter className="flex items-center justify-between p-4">
-                  <div className="flex flex-col gap-2">
-                    <div className="flex items-center gap-1 text-purple-400">
-                      {Array.from({ length: 5 }).map((_, index) => (
-                        <Star
-                          key={index}
-                          className={`w-4 h-4 ${index < course.rating
-                              ? "fill-purple-500"
-                              : "text-zinc-600"
-                            }`}
-                          fill={index < course.rating ? "#a78bfa" : "none"}
-                        />
-                      ))}
-                    </div>
-                    <div className="text-xs text-zinc-400">{course.learners}</div>
-                  </div>
-                  <Button
-                    variant="outline"
-                    className="bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] hover:brightness-80 hover:text-white"
-                  >
-                    View
-                  </Button>
-                </CardFooter>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </div>
+    <div className="dark:bg-gradient-b dark:from-[#000000b0] dark:via-[#000000b0] dark:to-[#000000b0] bg-gradient-to-b from-[#F6F6F6] via-[#fef4f7] to-[#efeafe] max-h-screen overflow-y-scroll hide-scroll">
+      <div className="space-y-6 max-w-2xl mx-auto flex flex-col gap-4 min-h-screen custom-scroll lg:py-10 p-5 text-black dark:text-white ">
+        <h1 className="lg:text-[30px] font-bold text-center">
+          Quick intro about you?
+        </h1>
 
-      {/* Fixed bottom input */}
-      <div className="bottom-5 flex lg:pb-10 lg:px-0 px-4">
-        <div className="w-full mx-auto ">
-          <InputBar />
-        </div>
+        <Form {...form}>
+          <form
+            onSubmit={form.handleSubmit(onSubmit)}
+            className="space-y-6 lg:text-base text-sm"
+          >
+            <FormField
+              control={form.control}
+              name="name"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Hey there! What's your name?</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Name" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="academic_percentage"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>What is your academic percentage?</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Percentage" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="stream"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>What stream are you interested in?</FormLabel>
+                  <FormControl>
+                    <Input
+                      placeholder="Engineering, Arts, Commerce, etc."
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="entrance_exam"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>What's your target entrance exam?</FormLabel>
+                  <FormControl>
+                    <Input placeholder="JEE, CUET, NEET, etc." {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="study_location"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>What's your preferred study location?</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Any city, state..." {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="budget_per_year"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>
+                    What's your budget per year for college?
+                  </FormLabel>
+                  <FormControl>
+                    <Input placeholder="Average amount" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="learning_style"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>
+                    How would you describe your learning style?
+                  </FormLabel>
+                  <FormControl>
+                    <Input
+                      placeholder="Visual, Auditory, Practical"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <div className="flex justify-center space-x-4 pt-4">
+              {/* <Button
+                type="button"
+                className="rounded-[5px] flex items-center justify-center w-30 text-sm p-[1px] bg-[linear-gradient(90deg,#A07DF1,#F69DBA)]"
+              >
+                <div className="rounded-[5px] h-full w-full dark:bg-white bg-[#F6F6F6] flex justify-center items-center">
+                  View
+                </div>
+              </Button> */}
+              <Button
+                type="submit"
+                disabled={isPending}
+                className="w-30 rounded-[5px] p-4 text-white bg-[linear-gradient(90deg,#A07DF1,#F69DBA)]"
+              >
+                {isPending ? (
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                ) : (
+                  "Submit"
+                )}
+              </Button>
+            </div>
+          </form>
+        </Form>
       </div>
     </div>
   );
