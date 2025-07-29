@@ -24,15 +24,15 @@ export default function DashboardLayout({
   if (isLoading || !authorised) return <Loader />;
 
   return (
-      <div className="relative">
-        <div className="absolute top-0 bg-[#F6F6F6] dark:bg-black">
-          <Navbar/>
-        </div>
-          
-          {/* Page Content */}
-          <main className="h-screen overflow-y-auto hide-scroll overflow-x-hidden pt-[72px]">
-            {children}
-          </main>
-        </div>
+    <div className="relative">
+      <div className="absolute top-0 bg-[#F6F6F6] dark:bg-black">
+        <Navbar />
+      </div>
+
+      {/* Page Content */}
+      <main className="h-screen overflow-y-auto hide-scroll overflow-x-hidden pt-[70px] lg:pt-[72px]">
+        {children}
+      </main>
+    </div>
   );
 }

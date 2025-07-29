@@ -16,8 +16,8 @@ export default function NotificationDropdown() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <button className="rounded-full flex items-center justify-center lg:h-10 lg:w-10 w-8 h-8 p-[1px] bg-[linear-gradient(90deg,#A07DF1,#F69DBA)]">
-          <div className="rounded-full h-full w-full dark:bg-black bg-white flex justify-center items-center">
+        <button className="rounded-full flex items-center justify-center lg:h-10 lg:w-10 w-[32px] h-[32px] p-[1px] bg-[linear-gradient(90deg,#A07DF1,#F69DBA)]">
+          <div className="rounded-full h-full w-full dark:bg-black bg-white flex justify-center items-center outline-none">
             <BellRing className="h-[18px] text-[#f2acc3]" />
           </div>
         </button>

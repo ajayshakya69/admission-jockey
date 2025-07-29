@@ -22,11 +22,11 @@ export function ImportantDates({ events, onDeleteEvent }: ImportantDatesProps) {
       {sortedEvents.map((event) => (
         <div
           key={event.id}
-          className="p-4 rounded-xl border border-gray-800 flex items-center justify-between"
+          className="p-4 rounded-xl border border-gray-800 flex flex-col md:flex-row md:items-center justify-between gap-4"
         >
-          <div>
-            <h3 className="text-xl font-bold">{event.title}</h3>
-            <div className="flex items-center gap-2 mt-1">
+          <div className="flex-1 overflow-hidden">
+            <h3 className="text-xl font-bold truncate">{event.title}</h3>
+            <div className="flex items-center gap-2 mt-1 flex-wrap">
               <p
                 className={cn(
                   "text-sm",
@@ -51,24 +51,27 @@ export function ImportantDates({ events, onDeleteEvent }: ImportantDatesProps) {
               </p>
             )}
             {event.description && (
-              <p className="text-gray-300 text-sm mt-2">{event.description}</p>
+              <p className="text-gray-300 text-sm mt-2 break-words">
+                {event.description}
+              </p>
             )}
           </div>
-          <div className="flex gap-2">
+
+          <div className="flex-shrink-0 flex gap-2 items-start md:items-center">
             {onDeleteEvent && (
               <button
                 onClick={() => onDeleteEvent(event.id ?? "")}
-                className="p-2 rounded-full hover:bg-gray-800"
+                className="p-2 rounded-full"
               >
-                <Trash2 className="w-4 h-4 text-red-400" />
+                <Trash2 className="w-4 h-4 text-red-400 hover:text-red-200" />
               </button>
             )}
             {event.type === "event" ? (
-              <Badge className=" w-24 text-center text-white bg-[linear-gradient(90deg,#A07DF1,#F69DBA)]">
+              <Badge className="w-24 py-2 text-center text-white bg-[linear-gradient(90deg,#A07DF1,#F69DBA)]">
                 Event
               </Badge>
             ) : (
-              <Badge className="bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] w-24 text-center text-white ">
+              <Badge className=" py-2 bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] w-24 text-center text-white">
                 Reminder
               </Badge>
             )}
@@ -76,5 +79,6 @@ export function ImportantDates({ events, onDeleteEvent }: ImportantDatesProps) {
         </div>
       ))}
     </div>
+
   );
 }
