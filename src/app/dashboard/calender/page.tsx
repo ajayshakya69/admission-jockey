@@ -101,7 +101,7 @@ export default function CalendarPage() {
   return (
     <div className="flex flex-col min-h-screen dark:bg-gradient-b dark:from-[#000000b0] dark:via-[#000000b0] dark:to-[#000000b0] bg-gradient-to-b from-[#F6F6F6] via-[#fef4f7] to-[#efeafe] dark:text-white text-black">
       {/* Main content */}
-      <main className="flex-1 lg:px-20 lg:py-10">
+      <main className="flex-1 lg:px-20 lg:py-10 px-5">
         {isMobile ? (
           <div className="flex flex-col h-full">
             {/* Mobile view - show active tab */}
@@ -116,23 +116,23 @@ export default function CalendarPage() {
             )}
 
             {/* Mobile tab navigation */}
-            <div className="mt-auto p-4 flex items-center justify-between">
+            <div className="mt-auto p-4 pt-8 flex items-center justify-between">
               <button
                 onClick={() => setActiveTab("calendar")}
-                className={`flex-1 py-4 rounded-full text-center font-semibold ${
+                className={`flex-1 py-3 rounded-sm text-center font-semibold ${
                   activeTab === "calendar"
-                    ? "bg-gradient-to-r from-pink-400 to-purple-400 text-white"
-                    : "text-white"
+                    ? "bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] text-white"
+                    : "dark:text-white text-black" 
                 }`}
               >
                 Calendar
               </button>
               <button
                 onClick={() => setActiveTab("important-dates")}
-                className={`flex-1 py-4 rounded-full text-center font-semibold ${
+                className={`flex-1  py-3 rounded-sm text-center font-semibold ${
                   activeTab === "important-dates"
-                    ? "bg-gradient-to-r from-purple-400 to-pink-400 text-white"
-                    : "text-white"
+                    ? "bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] text-white"
+                    : "dark:text-white text-black" 
                 }`}
               >
                 Important Dates

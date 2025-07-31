@@ -98,7 +98,7 @@ export default function Navbar() {
                   <div className="rounded-full h-8 w-8 bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] flex items-center justify-center">
                     <UserDropDown />
                   </div>
-                  <span className="text-sm">Profile</span>
+                  <span className="text-sm">User</span>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
@@ -197,9 +197,10 @@ export default function Navbar() {
             >
               <X className="w-6 h-6" />
             </button>
-            <div className="flex flex-col gap-8 text-xl text-center font-semibold tracking-widest dark:text-white/80 text-black/80">
+            <div className="flex flex-col mt-10 gap-8 text-xl text-center font-semibold tracking-widest dark:text-white/80 text-black/80">
               <Link href="/dashboard" onClick={() => setMenuOpen(false)}>HOME</Link>
-              <Link href="/about" onClick={() => setMenuOpen(false)}>ABOUT US</Link>
+              <Link href="/dashboard/aboutus" onClick={() => setMenuOpen(false)}>ABOUT US</Link>
+              <Link href="/dashboard/alumini" onClick={() => setMenuOpen(false)}>ALUMINI</Link>
               <Link href="/dashboard/calender" onClick={() => setMenuOpen(false)}>CALENDER</Link>
               <Link href="/dashboard/introForm" onClick={() => setMenuOpen(false)}>APPLICATION BUILDER</Link>
               <Link href="/dashboard/onlineCollege" onClick={() => setMenuOpen(false)}>ONLINE COLLEGE</Link>

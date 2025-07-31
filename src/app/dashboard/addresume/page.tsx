@@ -17,9 +17,9 @@ export default function ResumeDrop() {
     }
   }
 
-  const handleContinue = () => {
-    router.push('/dashboard/internship')  // 👈 Update path if your internship page is different
-  }
+  // const handleContinue = () => {
+  //   router.push('/dashboard/internship')  // 👈 Update path if your internship page is different
+  // }
 
   return (
     <div className='flex flex-col h-[100%] overflow-hidden place-items-center lg:p-0 p-5 dark:bg-gradient-b dark:from-[#000000b0] dark:via-[#000000b0] dark:to-[#000000b0] bg-gradient-to-b from-[#F6F6F6] via-[#fef4f7] to-[#efeafe]'>
@@ -48,8 +48,8 @@ export default function ResumeDrop() {
 
           <div className='flex justify-center'><Button
             disabled={!fileName}
-            onClick={handleContinue}
-            className="  px-6 py-4 bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] text-white hover:opacity-90"
+            // onClick={handleContinue}
+            className="  px-6 py-4 bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] text-white hover:opacity-50"
           >
             Continue
           </Button></div>

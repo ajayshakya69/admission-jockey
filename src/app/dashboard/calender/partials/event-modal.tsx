@@ -93,12 +93,12 @@ export function EventModal({
 
   return (
     <Dialog open={isOpen} onOpenChange={handleClose}>
-      <DialogContent className="max-w-md bg-gray-900 text-white border border-gray-700">
+      <DialogContent className="max-w-md dark:bg-black bg-white dark:text-white text-black border dark:border-[#ffffff23]">
         <DialogHeader>
           <DialogTitle className="flex justify-between items-center">
             <div>
               Important Dates
-              <DialogDescription className="text-gray-400 text-sm">
+              <DialogDescription className="dark:text-white/50 text-black/50 text-sm mt-3">
                 {selectedDate?.toLocaleDateString("en-US", {
                   weekday: "long",
                   year: "numeric",
@@ -118,25 +118,24 @@ export function EventModal({
             {existingEvents.map((event) => (
               <div
                 key={event.id}
-                className="p-4 bg-gray-800 rounded-lg border border-gray-700"
+                className="p-4 bg-gradient-to-b from-white to-white dark:bg-gradient-to-b dark:from-[#ffffff0d] border-t dark:border-[#ffffff14] dark:to-[#ffffff04] shadow-[0_0_10px_6px_rgba(142,142,142,0.15)] dark:shadow-none rounded-sm"
               >
                 <div className="flex items-start justify-between">
                   <div className="flex-1">
                     <div className="flex items-center gap-2">
                       <h4 className="font-medium">{event.title}</h4>
                       <span
-                        className={`text-xs px-2 py-0.5 rounded-full ${
-                          event.type === "event"
-                            ? "bg-purple-900 text-purple-300"
-                            : "bg-blue-900 text-blue-300"
-                        }`}
+                        className={`text-xs px-2 py-0.5 rounded-full text-white ${event.type === "event"
+                            ? "bg-purple-900"
+                            : "bg-blue-900"
+                          }`}
                       >
                         {event.type === "event" ? "Event" : "Reminder"}
                       </span>
                     </div>
 
                     {event.time && (
-                      <div className="flex items-center gap-2 mt-1 text-sm text-gray-400">
+                      <div className="flex items-center gap-2 mt-1 text-sm text-gray-500">
                         <Clock className="w-4 h-4" />
                         <span>{event.time}</span>
                       </div>
@@ -169,7 +168,7 @@ export function EventModal({
         {!isAddingNew ? (
           <Button
             onClick={() => setIsAddingNew(true)}
-            className="w-full bg-gradient-to-r from-purple-400 to-pink-400 hover:from-purple-500 hover:to-pink-500"
+            className="w-full bg-[linear-gradient(90deg,#A07DF1,#F69DBA)]"
           >
             <Plus className="w-4 h-4 mr-2" />
             Add New Event
@@ -186,7 +185,7 @@ export function EventModal({
                     <FormControl>
                       <Input
                         {...field}
-                        className="bg-gray-800 border-gray-700"
+                        className="bg-gradient-to-b from-white to-white dark:bg-gradient-to-b dark:from-[#ffffff0d] border-t dark:border-[#ffffff14] dark:to-[#ffffff04] shadow-[0_0_10px_6px_rgba(142,142,142,0.15)] dark:shadow-none rounded-sm"
                         placeholder="Enter event title"
                       />
                     </FormControl>
@@ -240,7 +239,7 @@ export function EventModal({
                         {...field}
                         type="time"
                         required={type === "reminder"}
-                        className="bg-gray-800 border-gray-700"
+                        className="bg-gradient-to-b from-white to-white dark:bg-gradient-to-b dark:from-[#ffffff0d] border-t dark:border-[#ffffff14] dark:to-[#ffffff04] shadow-[0_0_10px_6px_rgba(142,142,142,0.15)] dark:shadow-none rounded-sm"
                       />
                     </FormControl>
                   </FormItem>
@@ -258,7 +257,7 @@ export function EventModal({
                         <Input
                           {...field}
                           placeholder="e.g., 16 April"
-                          className="bg-gray-800 border-gray-700"
+                          className="bg-gradient-to-b from-white to-white dark:bg-gradient-to-b dark:from-[#ffffff0d] border-t dark:border-[#ffffff14] dark:to-[#ffffff04] shadow-[0_0_10px_6px_rgba(142,142,142,0.15)] dark:shadow-none rounded-sm"
                         />
                       </FormControl>
                     </FormItem>
@@ -276,7 +275,7 @@ export function EventModal({
                       <Textarea
                         {...field}
                         placeholder="Enter description"
-                        className="bg-gray-800 border-gray-700 resize-none"
+                        className="bg-gradient-to-b from-white to-white dark:bg-gradient-to-b dark:from-[#ffffff0d] border-t dark:border-[#ffffff14] dark:to-[#ffffff04] shadow-[0_0_10px_6px_rgba(142,142,142,0.15)] dark:shadow-none rounded-sm resize-none"
                         rows={3}
                       />
                     </FormControl>
@@ -287,7 +286,7 @@ export function EventModal({
               <div className="flex gap-3">
                 <Button
                   type="submit"
-                  className="flex-1 bg-gradient-to-r from-purple-400 to-pink-400 hover:from-purple-500 hover:to-pink-500"
+                  className="flex-1 bg-[linear-gradient(90deg,#A07DF1,#F69DBA)]"
                 >
                   Add {type === "event" ? "Event" : "Reminder"}
                 </Button>
