@@ -111,7 +111,7 @@ export default function Navbar() {
               <Link href="/dashboard" className={isActive("/dashboard")}>
                 Home
               </Link>
-              <Link href="/dashboard/aboutus" className={isActive("/about")}>
+              <Link href="/dashboard/aboutus" className={isActive("/dashboard/aboutus")}>
                 About Us
               </Link>
 
