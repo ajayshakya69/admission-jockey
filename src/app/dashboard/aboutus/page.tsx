@@ -1,7 +1,8 @@
 "use client";
-import MainFooter from "@/app/(components)/mainFooter";
+
 import { Card, CardContent } from "@/components/ui/card";
 import { ShieldCheck, Globe2, Users } from "lucide-react";
+import AboutUsFooter from "../partials/aboutUsFooter";
 
 const focusItems = [
     {
@@ -148,7 +149,7 @@ export default function AboutUs() {
                 </div>
             </section>
 
-            <MainFooter />
+            <AboutUsFooter/>
         </div>
     )
 }

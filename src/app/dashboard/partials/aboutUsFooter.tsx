@@ -2,24 +2,31 @@ import Link from 'next/link';
 import { FaLinkedin } from "react-icons/fa6";
 import { BsTwitterX, BsInstagram } from "react-icons/bs";
 
-export default function MainFooter() {
-    return(
+export default function AboutUsFooter() {
+    return (
         <div>
             {/* pc footer */}
             <div className="lg:block relative hidden place-items-center scroll-none overflow-y-clip w-full">
-                <div className="absolute flex place-items-center top-[75px] justify-between px-20 items-center w-full h-full">
-                    <div>
-                        <img src="/01logo.png" alt="logo" className='w-[950px] dark:block hidden' />
-                        <img
-                            src="/lightlogo.png"
-                            alt="Logo"
-                            className="block dark:hidden w-[950px]"
-                        />
+                <div className="absolute flex flex-col place-items-center top-[180px] px-20 items-center w-full h-full">
+                    <div className='flex justify-between gap-20 place-items-center w-full '>
+                        <div>
+                            <img src="/01logo.png" alt="logo" className='max-w-[500px] dark:block hidden' />
+                            <img
+                                src="/lightlogo.png"
+                                alt="Logo"
+                                className="block dark:hidden w-[500px]"
+                            />
+                        </div>
+                        <div className=" dark:text-white text-black text-left py-4  bg-transparent grid grid-cols-2 gap-8 gap-x-25">
+                            <Link href="/dashboard/consentForm">Consent Form</Link>
+                            <Link href="">Disclaimer</Link>
+                            <Link href="">Privacy Policy</Link>
+                            <Link href="">Terms</Link>
+                        </div>
                     </div>
-
-
-                    <div className="w-full dark:text-white text-black text-center py-4 mt-5 dark:mt-7 bg-transparent">
-                        <div className="flex justify-end items-center space-x-6 mb-2">
+                    <div className="w-full flex justify-between place-items-center dark:text-white text-black text-center py-4 mt-5 bg-transparent">
+                        <p className="text-[14px] dark:text-white text-black text-end">© 2025 alumna.ai. All rights reserved.</p>
+                        <div className="flex justify-end items-center space-x-10 mb-2">
                             <Link href="https://instagram.com" target="_blank" rel="noopener noreferrer">
                                 <BsInstagram className="w-7 h-7 hover:opacity-80 transition-opacity" />
                             </Link>
@@ -30,7 +37,7 @@ export default function MainFooter() {
                                 <FaLinkedin className="w-7 h-7 hover:opacity-80 transition-opacity" />
                             </Link>
                         </div>
-                        <p className="text-[14px] dark:text-white text-black text-end">© 2025 alumna.ai. All rights reserved.</p>
+                        
                     </div>
                 </div>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1514 400" fill="none" preserveAspectRatio="none" className="w-full h-auto dark:block hidden ">
