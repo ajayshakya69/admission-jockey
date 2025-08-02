@@ -44,7 +44,7 @@ export default function Navbar() {
   return (
     <header className="fixed top-0 inset-x-0 z-50">
       <div className="lg:bg-[linear-gradient(90deg,rgba(160,125,241,0.2),rgba(246,157,186,0.2))] bg-transparent lg:pb-[1px]">
-        <div className="bg-[#F6F6F6] dark:bg-black flex justify-between place-items-center px-4 py-3 md:px-8 md:py-4 lg:h-[72px] h-[70px]">
+        <div className="bg-white dark:bg-black flex justify-between place-items-center px-4 py-3 md:px-8 md:py-4 lg:h-[72px] h-[70px]">
 
           {/* Left: Hamburger on mobile */}
           <button className="md:hidden dark:text-white text-black" onClick={() => setMenuOpen(true)}>
@@ -111,7 +111,7 @@ export default function Navbar() {
               <Link href="/dashboard" className={isActive("/dashboard")}>
                 Home
               </Link>
-              <Link href="/dashboard/aboutus" className={isActive("/about")}>
+              <Link href="/dashboard/aboutus" className={isActive("/dashboard/aboutus")}>
                 About Us
               </Link>
 
