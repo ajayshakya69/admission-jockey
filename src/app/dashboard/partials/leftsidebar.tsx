@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default function LeftSidebar() {
   return (
-    <aside className="hidden lg:flex flex-col gap-[25px] p-4 py-4 dark:text-white text-black overflow-hidden">
+    <aside className="flex lg:flex flex-col gap-[25px] p-4 py-4 lg:mt-0 mt-15 dark:text-white text-black lg:overflow-hidden overflow-scroll">
       <div className="bg-gradient-to-b from-white to-white dark:bg-gradient-to-b dark:from-[#ffffff0d] border-t dark:border-[#ffffff14] dark:to-[#ffffff04] rounded-[8px] p-4 shadow-[0_0_10px_6px_rgba(142,142,142,0.15)] dark:shadow-none">
         <div className="flex items-center mb-[20px] justify-between">
           <img src="/profile.jpg" className="w-[75px] h-[75px] rounded-full dark:bg-white bg-[linear-gradient(90deg,#A07DF1,#F69DBA)]" />
@@ -28,9 +28,9 @@ export default function LeftSidebar() {
 
       <div className=" flex justify-between bg-gradient-to-b from-white to-white dark:bg-gradient-to-b dark:from-[#ffffff0d] border-t dark:border-[#ffffff14] dark:to-[#ffffff04] py-3 px-4  rounded-[8px] text-base text-left shadow-[0_0_10px_6px_rgba(142,142,142,0.15)] dark:shadow-none ">
         <button>Psychometric Test </button>
-        <Link href="/"><SquareArrowOutUpRight/></Link>
+        <Link href="/"><SquareArrowOutUpRight /></Link>
       </div>
-      
+
 
       <div className="bg-gradient-to-b from-white to-white dark:bg-gradient-to-b dark:from-[#ffffff0d] border-t dark:border-[#ffffff14] dark:to-[#ffffff04]  rounded-[8px] shadow-[0_0_10px_6px_rgba(142,142,142,0.15)] dark:shadow-none  p-4">
         <div className="flex items-center mb-[20px] justify-between">
@@ -45,7 +45,7 @@ export default function LeftSidebar() {
           <div className="flex flex-col "></div>
           <button className="bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] text-white mt-2 px-4 py-2 rounded text-xs">View</button>
         </div>
-        
+
       </div>
     </aside>
   );

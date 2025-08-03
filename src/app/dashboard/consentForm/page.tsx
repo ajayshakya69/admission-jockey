@@ -5,8 +5,8 @@ import AboutUsFooter from "../partials/aboutUsFooter";
 export default function ConsentNotice() {
   return (
     <section className="flex flex-col min-h-screen dark:bg-gradient-b dark:from-[#000000b0] dark:via-[#000000b0] dark:to-[#000000b0] bg-gradient-to-b from-[#F6F6F6] via-[#fef4f7] to-[#efeafe] dark:text-white text-black lg:space-y-30 space-y-20">
-      <div className=" lg:px-25 mx-auto space-y-10 mt-20">
-        <h1 className="text-2xl sm:text-3xl font-bold text-transparent bg-clip-text bg-[linear-gradient(90deg,#A07DF1,#F69DBA)]">Consent Notice for Alumna.ai</h1>
+      <div className=" lg:px-25 px-5 mx-auto space-y-10 lg:mt-20 mt-5">
+        <h1 className="text-[24px] lg:text-[32px] font-bold text-transparent bg-clip-text bg-[linear-gradient(90deg,#A07DF1,#F69DBA)]">Consent Notice for Alumna.ai</h1>
         <p className="text-sm sm:text-base leading-relaxed ">
           At Alumna.ai, we value your privacy and are committed to complying with the Digital Personal Data Protection Act, 2023 (DPDPA). This Consent Notice explains how we collect, use, and process your personal data when you use our AI-driven platform to receive personalized course and career recommendations. By providing your consent, you agree to the processing of your data as described below.
         </p>
@@ -57,15 +57,15 @@ export default function ConsentNotice() {
           <h2 className="text-lg sm:text-xl font-semibold ">4. Your Rights</h2>
           <p className="text-sm sm:text-base ">You have the following rights under the DPDPA:</p>
           <ul className="list-disc pl-5 text-sm sm:text-base space-y-1">
-            <li><strong>Withdraw Consent:</strong> Withdraw at any time via the “Manage My Data” section of the Portal. This may affect certain features (e.g., recommendations).</li>
-            <li><strong>Access:</strong> Request a summary of your data and its processing.</li>
-            <li><strong>Correction and Erasure:</strong> Request correction, updating, or deletion of your data.</li>
-            <li><strong>Grievance Redressal:</strong> Submit complaints via our “Contact Us” form.</li>
-            <li><strong>Nomination:</strong> Nominate someone to manage your data in case of death or incapacity.</li>
+            <li><strong>Withdraw Consent :</strong> Withdraw at any time via the “Manage My Data” section of the Portal. This may affect certain features (e.g., recommendations).</li>
+            <li><strong>Access :</strong> Request a summary of your data and its processing.</li>
+            <li><strong>Correction and Erasure :</strong> Request correction, updating, or deletion of your data.</li>
+            <li><strong>Grievance Redressal :</strong> Submit complaints via our “Contact Us” form.</li>
+            <li><strong>Nomination :</strong> Nominate someone to manage your data in case of death or incapacity.</li>
           </ul>
         </div>
       </div>
-      <AboutUsFooter/>
+      <AboutUsFooter />
     </section>
   );
 }
