@@ -58,7 +58,7 @@ export default function AboutUs() {
     return (
         <div className="flex flex-col min-h-screen dark:bg-gradient-b dark:from-[#000000b0] dark:via-[#000000b0] dark:to-[#000000b0] bg-gradient-to-b from-[#F6F6F6] via-[#fef4f7] to-[#efeafe] dark:text-white text-black lg:space-y-30 space-y-20">
             <section className="lg:mt-20 mt-5 lg:px-30 px-5">
-                <h1 className="text-[24px] sm:text-[32px] font-semibold text-transparent bg-clip-text bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] mb-6 sm:mb-10">
+                <h1 className="text-[24px] lg:text-[32px] font-semibold text-transparent bg-clip-text bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] mb-6 sm:mb-10">
                     About Us
                 </h1>
                 <span className="space-y-5 sm:space-y-8 text-sm sm:text-base leading-relaxed">
@@ -149,7 +149,7 @@ export default function AboutUs() {
                 </div>
             </section>
 
-            <AboutUsFooter/>
+            <AboutUsFooter />
         </div>
     )
 }

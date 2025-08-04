@@ -48,12 +48,12 @@ export default function Navbar() {
 
           {/* Left: Hamburger on mobile */}
           <button className="md:hidden dark:text-white text-black" onClick={() => setMenuOpen(true)}>
-            <Menu className="w-7 h-7" />
+            <Menu className="w-8 h-8 p-[3px] rounded-[2px] bg-gradient-to-b from-white to-white dark:bg-gradient-to-b dark:from-[#ffffff0d] border-t dark:border-[#ffffff14] dark:to-[#ffffff04] shadow-[0_0_10px_6px_rgba(142,142,142,0.15)] dark:shadow-none" />
           </button>
 
           {/* Center Logo */}
           <div className="flex-grow text-center md:text-left">
-            <div className="inline-block mt-1">
+            <div className="inline-block mt-2">
               <Link href="/">
                 <Image
                   src="/01logo.png"
@@ -74,10 +74,10 @@ export default function Navbar() {
           </div>
 
           {/* Right: Dots on mobile */}
-          <div className="md:hidden relative">
+          <div className="md:hidden  relative">
             <DropdownMenu>
               <DropdownMenuTrigger>
-                <MoreVertical className="dark:text-white text-black w-6 h-6" />
+                <MoreVertical className="dark:text-white text-black w-8 h-8 p-[3px]" />
               </DropdownMenuTrigger>
               <DropdownMenuContent
                 side="right"
