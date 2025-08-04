@@ -37,7 +37,7 @@ export default function AboutUsFooter() {
                                 <FaLinkedin className="w-7 h-7 hover:opacity-80 transition-opacity" />
                             </Link>
                         </div>
-                        
+
                     </div>
                 </div>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1514 400" fill="none" preserveAspectRatio="none" className="w-full h-auto dark:block hidden ">
@@ -114,15 +114,26 @@ export default function AboutUsFooter() {
             </div>
             {/* mobile footer */}
             <div className="lg:hidden relative block place-items-center scroll-none overflow-y-clip mt-10 w-full">
-                <div className="absolute flex justify-between top-[25px]  items-center w-full h-full px-5 ">
-
-                    <div>
-                        <img src="/footerlogo.png" alt="logo" className='w-[450px] dark:block hidden' />
-                        <img src="/lightlogo.png" alt="Logo" className="block dark:hidden w-[450px]" />
+                <div className="absolute flex flex-col top-[62px]  items-center w-full h-full px-3 ">
+                    <div className='flex justify-between gap-5 place-items-center w-full '>
+                        <div>
+                            <img src="/footerlogo.png" alt="logo" className='w-[180px] dark:block hidden' />
+                            <img src="/lightlogo.png" alt="Logo" className="block dark:hidden w-[180px]" />
+                        </div>
+                        <div>
+                            <div className=" dark:text-white text-black text-left py-4 text-[7px]  bg-transparent grid grid-cols-2 gap-3 gap-x-5">
+                                <Link href="/dashboard/consentForm">Consent Form</Link>
+                                <Link href="">Disclaimer</Link>
+                                <Link href="">Privacy Policy</Link>
+                                <Link href="">Terms</Link>
+                            </div>
+                        </div>
                     </div>
 
-                    <div className="w-full dark:text-white text-black text-center py-4 mt-5 bg-transparent ">
-                        <div className="flex justify-end items-center space-x-3 mb-2">
+
+                    <div className="w-full flex justify-between items-center px-2 mt-3 dark:text-white text-black text-center bg-transparent ">
+                        <p className="text-[8px] dark:text-white text-black">© 2025 alumna.ai. All rights reserved.</p>
+                        <div className="flex justify-between items-center space-x-3">
                             <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
                                 <BsInstagram className="w-[14px] h-[14px] hover:opacity-80 transition-opacity" />
                             </a>
@@ -133,7 +144,7 @@ export default function AboutUsFooter() {
                                 <FaLinkedin className="w-[14px] h-[14px] hover:opacity-80 transition-opacity" />
                             </a>
                         </div>
-                        <p className="text-[8px] dark:text-white text-black text-end">© 2025 alumna.ai. All rights reserved.</p>
+
                     </div>
                 </div>
                 <svg
