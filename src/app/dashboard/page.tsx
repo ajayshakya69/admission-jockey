@@ -127,7 +127,7 @@ import Loader from "@/components/ui/loader";
 import { useChatbotId } from "@/hooks/chatbot/chatbot.hook";
 import RightSidebar from "./partials/rightsidebar";
 import LeftSidebar from "./partials/leftsidebar";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, ChevronUp } from "lucide-react";
 
 export default function ChatInterface() {
   const [messages, setMessages] = useState<Message[]>([]);
@@ -136,7 +136,7 @@ export default function ChatInterface() {
   const [showLeftSidebar, setShowLeftSidebar] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const { sessionId } = useChatbotId();
-
+  const [showRightSidebar, setShowRightSidebar] = useState(false);
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
@@ -149,32 +149,45 @@ export default function ChatInterface() {
 
   return (
     <div className="flex flex-col lg:grid lg:grid-cols-[310px_1fr_325px] h-[calc(100vh-74px)] overflow-y-hidden dark:bg-[#000000] bg-[#f6f6f6] relative">
-      
       {/* Mobile Toggle Button for LeftSidebar */}
-      {/* {!showLeftSidebar && (
+      {!showLeftSidebar && (
         <button
           onClick={() => setShowLeftSidebar(true)}
-          className="lg:hidden fixed top-20 left-2 z-40  dark:text-white text-black  p-2 rounded-full shadow"
+          className="lg:hidden fixed top-22 left-4 z-40  dark:text-white text-black  p-[3px] rounded-full bg-white dark:bg-transparent shadow"
         >
           <ChevronRight size={20} />
         </button>
-      )} */}
+      )}
 
       {/* Left Sidebar */}
-      {/* {showLeftSidebar && (
-        <div className="lg:hidden fixed inset-0 z-20 dark:bg-black bg-[#F6F6F6] w-full h-full overflow-y-auto">
-          <LeftSidebar/>
+      {showLeftSidebar && (
+        <div className="lg:hidden fixed inset-0 z-20 dark:bg-black bg-white w-4/5 h-full overflow-y-auto">
+          <LeftSidebar />
           <button
             onClick={() => setShowLeftSidebar(false)}
-            className="absolute top-15 right-5 dark:text-white text-black p-1"
+            className="fixed top-17 right-13 dark:text-white text-black p-1"
           >
             ✕
           </button>
         </div>
-      )} */}
+      )}
       <div className="hidden lg:block">
         <LeftSidebar />
       </div>
+
+      {/* Right Sidebar */}
+      {showRightSidebar && (
+        <div className={`lg:hidden fixed inset-x-0 bottom-0 top-auto z-20 dark:bg-black bg-white w-full h-4/5 rounded-t-2xl shadow-2xl overflow-y-auto animate-slide-up ${showRightSidebar ? 'animate-slide-up' : 'animate-slide-down'} `}>
+          <RightSidebar />
+          <button
+            onClick={() => setShowRightSidebar(false)}
+            className="absolute top-4 right-4 dark:text-white text-black p-2"
+          >
+            ✕
+          </button>
+        </div>
+      )}
+
 
       {/* Center Content */}
       <main className="flex flex-col h-full overflow-y-scroll hide-scroll">
@@ -237,10 +250,20 @@ export default function ChatInterface() {
         )}
       </main>
 
-      {/* Right Sidebar — Always visible, stacked on mobile */}
-      <div className="">
+      {/* Right Sidebar — Always visible on desktop, hidden on mobile */}
+      <div className="lg:block hidden">
         <RightSidebar />
       </div>
+
+      {/* Mobile: Show "Explore More" to open right sidebar */}
+      {!hasStartedChat && (
+        <div
+          className="lg:hidden flex justify-center place-items-center text-[12px] gap-1 dark:text-white/50 text-black/50 cursor-pointer"
+          onClick={() => setShowRightSidebar(true)}
+        >
+          Explore More <ChevronUp className="w-6 h-6 p-[2px]" />
+        </div>
+      )}
     </div>
   );
 }
