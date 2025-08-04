@@ -161,7 +161,10 @@ export default function ChatInterface() {
 
       {/* Left Sidebar */}
       {showLeftSidebar && (
+
         <div className="lg:hidden fixed inset-0 z-20 dark:bg-black bg-white w-4/5  overflow-y-auto">
+
+
           <LeftSidebar />
           <button
             onClick={() => setShowLeftSidebar(false)}
@@ -177,9 +180,9 @@ export default function ChatInterface() {
 
       {/* Right Sidebar */}
       {showRightSidebar && (
-        <div
-          className={`lg:hidden fixed inset-x-0 bottom-0 top-auto z-20 dark:bg-black bg-white w-full h-4/5 rounded-t-2xl shadow-2xl overflow-y-auto animate-slide-up ${showRightSidebar ? "animate-slide-up" : "animate-slide-down"} `}
-        >
+
+        <div className={`lg:hidden fixed inset-x-0 bottom-0 top-auto z-20 dark:bg-black bg-white w-full h-4/5 rounded-t-2xl shadow-2xl overflow-y-auto animate-slide-up ${showRightSidebar ? 'animate-slide-up' : 'animate-slide-down'} `}>
+
           <RightSidebar />
           <button
             onClick={() => setShowRightSidebar(false)}
@@ -189,6 +192,7 @@ export default function ChatInterface() {
           </button>
         </div>
       )}
+
 
       {/* Center Content */}
       <main className="flex flex-col h-full overflow-y-scroll hide-scroll">
