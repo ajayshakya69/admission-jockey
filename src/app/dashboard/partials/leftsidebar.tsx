@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 export default function LeftSidebar() {
   const { session, logout } = useSupabase();
@@ -22,9 +23,9 @@ export default function LeftSidebar() {
     }
   }, [session]);
   return (
-    <aside className="flex flex-col gap-4 p-4 w-full h-full max-h-[calc(100vh-74px)] overflow-hidden">
+    <aside className="flex flex-col gap-4 p-4 w-full h-full lg:max-h-[calc(100vh-74px)] overflow-hidden">
       {/* Chat History Section - Takes most space */}
-      <div className="bg-gradient-to-b from-white to-white dark:bg-gradient-to-b dark:from-[#ffffff0d] border-t dark:border-[#ffffff14] dark:to-[#ffffff04] rounded-[8px] shadow-[0_0_10px_6px_rgba(142,142,142,0.15)] dark:shadow-none p-4 flex-1 overflow-y-auto">
+      <div className="bg-gradient-to-b from-white to-white dark:bg-gradient-to-b dark:from-[#ffffff0d] border-t dark:border-[#ffffff14] dark:to-[#ffffff04] rounded-[8px] shadow-[0_0_10px_6px_rgba(142,142,142,0.05)] dark:shadow-none p-4 flex-1 overflow-y-auto lg:mt-0 mt-15">
         <h3 className="text-lg font-bold bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] bg-clip-text text-transparent mb-6 text-center">
           Chat History
         </h3>
@@ -42,28 +43,37 @@ export default function LeftSidebar() {
       </div>
 
       {/* Navigation Buttons */}
-      <div className="flex rounded-lg overflow-hidden flex-shrink-0 bg-[linear-gradient(90deg,rgba(140,103,226,1),rgba(148,109,240,1),rgba(232,125,179,1),rgba(255,200,153,1))]">
+      <div className="flex rounded-lg overflow-hidden flex-shrink-0 bg-[linear-gradient(90deg,#A07DF1,#F69DBA)]">
         {/* Alumni Button */}
-        <button className="flex-1 py-3 px-2 flex flex-col items-center justify-center text-white text-xs font-medium hover:bg-white/10 transition-colors">
-          <Users className="w-4 h-4 mb-1" />
+        <Link
+          href="/dashboard/alumini"
+          className="flex-1 py-3 px-2 flex flex-col items-center justify-center text-white text-[8px] font-medium"
+        >
+          <Users className="w-[28px] h-[34px] mb-[3px]" />
           Alumni
-        </button>
+        </Link>
 
         {/* College Finder Button */}
-        <button className="flex-1 py-3 px-2 flex flex-col items-center justify-center text-white text-xs font-medium hover:bg-white/10 transition-colors">
-          <Search className="w-4 h-4 mb-1" />
+        <Link
+          href="/dashboard/collegefinder"
+          className="flex-1 py-3 px-2 flex flex-col items-center justify-center text-white text-[8px] font-medium "
+        >
+          <Search className="w-[28px] h-[34px] mb-[3px]" />
           College Finder
-        </button>
+        </Link>
 
         {/* Online College Button */}
-        <button className="flex-1 py-3 px-2 flex flex-col items-center justify-center text-white text-xs font-medium hover:bg-white/10 transition-colors">
-          <GraduationCap className="w-4 h-4 mb-1" />
+        <Link
+          href="/dashboard/onlineCollege"
+          className="flex-1 py-3 px-2 flex flex-col items-center justify-center text-white text-[8px] font-medium "
+        >
+          <GraduationCap className="w-[28px] h-[34px] mb-[3px]" />
           Online College
-        </button>
+        </Link>
       </div>
 
       {/* Testimonial Card - Fixed height */}
-      <div className="bg-gradient-to-b from-white to-white dark:bg-gradient-to-b dark:from-[#ffffff0d] border-t dark:border-[#ffffff14] dark:to-[#ffffff04] rounded-[8px] shadow-[0_0_10px_6px_rgba(142,142,142,0.15)] dark:shadow-none p-4 flex-shrink-0">
+      <div className="bg-gradient-to-b from-white to-white dark:bg-gradient-to-b dark:from-[#ffffff0d] border-t dark:border-[#ffffff14] dark:to-[#ffffff04] rounded-[8px] shadow-[0_0_10px_6px_rgba(142,142,142,0.05)] dark:shadow-none p-4 flex-shrink-0">
         <div className="flex items-center mb-4 gap-3">
           {false ? (
             <Image
@@ -89,14 +99,17 @@ export default function LeftSidebar() {
           "Curriculum is industry-relevant and helped me land my first job."
         </p>
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-1">
-            {[1, 2, 3, 4, 5].map((star) => (
-              <Star
-                key={star}
-                className={`w-3 h-3 ${star <= 4 ? "fill-yellow-400 text-yellow-400" : "text-gray-600"}`}
-              />
-            ))}
-            <span className="text-gray-400 text-xs ml-2">
+          <div className="flex flex-col justify-between gap-1">
+            <div className="flex gap-3">
+              {[1, 2, 3, 4, 5].map((star) => (
+                <Star
+                  key={star}
+                  className={`w-3 h-3 ${star <= 4 ? "fill-[#946DF0] text-[#946DF0]" : "text-gray-600"}`}
+                />
+              ))}
+            </div>
+
+            <span className="text-gray-400 text-[10px]">
               48 connected right now
             </span>
           </div>
@@ -107,7 +120,7 @@ export default function LeftSidebar() {
       </div>
 
       {/* User Profile Section - Fixed at bottom */}
-      <div className="bg-gradient-to-b from-white to-white dark:bg-gradient-to-b dark:from-[#ffffff0d] border-t dark:border-[#ffffff14] dark:to-[#ffffff04] rounded-[8px] shadow-[0_0_10px_6px_rgba(142,142,142,0.15)] dark:shadow-none p-4 flex-shrink-0">
+      <div className="bg-gradient-to-b from-white to-white dark:bg-gradient-to-b dark:from-[#ffffff0d] border-t dark:border-[#ffffff14] dark:to-[#ffffff04] rounded-[8px] shadow-[0_0_10px_6px_rgba(142,142,142,0.05)] dark:shadow-none p-4 flex-shrink-0">
         <div className="grid grid-cols-12 gap-3 items-center">
           {/* Avatar or Fallback */}
           <div className="col-span-2">
@@ -127,18 +140,18 @@ export default function LeftSidebar() {
           </div>
 
           {/* User Info */}
-          <div className="col-span-8">
-            <h4 className="text-sm font-bold text-transparent bg-clip-text bg-[linear-gradient(90deg,#A07DF1,#F69DBA)]">
+          <div className="col-span-8 ml-3">
+            <h4 className="text-sm font-bold text-transparent bg-clip-text bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] mb-1">
               {user?.name || "Unknown"}
             </h4>
-            <p className="text-xs text-gray-400">{user?.email || "No email"}</p>
+            <p className="text-[10px] text-gray-400">{user?.email || "No email"}</p>
           </div>
 
           {/* Logout Icon */}
           <div className="col-span-2 flex justify-end">
             <LogOut
-              size={18}
-              className="text-white cursor-pointer"
+              size={20}
+              className="dark:text-white text-black cursor-pointer"
               onClick={logout}
             />
           </div>

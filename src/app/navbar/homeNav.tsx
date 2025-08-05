@@ -22,16 +22,16 @@ const Navbar: React.FC = () => {
 
   return (
     <nav className="lg:py-8 py-4 dark:text-white text-black flex justify-between items-center">
-        <img
-          src="/01logo.png"
-          className="dark:block hidden md:w-[250px] w-[170px] mt-[1px]"
-          alt="logo"
-        />
-        <img
-          src="/lightlogo.png"
-          className="dark:hidden block md:w-[250px] w-[170px]"
-          alt="logo"
-        />
+      <img
+        src="/01logo.png"
+        className="dark:block hidden md:w-[250px] w-[170px] mt-[1px]"
+        alt="logo"
+      />
+      <img
+        src="/lightlogo.png"
+        className="dark:hidden block md:w-[250px] w-[170px]"
+        alt="logo"
+      />
 
       {/* Desktop Buttons */}
       <div className="hidden lg:flex items-center gap-4">
@@ -73,8 +73,7 @@ const Navbar: React.FC = () => {
           </DropdownMenuTrigger>
           <DropdownMenuContent className="w-40 mr-5 dark:bg-[#000000b0] bg-[#fffcfc33] backdrop-blur-[2px] border-[1px] border-[#00000097] dark:border-[#ffffff55] ">
             <DropdownMenuItem asChild>
-              <div className="flex items-center justify-between w-full">
-                <span className="text-sm ">Theme</span>
+              <div className="w-full">
                 <ThemeToggle />
               </div>
             </DropdownMenuItem>
