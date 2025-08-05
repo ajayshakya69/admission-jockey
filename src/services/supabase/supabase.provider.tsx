@@ -10,11 +10,7 @@ import { supabaseConfig } from "./config";
 
 const createClient = new SupabaseAuthClient(supabaseConfig);
 
-export function SupabaseNewProvider({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export function SupabaseProvider({ children }: { children: React.ReactNode }) {
   const [retryAttempts, setRetryAttempts] = useState(0);
   const { axios } = useAxios();
 
@@ -75,7 +71,7 @@ export function SupabaseNewProvider({
 
         // If there's no response from the server (network error or similar), throw a generic error
         throw error;
-      }
+      },
     );
   }
 

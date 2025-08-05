@@ -17,8 +17,9 @@ export default function LeftSidebar() {
   const [user, setUser] = useState<null | any>(null);
 
   useEffect(() => {
-    if (session && session.user && session.user.user_metadata) {
-      setUser(session.user.user_metadata);
+    if (session && session.user) {
+      setUser(session.user);
+      console.log(session.user);
     }
   }, [session]);
   return (
@@ -111,9 +112,9 @@ export default function LeftSidebar() {
         <div className="grid grid-cols-12 gap-3 items-center">
           {/* Avatar or Fallback */}
           <div className="col-span-2">
-            {user?.avatar_url ? (
+            {user?.user_metadata?.avatar_url ? (
               <Image
-                src={user.avatar_url}
+                src={user?.user_metadata?.avatar_url}
                 alt="user"
                 width={40}
                 height={40}
@@ -129,9 +130,13 @@ export default function LeftSidebar() {
           {/* User Info */}
           <div className="col-span-8">
             <h4 className="text-sm font-bold text-transparent bg-clip-text bg-[linear-gradient(90deg,#A07DF1,#F69DBA)]">
-              {user?.name || "Unknown"}
+              {user && user.app_metadata.provider == "email"
+                ? user?.user_metadata.display_name
+                : user?.user_metadata.name}
             </h4>
-            <p className="text-xs text-gray-400">{user?.email || "No email"}</p>
+            <p className="text-xs text-gray-400">
+              {user?.user_metadata.email || "No email"}
+            </p>
           </div>
 
           {/* Logout Icon */}
