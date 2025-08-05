@@ -11,7 +11,7 @@ import { Message } from "@/app/dashboard/dashboard.type";
 export function ChatbotProvider({ children }: { children: React.ReactNode }) {
   const { session } = useSupabase();
   const { axios } = useAxios();
-  const [chatHistory, setChatHistory] = useState([]);
+  const [chatHistory, setChatHistory] = useState<any>([]);
 
   const {
     data: sessionId,
@@ -85,6 +85,21 @@ export function ChatbotProvider({ children }: { children: React.ReactNode }) {
     setMessages && setMessages((prev) => [...prev, botResponse]);
     setIsTyping && setIsTyping(false);
   };
+
+  function localStorageHandler(seesionId: string, message: Message) {
+    const existingChat = chatHistory.find(
+      (val: any) => val.sessionId == sessionId,
+    );
+    if (existingChat) {
+      setChatHistory((pre) =>
+        pre.map((val) => {
+          if (val.sessionId == sessionId)
+            return { ...val, messages: [...val.messages, message] };
+          return val;
+        }),
+      );
+    }
+  }
 
   useEffect(() => {
     refechSessionId();
