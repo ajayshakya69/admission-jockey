@@ -19,7 +19,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Alumna.ai - Transforming Higher Education Through AI Innovation",
   description:
-    "Alumna.ai is redefining the future of education with AI-powered solutions for students, institutions, and alumni.",
+    "Alumna.ai is redefining the future of education with AI-powered solutions for students, institutions, and alumn.",
 };
 
 const poppins = Poppins({
