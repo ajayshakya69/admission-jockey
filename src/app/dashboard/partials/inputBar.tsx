@@ -8,7 +8,8 @@ import { Button } from "@/components/ui/button";
 import { Message } from "../dashboard.type";
 import axios from "axios";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useChatbotId } from "@/hooks/chatbot/chatbot.hook";
+
+import { useChatbotContext } from "@/app/providers/chatbot/chatbot.context";
 
 interface InputBarProps {
   placeholder?: string;
@@ -37,63 +38,22 @@ const InputBar: React.FC<InputBarProps> = ({
   const initMessage = searchParams.get("initMessage");
   const hasHandledInit = useRef(false);
 
-  const { sessionId } = useChatbotId();
+  const { handleSendMessage, sessionId } = useChatbotContext();
 
   const router = useRouter();
-  const handleSendMessage = async () => {
-    if (!inputValue.trim()) return;
-
-    if (onSubmit) {
-      onSubmit(inputValue.trim());
-
-      return; // 🚫 Don't continue normal behavior
-    }
-
-    if (!hasStartedChat) {
-      setHasStartedChat && setHasStartedChat(true);
-    }
-
-    const userMessage: Message = {
-      id: Date.now().toString(),
-      content: inputValue,
-      sender: "user",
-      timestamp: new Date(),
-    };
-
-    if (setMessages) {
-      setMessages((prev) => [...prev, userMessage]);
-    }
-    if (setIsTyping) {
-      setIsTyping(true);
-    }
-    setInputValue("");
-
-    const resMessage = await axios.post(
-      `${process.env.NEXT_PUBLIC_ML_URL}/chat`,
-      {
-        session_id: sessionId,
-        message: inputValue,
-        history: ["string"],
-      },
-    );
-
-    let botResponse: Message;
-
-    botResponse = {
-      id: (Date.now() + 1).toString(),
-      content: resMessage.data.response,
-      sender: "bot",
-      timestamp: new Date(),
-    };
-
-    setMessages && setMessages((prev) => [...prev, botResponse]);
-    setIsTyping && setIsTyping(false);
-  };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
-      handleSendMessage();
+      handleSendMessage({
+        inputValue,
+        onSubmit,
+        hasStartedChat,
+        setHasStartedChat,
+        setMessages,
+        setIsTyping,
+        setInputValue,
+      });
     }
   };
 
