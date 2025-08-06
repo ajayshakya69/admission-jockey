@@ -1,5 +1,3 @@
-import { Message } from "@/app/dashboard/dashboard.type";
-
 export type chatbotContextType = {
   sessionId: string;
   isSessionIdLoading: boolean;
@@ -16,3 +14,17 @@ export type handleSumbitMessageType = {
   setIsTyping?: React.Dispatch<React.SetStateAction<boolean>>;
   setInputValue: React.Dispatch<React.SetStateAction<string>>;
 };
+
+export interface Message {
+  id: string;
+  content: string;
+  sender: "user" | "bot";
+  timestamp: Date;
+  type?: "text" | "card";
+  cardData?: {
+    title: string;
+    description: string;
+    images?: string[];
+    action?: string;
+  };
+}

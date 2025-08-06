@@ -25,8 +25,11 @@ export default function LeftSidebar() {
     }
   }, [session]);
 
-  console.log({ chatHistory });
+  useEffect(() => {
+    console.log("this is chat history");
+  }, [chatHistory]);
 
+  console.log("this is left sideBar");
   return (
     <aside className="flex flex-col gap-4 p-4 w-full h-full lg:max-h-[calc(100vh-74px)] overflow-hidden">
       {/* Chat History Section - Takes most space */}

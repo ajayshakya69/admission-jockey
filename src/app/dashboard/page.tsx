@@ -3,7 +3,6 @@
 import type React from "react";
 import { useState, useRef, useEffect, Suspense } from "react";
 import Welcome from "./partials/welcome";
-import { Message } from "./dashboard.type";
 import InputBar from "./partials/inputBar";
 import MessageComponent from "./partials/messageComponent";
 import Loader from "@/components/ui/loader";
@@ -11,27 +10,27 @@ import RightSidebar from "./partials/rightsidebar";
 import LeftSidebar from "./partials/leftsidebar";
 import { ChevronRight, ChevronUp } from "lucide-react";
 import { useChatbotContext } from "../providers/chatbot/chatbot.context";
+import { InputProvider } from "../providers/inputBarContext/chatbot.context";
+import { PromptSuggestion } from "./partials/prompt.suggestion";
 
 export default function ChatInterface() {
-  const [isTyping, setIsTyping] = useState(false);
+  const {
+    messages,
+    hasStartedChat,
+    sessionId,
+    showLeftSidebar,
+    setShowLeftSidebar,
+    showRightSidebar,
+    setShowRightSidebar,
+  } = useChatbotContext();
 
-  const [showLeftSidebar, setShowLeftSidebar] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
-  ``;
-  const { sessionId } = useChatbotContext();
-  const [showRightSidebar, setShowRightSidebar] = useState(false);
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
-
-  const { messages, setMessages, hasStartedChat, setHasStartedChat } =
-    useChatbotContext();
 
   useEffect(() => {
-    scrollToBottom();
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
-  // if (!sessionId) return <Loader />;
+  if (!sessionId) return <Loader />;
 
   return (
     <div className="flex flex-col lg:grid lg:grid-cols-[310px_1fr_325px] h-[calc(100vh-74px)] overflow-y-hidden dark:bg-[#000000] bg-[#f6f6f6] relative">
@@ -83,54 +82,30 @@ export default function ChatInterface() {
             <div className="lg:mt-0">
               <Welcome />
             </div>
-
-            <div className="p-4">
-              <div className="w-full mx-auto">
-                <Suspense fallback={<div>Loading...</div>}>
-                  <InputBar
-                    setMessages={setMessages}
-                    hasStartedChat={hasStartedChat}
-                    setHasStartedChat={setHasStartedChat}
-                    setIsTyping={setIsTyping}
-                  />
-                </Suspense>
-              </div>
-            </div>
-
-            {/* Suggested Questions */}
-            <div className="w-full max-w-4xl lg:grid hidden grid-cols-1 sm:grid-cols-3 mx-auto gap-4">
-              {[
-                "I scored 85% in 12th grade with PCM. Which engineering colleges can I get admission in?",
-                "I’m interested in studying psychology in India. What are the top colleges I should consider?",
-                "Based on my low NEET score (430), can you suggest any good private medical colleges with affordable fees?",
-              ].map((question, idx) => (
-                <div
-                  key={idx}
-                  className="dark:bg-[#11111146] bg-white dark:text-white text-black p-4 rounded-lg shadow-[0_0_20px_6px_rgba(199,211,234,0.15)] dark:shadow-none text-[10px] text-center dark:hover:bg-[#1a1a1a] hover:bg-[#1a1a1a34] transition flex place-items-center cursor-pointer"
-                >
-                  {question}
+            <InputProvider>
+              <div className="p-4">
+                <div className="w-full mx-auto">
+                  <Suspense fallback={<div>Loading...</div>}>
+                    <InputBar />
+                  </Suspense>
                 </div>
-              ))}
-            </div>
+              </div>
+
+              {/* Suggested Questions */}
+              <PromptSuggestion />
+            </InputProvider>
           </div>
         ) : (
           <>
             <div className="flex-1 overflow-y-auto px-5 lg:mt-10 text-white custom-scroll">
-              <MessageComponent
-                messages={messages}
-                messagesEndRef={messagesEndRef}
-                isTyping={isTyping}
-              />
+              <MessageComponent messagesEndRef={messagesEndRef} />
             </div>
 
             <div className="pt-4 lg:pb-10 lg:px-2 px-5">
               <Suspense fallback={<div>Loading...</div>}>
-                <InputBar
-                  setMessages={setMessages}
-                  hasStartedChat={hasStartedChat}
-                  setHasStartedChat={setHasStartedChat}
-                  setIsTyping={setIsTyping}
-                />
+                <InputProvider>
+                  <InputBar />
+                </InputProvider>
               </Suspense>
             </div>
           </>
