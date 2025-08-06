@@ -103,7 +103,7 @@ export function ChatbotProvider({ children }: { children: React.ReactNode }) {
         });
       } else {
         // ➕ Add a new session (and limit to latest 3 if needed)
-        return [{ sessionId, messages: [message] }, ...prev];
+        return [{ sessionId, messages: [message] }, ...prev].slice(0, 3);
       }
     });
   }

@@ -20,7 +20,6 @@ export default function LeftSidebar() {
   useEffect(() => {
     if (session && session.user) {
       setUser(session.user);
-      console.log(session.user);
     }
   }, [session]);
   return (
