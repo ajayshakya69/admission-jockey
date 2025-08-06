@@ -55,7 +55,7 @@ export function ChatbotProvider({ children }: { children: React.ReactNode }) {
       sender: "user",
       timestamp: new Date(),
     };
-
+    localStorageHandler(sessionId, userMessage);
     if (setMessages) {
       setMessages((prev) => [...prev, userMessage]);
     }
@@ -82,32 +82,39 @@ export function ChatbotProvider({ children }: { children: React.ReactNode }) {
       timestamp: new Date(),
     };
 
+    localStorageHandler(sessionId, botResponse);
     setMessages && setMessages((prev) => [...prev, botResponse]);
     setIsTyping && setIsTyping(false);
   };
 
-  function localStorageHandler(seesionId: string, message: Message) {
-    const existingChat = chatHistory.find(
-      (val: any) => val.sessionId == sessionId,
-    );
-    if (existingChat) {
-      setChatHistory((pre) =>
-        pre.map((val) => {
-          if (val.sessionId == sessionId)
-            return { ...val, messages: [...val.messages, message] };
-          return val;
-        }),
+  function localStorageHandler(sessionId: string, message: Message) {
+    setChatHistory((prev: any[]) => {
+      const existingChatIndex = prev.findIndex(
+        (val: any) => val.sessionId === sessionId,
       );
-    }
-  }
 
+      if (existingChatIndex !== -1) {
+        // 🛠 Update the existing session
+        return prev.map((val: any, index: number) => {
+          if (index === existingChatIndex) {
+            return { ...val, messages: [...val.messages, message] };
+          }
+          return val;
+        });
+      } else {
+        // ➕ Add a new session (and limit to latest 3 if needed)
+        return [{ sessionId, messages: [message] }, ...prev];
+      }
+    });
+  }
   useEffect(() => {
     refechSessionId();
   }, [session]);
 
-  // useEffect(()=>{
-  //   const chatHistory = localStorage.getItem(CHATBOT_HISTORY_KEY)
-  // },[])
+  useEffect(() => {
+    const chatHistorylocal = localStorage.getItem(CHATBOT_HISTORY_KEY);
+    console.log(chatHistory);
+  }, [chatHistory]);
 
   return (
     <ChatbotContext.Provider
