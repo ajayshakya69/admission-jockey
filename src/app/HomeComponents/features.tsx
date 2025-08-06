@@ -14,19 +14,19 @@ export default function KeyFeatures() {
         <TabsList className="flex flex-wrap justify-center gap-4 sm:gap-6 lg:gap-8 mb-4 lg:mb-15 bg-transparent">
           <TabsTrigger
             value="application"
-            className="rounded-lg lg:w-[198px] px-6 sm:px-8 py-5 sm:py-6 bg-gradient-to-b from-[#f0f0f003] to-[#eaeaea0a] border-t border-[#0000003f] dark:from-[#ffffff0d] dark:to-[#ffffff04] dark:border-t dark:border-[#ffffff14] text-black dark:text-white w-full sm:w-auto text-center shadow-[0_0_24px_8px_rgba(199,211,234,0.25)] dark:shadow-none "
+            className="rounded-lg data-[state=active]:bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] data-[state=active]:text-white lg:w-[198px] px-6 sm:px-8 py-5 sm:py-6 bg-gradient-to-b from-[#f0f0f003] to-[#eaeaea0a] border-t border-[#0000003f] dark:from-[#ffffff0d] dark:to-[#ffffff04] dark:border-t dark:border-[#ffffff14] text-black dark:text-white w-full sm:w-auto text-center shadow-[0_0_24px_8px_rgba(199,211,234,0.25)] dark:shadow-none "
           >
             Application Builder
           </TabsTrigger>
           <TabsTrigger
             value="dates"
-            className="rounded-lg lg:w-[198px] px-6 sm:px-8 py-5 sm:py-6 bg-gradient-to-b from-[#f0f0f003] to-[#eaeaea0a] border-t border-[#0000003f] dark:from-[#ffffff0d] dark:to-[#ffffff04] dark:border-t dark:border-[#ffffff14] text-black dark:text-white w-full sm:w-auto text-center shadow-[0_0_24px_8px_rgba(199,211,234,0.25)] dark:shadow-none "
+            className="rounded-lg data-[state=active]:bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] data-[state=active]:text-white lg:w-[198px] px-6 sm:px-8 py-5 sm:py-6 bg-gradient-to-b from-[#f0f0f003] to-[#eaeaea0a] border-t border-[#0000003f] dark:from-[#ffffff0d] dark:to-[#ffffff04] dark:border-t dark:border-[#ffffff14] text-black dark:text-white w-full sm:w-auto text-center shadow-[0_0_24px_8px_rgba(199,211,234,0.25)] dark:shadow-none "
           >
             Important Dates
           </TabsTrigger>
           <TabsTrigger
             value="alumni"
-            className="rounded-lg lg:w-[198px] px-6 sm:px-8 py-5 sm:py-6 bg-gradient-to-b from-[#f0f0f003] to-[#eaeaea0a] border-t border-[#0000003f] dark:from-[#ffffff0d] dark:to-[#ffffff04] dark:border-t dark:border-[#ffffff14] text-black dark:text-white w-full sm:w-auto text-center shadow-[0_0_24px_8px_rgba(199,211,234,0.25)] dark:shadow-none "
+            className="rounded-lg data-[state=active]:bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] data-[state=active]:text-white lg:w-[198px] px-6 sm:px-8 py-5 sm:py-6 bg-gradient-to-b from-[#f0f0f003] to-[#eaeaea0a] border-t border-[#0000003f] dark:from-[#ffffff0d] dark:to-[#ffffff04] dark:border-t dark:border-[#ffffff14] text-black dark:text-white w-full sm:w-auto text-center shadow-[0_0_24px_8px_rgba(199,211,234,0.25)] dark:shadow-none "
           >
             Search Jobs
           </TabsTrigger>
