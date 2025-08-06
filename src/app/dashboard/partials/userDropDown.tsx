@@ -17,10 +17,17 @@ export function UserDropDown() {
   const router = useRouter();
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger>
-        <User className="text-white" />
+      <DropdownMenuTrigger className="outline-none w-full">
+        <div className="flex justify-between place-items-center w-full">
+          <span className="lg:hidden">User</span>
+          <div className="rounded-full flex items-center justify-center lg:h-10 lg:w-10 w-[32px] h-[32px] p-[1px] bg-[linear-gradient(90deg,#A07DF1,#F69DBA)]">
+            <div className="rounded-full h-full w-full flex justify-center items-center outline-none">
+              <User className="h-[22px] text-white" />
+            </div>
+          </div>
+        </div>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className=" mt-3 dark:bg-black bg-white border border-gray-700 outline-none">
+      <DropdownMenuContent className=" lg:mt-2 lg:mr-3 mr-10 dark:bg-black bg-white border border-gray-700 outline-none">
         <Link href="/dashboard/profile">
           <DropdownMenuItem>
             <User className="mr-2 h-4 w-4" />
