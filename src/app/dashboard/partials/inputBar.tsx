@@ -5,20 +5,18 @@ import { MdOutlineMicNone } from "react-icons/md";
 import { Send } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Message } from "../dashboard.type";
 import axios from "axios";
 import { useRouter, useSearchParams } from "next/navigation";
 
 import { useChatbotContext } from "@/app/providers/chatbot/chatbot.context";
+import { Message } from "@/app/providers/chatbot/chatbot.types";
+import { useInputContext } from "@/app/providers/inputBarContext/chatbot.context";
 
 interface InputBarProps {
   placeholder?: string;
   showMicButton?: boolean;
   handleKeyPress?: (e: React.KeyboardEvent) => void;
-  setMessages?: React.Dispatch<React.SetStateAction<Message[]>>;
-  setIsTyping?: React.Dispatch<React.SetStateAction<boolean>>;
-  hasStartedChat?: boolean;
-  setHasStartedChat?: React.Dispatch<React.SetStateAction<boolean>>;
+
   customButton?: ReactNode;
   onSubmit?: (message: string) => void; // ✅ New custom button (e.g. emoji picker, image upload, etc.)
 }
@@ -26,19 +24,22 @@ interface InputBarProps {
 const InputBar: React.FC<InputBarProps> = ({
   placeholder = "What's your next discovery?",
   showMicButton = true,
-  setMessages,
   customButton,
-  setIsTyping,
-  setHasStartedChat,
-  hasStartedChat,
   onSubmit,
 }) => {
-  const [inputValue, setInputValue] = useState("");
   const searchParams = useSearchParams();
   const initMessage = searchParams.get("initMessage");
   const hasHandledInit = useRef(false);
+  const { inputValue, setInputValue } = useInputContext();
 
-  const { handleSendMessage, sessionId } = useChatbotContext();
+  const {
+    handleSendMessage,
+    sessionId,
+
+    setHasStartedChat,
+    setMessages,
+    setIsTyping,
+  } = useChatbotContext();
 
   const router = useRouter();
 
@@ -46,12 +47,8 @@ const InputBar: React.FC<InputBarProps> = ({
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
       handleSendMessage({
-        inputValue,
         onSubmit,
-        hasStartedChat,
-        setHasStartedChat,
-        setMessages,
-        setIsTyping,
+        inputValue,
         setInputValue,
       });
     }
@@ -87,7 +84,7 @@ const InputBar: React.FC<InputBarProps> = ({
             sender: "bot",
             timestamp: new Date(),
           };
-          setMessages && setMessages((prev) => [...prev, botMessage]);
+          setMessages && setMessages((prev: any) => [...prev, botMessage]);
         })
         .finally(() => {
           setIsTyping && setIsTyping(false);

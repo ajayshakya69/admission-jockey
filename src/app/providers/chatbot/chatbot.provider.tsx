@@ -3,17 +3,20 @@ import { ChatbotContext } from "./chatbot.context";
 import { useSupabase } from "@/services/supabase/supabase.hook";
 import { useAxios } from "@/services/axios/axios.hook";
 import { useQuery } from "@tanstack/react-query";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { CHATBOT_HISTORY_KEY } from "./chatbot.constants";
-import { handleSumbitMessageType } from "./chatbot.types";
-import { Message } from "@/app/dashboard/dashboard.type";
+import { handleSumbitMessageType, Message } from "./chatbot.types";
 
 export function ChatbotProvider({ children }: { children: React.ReactNode }) {
   const { session } = useSupabase();
   const { axios } = useAxios();
+  const [inputValue, setInputValue] = useState("");
   const [chatHistory, setChatHistory] = useState<any[]>([]);
   const [hasStartedChat, setHasStartedChat] = useState<boolean>(false);
   const [messages, setMessages] = useState<Message[]>([]);
+  const [isTyping, setIsTyping] = useState(false);
+  const [showLeftSidebar, setShowLeftSidebar] = useState(false);
+  const [showRightSidebar, setShowRightSidebar] = useState(false);
 
   const {
     data: sessionId,
@@ -42,9 +45,8 @@ export function ChatbotProvider({ children }: { children: React.ReactNode }) {
   }
 
   const handleSendMessage = async ({
-    inputValue,
     onSubmit,
-    setIsTyping,
+    inputValue,
     setInputValue,
   }: handleSumbitMessageType) => {
     if (!inputValue.trim()) return;
@@ -148,6 +150,14 @@ export function ChatbotProvider({ children }: { children: React.ReactNode }) {
         handlePreviousMessages,
         hasStartedChat,
         setHasStartedChat,
+        inputValue,
+        setInputValue,
+        isTyping,
+        setIsTyping,
+        showLeftSidebar,
+        setShowLeftSidebar,
+        showRightSidebar,
+        setShowRightSidebar,
       }}
     >
       {children}

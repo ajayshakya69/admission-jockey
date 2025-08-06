@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from "react";
-import { Message } from "../dashboard.type";
 import { Avatar } from "@radix-ui/react-avatar";
 import { AvatarFallback } from "@/components/ui/avatar";
 import { Sparkle } from "lucide-react";
-interface pageProps {
-  messages: Message[];
-  messagesEndRef: React.RefObject<HTMLDivElement | null>;
-  isTyping: boolean;
-}
+import { useChatbotContext } from "@/app/providers/chatbot/chatbot.context";
+import { useSupabase } from "@/services/supabase/supabase.hook";
+
 export default function MessageComponent({
-  messages,
   messagesEndRef,
-  isTyping,
-}: pageProps) {
+}: {
+  messagesEndRef: React.RefObject<HTMLDivElement | null>;
+}) {
+  const { isTyping, messages } = useChatbotContext();
+  const { session } = useSupabase();
+  const [userLetter, setUserLetter] = useState("U");
+
   function TypingMessage({ content }: { content: string }) {
     const [displayedText, setDisplayedText] = useState("");
 
@@ -29,6 +30,16 @@ export default function MessageComponent({
 
       return () => clearInterval(interval);
     }, [content]);
+
+    useEffect(() => {
+      if (!session) return;
+      const letter =
+        session.user && session.user.app_metadata.provider == "email"
+          ? session.user?.user_metadata.display_name.slice(0, 1)
+          : session.user?.user_metadata.name.slice(0, 1);
+
+      setUserLetter(letter);
+    }, [session]);
 
     function renderWithBold(text: string) {
       return text.split("\n").map((line, idx) => (
@@ -58,7 +69,7 @@ export default function MessageComponent({
 
   return (
     <div className="flex flex-col justify-start md:px-4 px-1">
-      {messages.map((message) => (
+      {messages.map((message: any) => (
         <div
           key={message.id}
           className={`flex py-2 ${message.sender === "user" ? "justify-end" : "justify-start"}`}
@@ -104,7 +115,7 @@ export default function MessageComponent({
                 }}
               >
                 <AvatarFallback className="text-white font-bold text-sm md:text-xl bg-transparent">
-                  A
+                  {userLetter}
                 </AvatarFallback>
               </Avatar>
             )}
@@ -115,11 +126,11 @@ export default function MessageComponent({
                 <TypingMessage content={message.content} />
               ) : (
                 <div className="dark:bg-black bg-white inline-block border border-white/20 dark:text-white text-black leading-relaxed p-3 md:p-4 rounded-lg shadow-md space-y-2 text-sm md:text-base font-poppins">
-                  {message.content.split("\n").map((item, key) => (
+                  {message.content.split("\n").map((item: any, key: any) => (
                     <span key={key}>
                       {item
                         .split(/(\*\*.*?\*\*)/g)
-                        .map((part, index) =>
+                        .map((part: any, index: any) =>
                           part.startsWith("**") && part.endsWith("**") ? (
                             <strong key={index}>{part.slice(2, -2)}</strong>
                           ) : (
@@ -133,7 +144,7 @@ export default function MessageComponent({
               )
             ) : (
               <div className=" font-poppins dark:bg-black bg-white inline-block border border-white/20 dark:text-white text-black leading-relaxed p-3 md:p-4 rounded-lg shadow-md space-y-2 text-sm md:text-base">
-                {message.content.split("\n").map((item, key) => (
+                {message.content.split("\n").map((item: any, key: any) => (
                   <span key={key}>
                     {item}
                     <br />

@@ -4,6 +4,7 @@ import React, { useState, ReactNode } from "react";
 import { GrAttachment } from "react-icons/gr";
 import { MdOutlineMicNone } from "react-icons/md";
 import { Send } from "lucide-react";
+import { useChatbotContext } from "../providers/chatbot/chatbot.context";
 
 interface InputBarProps {
   placeholder?: string;
@@ -18,7 +19,7 @@ const InputBar: React.FC<InputBarProps> = ({
   onSend,
   customButton,
 }) => {
-  const [inputValue, setInputValue] = useState("");
+  const { inputValue, setInputValue } = useChatbotContext();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
@@ -33,6 +34,7 @@ const InputBar: React.FC<InputBarProps> = ({
 
     setInputValue("");
   };
+  console.log(inputValue);
 
   return (
     <div className="bg-gradient-to-b from-[#ffffff0d] border-t border-[#ffffff14] to-[#ffffff04] rounded-lg h-14 px-5 my-4 flex items-center gap-3">
