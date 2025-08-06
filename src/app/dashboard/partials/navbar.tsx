@@ -76,29 +76,24 @@ export default function Navbar() {
           {/* Right: Dots on mobile */}
           <div className="md:hidden  relative">
             <DropdownMenu>
-              <DropdownMenuTrigger>
+              <DropdownMenuTrigger className="outline-none">
                 <MoreVertical className="dark:text-white text-black w-8 h-8 p-[3px]" />
               </DropdownMenuTrigger>
               <DropdownMenuContent
                 side="right"
                 align="start"
-                className="dark:bg-black bg-white dark:text-white text-black border dark:border-white/20 border-black/10 mt-10 rounded-xl shadow-lg animate-slideInRight transition-all duration-300 ease-in-out p-1"
+                className="dark:bg-black bg-white dark:text-white text-black border dark:border-white/20 border-black/10 mt-10 rounded-sm  shadow-lg animate-slideInRight transition-all duration-300 ease-in-out p-0 w-40"
               >
-                <DropdownMenuItem className="w-full flex items-center gap-3 py-2 px-4">
+                <DropdownMenuItem className="w-full flex items-center py-2 px-4">
                   <ThemeToggle />
-                  <span className="text-sm">Theme</span>
                 </DropdownMenuItem>
 
-                <DropdownMenuItem className="w-full flex items-center gap-3 py-2 px-4">
+                <DropdownMenuItem className="w-full flex items-center py-2 px-4">
                   <NotificationDropdown />
-                  <span className="text-sm">Notifications</span>
                 </DropdownMenuItem>
 
-                <DropdownMenuItem className="w-full flex items-center gap-3 py-2 px-4">
-                  <div className="rounded-full h-8 w-8 bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] flex items-center justify-center">
-                    <UserDropDown />
-                  </div>
-                  <span className="text-sm">User</span>
+                <DropdownMenuItem className="w-full flex items-center py-2 px-4">
+                  <UserDropDown />
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
@@ -174,9 +169,7 @@ export default function Navbar() {
           <div className="hidden md:flex gap-5">
             <ThemeToggle />
             <NotificationDropdown />
-            <div className="rounded-full h-10 w-10 bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] flex items-center justify-center">
-              <UserDropDown />
-            </div>
+            <UserDropDown />
           </div>
         </div>
       </div>

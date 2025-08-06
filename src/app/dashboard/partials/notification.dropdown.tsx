@@ -15,14 +15,17 @@ export default function NotificationDropdown() {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <button className="rounded-full flex items-center justify-center lg:h-10 lg:w-10 w-[32px] h-[32px] p-[1px] bg-[linear-gradient(90deg,#A07DF1,#F69DBA)]">
-          <div className="rounded-full h-full w-full dark:bg-black bg-white flex justify-center items-center outline-none">
-            <BellRing className="h-[18px] text-[#f2acc3]" />
+      <DropdownMenuTrigger className="outline-none w-full">
+        <div className="flex justify-between place-items-center w-full">
+          <span className="lg:hidden">Notification</span>
+          <div className="rounded-full flex items-center justify-center lg:h-10 lg:w-10 w-[32px] h-[32px] p-[1px] bg-[linear-gradient(90deg,#A07DF1,#F69DBA)]">
+            <div className="rounded-full h-full w-full dark:bg-black bg-white flex justify-center items-center outline-none">
+              <BellRing className="h-[18px] text-[#f2acc3]" />
+            </div>
           </div>
-        </button>
+        </div>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-60 dark:bg-black bg-white text-white border border-neutral-800 mr-3">
+      <DropdownMenuContent className="lg:w-60 w-40 dark:bg-black bg-white text-white border border-neutral-800 lg:mr-3 mr-25 lg:mt-2">
         <DropdownMenuLabel className="dark:text-white text-black">
           Notifications
         </DropdownMenuLabel>

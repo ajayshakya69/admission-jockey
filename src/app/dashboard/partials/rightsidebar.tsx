@@ -31,7 +31,7 @@ export default function RightSidebar() {
 
         <div className=" rounded-xl p-4">
           <h4 className="text-lg font-bold bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] bg-clip-text text-transparent mb-6 text-center">Colleges</h4>
-          <div className="dark:bg-gradient-to-t dark:from-[#ffffff06] dark:via-[#ffffff02] dark:to-[#ffffff06] bg-gradient-to-l from-white via-white to-white rounded-[8px] overflow-hidden  shadow-[0_0_10px_6px_rgba(142,142,142,0.15)] dark:shadow-none flex flex-col">
+          <div className="dark:bg-gradient-to-t dark:from-[#ffffff06] dark:via-[#ffffff02] dark:to-[#ffffff06] bg-gradient-to-l from-white via-white to-white rounded-[8px] overflow-hidden  shadow-[0_0_10px_6px_rgba(142,142,142,0.05)] dark:shadow-none flex flex-col">
             <img src="/collegeimg/dbs.png" className="w-full h-30 object-cover rounded-t" />
             <div className="p-5 px-4">
               <h1 className="text-transparent bg-clip-text bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] font-semibold text-sm">DBS Global University</h1>
