@@ -11,7 +11,7 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar";
 
-import { navbarItems } from "../dashboard-constants";
+import { navbarItems } from "../dashboard.constants";
 import { NavMain } from "./nav-bar";
 import Image from "next/image";
 import Link from "next/link";
@@ -41,19 +41,30 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               >
                 {state === "expanded" ? (
                   <div className=" ml-2">
-                    <Image src="/01logo.png" alt="Logo" width={225} height={100} className="dark:block hidden" />
-                    <Image src="/lightlogo.png" alt="Logo" width={225} height={100} className="dark:hidden block" />
+                    <Image
+                      src="/01logo.png"
+                      alt="Logo"
+                      width={225}
+                      height={100}
+                      className="dark:block hidden"
+                    />
+                    <Image
+                      src="/lightlogo.png"
+                      alt="Logo"
+                      width={225}
+                      height={100}
+                      className="dark:hidden block"
+                    />
                   </div>
                 ) : (
                   <div>
                     <Image
-                    src="/miniLogo.png"
-                    alt="Icon"
-                    width={100}
-                    height={100}
-                  />
+                      src="/miniLogo.png"
+                      alt="Icon"
+                      width={100}
+                      height={100}
+                    />
                   </div>
-                  
                 )}
               </Link>
               {/* <ChevronsUpDown className="ml-auto" /> */}

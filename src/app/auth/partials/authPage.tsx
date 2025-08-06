@@ -149,8 +149,20 @@ export default function AuthPage() {
       ) : (
         <div className="py-5 md:px-15 px-0 flex flex-col gap-10 md-gap:20">
           <div className=" mx-auto">
-            <img src="/logo.jpg" width={200} height={40} alt="" className="dark:block hidden" />
-            <img src="/lightlogo.png" width={200} height={40} alt="" className="dark:hidden block" />
+            <img
+              src="/logo.jpg"
+              width={200}
+              height={40}
+              alt=""
+              className="dark:block hidden"
+            />
+            <img
+              src="/lightlogo.png"
+              width={200}
+              height={40}
+              alt=""
+              className="dark:hidden block"
+            />
           </div>
           <div className="flex flex-col justify-center place-items-center gap-3 md:gap-10">
             <h1 className="text-3xl font-bold dark:text-white text-black">
@@ -274,5 +286,5 @@ export default function AuthPage() {
         <SlicedImageGrid />
       </div>
     </div>
-  )
+  );
 }
