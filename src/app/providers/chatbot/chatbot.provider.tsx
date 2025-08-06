@@ -11,11 +11,11 @@ import { Message } from "@/app/dashboard/dashboard.type";
 export function ChatbotProvider({ children }: { children: React.ReactNode }) {
   const { session } = useSupabase();
   const { axios } = useAxios();
-  const [chatHistory, setChatHistory] = useState<any>([]);
+  const [chatHistory, setChatHistory] = useState<any[]>([]);
 
   const {
     data: sessionId,
-    refetch: refechSessionId,
+    refetch: refechChatBotSessionId,
     isLoading: isSessionIdLoading,
   } = useQuery({
     queryKey: ["chatbot"],
@@ -24,6 +24,7 @@ export function ChatbotProvider({ children }: { children: React.ReactNode }) {
       const res = await axios.post(`${process.env.NEXT_PUBLIC_ML_URL}/chat`, {
         message: " ",
       });
+
       return res.data.session_id ?? null;
     },
   });
@@ -102,18 +103,27 @@ export function ChatbotProvider({ children }: { children: React.ReactNode }) {
           return val;
         });
       } else {
-        // ➕ Add a new session (and limit to latest 3 if needed)
         return [{ sessionId, messages: [message] }, ...prev].slice(0, 3);
       }
     });
   }
+
   useEffect(() => {
-    refechSessionId();
+    const getHistory = localStorage.getItem(CHATBOT_HISTORY_KEY);
+    if (getHistory) {
+      try {
+        setChatHistory(JSON.parse(getHistory));
+      } catch (err) {
+        console.error("Error parsing chat history from localStorage", err);
+      }
+    }
+    refechChatBotSessionId();
   }, [session]);
 
   useEffect(() => {
-    const chatHistorylocal = localStorage.getItem(CHATBOT_HISTORY_KEY);
-    console.log(chatHistory);
+    if (chatHistory.length > 0) {
+      localStorage.setItem(CHATBOT_HISTORY_KEY, JSON.stringify(chatHistory));
+    }
   }, [chatHistory]);
 
   return (
@@ -121,7 +131,7 @@ export function ChatbotProvider({ children }: { children: React.ReactNode }) {
       value={{
         sessionId,
         isSessionIdLoading,
-        refechSessionId,
+        refechChatBotSessionId,
         chatHistory,
         handleSendMessage,
       }}

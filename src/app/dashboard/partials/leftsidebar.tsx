@@ -12,16 +12,19 @@ import {
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { useChatbotContext } from "@/app/providers/chatbot/chatbot.context";
 
 export default function LeftSidebar() {
   const { session, logout } = useSupabase();
   const [user, setUser] = useState<null | any>(null);
+  const { chatHistory } = useChatbotContext();
 
   useEffect(() => {
     if (session && session.user) {
       setUser(session.user);
     }
   }, [session]);
+
   return (
     <aside className="flex flex-col gap-4 p-4 w-full h-full lg:max-h-[calc(100vh-74px)] overflow-hidden">
       {/* Chat History Section - Takes most space */}
@@ -30,15 +33,22 @@ export default function LeftSidebar() {
           Chat History
         </h3>
         <ul className="text-xs dark:text-gray-400 text-gray-600 space-y-3">
-          <li className="cursor-pointer hover:text-purple-500 transition-colors">
-            Chat History
-          </li>
-          <li className="cursor-pointer hover:text-purple-500 transition-colors">
-            Chat History
-          </li>
-          <li className="cursor-pointer hover:text-purple-500 transition-colors">
-            Chat History
-          </li>
+          {chatHistory.length > 1 ? (
+            chatHistory.map((value: any) => {
+              return (
+                <li
+                  key={value.sessionId}
+                  className="cursor-pointer hover:text-purple-500 transition-colors"
+                >
+                  Chat History {value.sessionId}
+                </li>
+              );
+            })
+          ) : (
+            <li className="cursor-pointer hover:text-purple-500 transition-colors">
+              Start Your First Chat
+            </li>
+          )}
         </ul>
       </div>
 
