@@ -13,9 +13,8 @@ import { ChevronRight, ChevronUp } from "lucide-react";
 import { useChatbotContext } from "../providers/chatbot/chatbot.context";
 
 export default function ChatInterface() {
-  const [messages, setMessages] = useState<Message[]>([]);
   const [isTyping, setIsTyping] = useState(false);
-  const [hasStartedChat, setHasStartedChat] = useState(false);
+
   const [showLeftSidebar, setShowLeftSidebar] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   ``;
@@ -24,6 +23,9 @@ export default function ChatInterface() {
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
+
+  const { messages, setMessages, hasStartedChat, setHasStartedChat } =
+    useChatbotContext();
 
   useEffect(() => {
     scrollToBottom();

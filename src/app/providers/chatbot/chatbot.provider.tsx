@@ -12,6 +12,8 @@ export function ChatbotProvider({ children }: { children: React.ReactNode }) {
   const { session } = useSupabase();
   const { axios } = useAxios();
   const [chatHistory, setChatHistory] = useState<any[]>([]);
+  const [hasStartedChat, setHasStartedChat] = useState<boolean>(false);
+  const [messages, setMessages] = useState<Message[]>([]);
 
   const {
     data: sessionId,
@@ -29,12 +31,19 @@ export function ChatbotProvider({ children }: { children: React.ReactNode }) {
     },
   });
 
+  function handlePreviousMessages(sessionId: string) {
+    console.log("called", sessionId);
+    const val = chatHistory.find((val) => {
+      return val.sessionId == sessionId;
+    });
+    console.log(val);
+    setMessages((pre) => [...val.messages]);
+    setHasStartedChat(true);
+  }
+
   const handleSendMessage = async ({
     inputValue,
     onSubmit,
-    hasStartedChat,
-    setHasStartedChat,
-    setMessages,
     setIsTyping,
     setInputValue,
   }: handleSumbitMessageType) => {
@@ -134,6 +143,11 @@ export function ChatbotProvider({ children }: { children: React.ReactNode }) {
         refechChatBotSessionId,
         chatHistory,
         handleSendMessage,
+        messages,
+        setMessages,
+        handlePreviousMessages,
+        hasStartedChat,
+        setHasStartedChat,
       }}
     >
       {children}

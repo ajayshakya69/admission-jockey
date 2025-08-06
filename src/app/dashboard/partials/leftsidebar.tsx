@@ -17,7 +17,7 @@ import { useChatbotContext } from "@/app/providers/chatbot/chatbot.context";
 export default function LeftSidebar() {
   const { session, logout } = useSupabase();
   const [user, setUser] = useState<null | any>(null);
-  const { chatHistory } = useChatbotContext();
+  const { chatHistory, handlePreviousMessages } = useChatbotContext();
 
   useEffect(() => {
     if (session && session.user) {
@@ -38,9 +38,10 @@ export default function LeftSidebar() {
               return (
                 <li
                   key={value.sessionId}
+                  onClick={() => handlePreviousMessages(value.sessionId)}
                   className="cursor-pointer hover:text-purple-500 transition-colors"
                 >
-                  Chat History {value.sessionId}
+                  {value.messages[0].content.slice(0, 15)}
                 </li>
               );
             })
