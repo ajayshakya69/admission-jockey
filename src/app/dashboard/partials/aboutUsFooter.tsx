@@ -25,7 +25,7 @@ export default function AboutUsFooter() {
                         </div>
                     </div>
                     <div className="w-full flex justify-between place-items-center dark:text-white text-black text-center py-4 mt-5 bg-transparent">
-                        <p className="text-[14px] dark:text-white text-black text-end">© 2025 alumna.ai. All rights reserved.</p>
+                        <p className="text-[14px] dark:text-white text-black text-end">© 2025  Decacorn Edutech Private Limited. All rights reserved.</p>
                         <div className="flex justify-end items-center space-x-10 mb-2">
                             <Link href="https://instagram.com" target="_blank" rel="noopener noreferrer">
                                 <BsInstagram className="w-7 h-7 hover:opacity-80 transition-opacity" />
@@ -132,7 +132,7 @@ export default function AboutUsFooter() {
 
 
                     <div className="w-full flex justify-between items-center px-2 mt-3 dark:text-white text-black text-center bg-transparent ">
-                        <p className="text-[8px] dark:text-white text-black">© 2025 alumna.ai. All rights reserved.</p>
+                        <p className="text-[8px] dark:text-white text-black">© 2025  Decacorn Edutech Private Limited. All rights reserved.</p>
                         <div className="flex justify-between items-center space-x-3">
                             <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
                                 <BsInstagram className="w-[14px] h-[14px] hover:opacity-80 transition-opacity" />
