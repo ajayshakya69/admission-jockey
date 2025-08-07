@@ -15,8 +15,9 @@ import { useChatbotContext } from "@/app/providers/chatbot/chatbot.context";
 import { useEffect, useRef, useState } from "react";
 import { alumniList } from "../alumini/alumni-data";
 
-
-{/* Testimonial Card - Fixed height */ }
+{
+  /* Testimonial Card - Fixed height */
+}
 function TestimonialCarousel() {
   const [current, setCurrent] = useState(0);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -59,13 +60,9 @@ function TestimonialCarousel() {
       </p>
       <div className="flex items-center justify-between">
         <div className="flex flex-col justify-between italic">
-          <div className="flex gap-3 text-[10px]">
-            Skills
-          </div>
+          <div className="flex gap-3 text-[10px]">Skills</div>
           <span className="text-gray-400 text-[9px]">
-            {Array.isArray(alumni.tags)
-            ? alumni.tags.join(" , ")
-            : alumni.tags}
+            {Array.isArray(alumni.tags) ? alumni.tags.join(" , ") : alumni.tags}
           </span>
         </div>
         <button className="bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] text-white px-4 py-2 rounded text-xs">
@@ -96,9 +93,12 @@ export default function LeftSidebar() {
     <aside className="flex flex-col gap-4 p-4 w-full h-full lg:max-h-[calc(100vh-74px)] overflow-hidden">
       {/* Chat History Section - Takes most space */}
       <div className="bg-gradient-to-b from-white to-white dark:bg-gradient-to-b dark:from-[#ffffff0d] border-t dark:border-[#ffffff14] dark:to-[#ffffff04] rounded-[8px] shadow-[0_0_10px_6px_rgba(142,142,142,0.05)] dark:shadow-none p-4 flex-1 overflow-y-auto lg:mt-0 mt-15">
-        <h3 className="text-lg font-bold bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] bg-clip-text text-transparent mb-6 text-center">
+        <h3 className="text-lg font-bold bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] bg-clip-text text-transparent mb-2 text-center">
           Chat History
         </h3>
+        <div className="text-center mb-4">
+          <NewChat />
+        </div>
         <ul className="text-xs dark:text-gray-400 text-gray-600 space-y-3">
           {chatHistory.length > 0 ? (
             chatHistory.map((value: any) => {
@@ -149,7 +149,6 @@ export default function LeftSidebar() {
           Online College
         </Link>
       </div>
-
 
       <TestimonialCarousel />
 

@@ -19,21 +19,29 @@ import {
 import { Star, Download, ChevronDown, Building2 } from "lucide-react";
 import Image from "next/image";
 import { useCollegeContext } from "@/app/providers/colleges/college.context";
+import { imageFormatter } from "@/lib/imagePathFormater";
+import React, { use, useEffect, useMemo } from "react";
+import Loader from "@/components/ui/loader";
 
 type PageProps = {
-  params: Promise<{
-    uniqueId: number;
-  }>;
+  params: {
+    uniqueId: string;
+  };
 };
+export default function CollegeDetailPage({
+  params,
+}: {
+  params: Promise<{ uniqueId: string }>;
+}) {
+  const { colleges, isLoading } = useCollegeContext();
+  const { uniqueId } = use(params);
+  const id = Number(uniqueId);
 
-export default async function CollegeDetailPage({ params }: PageProps) {
-  const { colleges } = useCollegeContext();
-  const { uniqueId } = await params;
-  const college = colleges.find((c) => c.uniqueId === uniqueId);
+  const college = useMemo(() => {
+    return colleges.find((c) => c.uniqueId === id);
+  }, [colleges, id]);
 
-  if (!college) return notFound();
-
-  // const campusHighlights = college.highlights || [];
+  if (isLoading || !college) return <Loader />;
 
   return (
     <div className="min-h-screen dark:bg-gradient-b dark:from-[#000000b0] dark:via-[#000000b0] dark:to-[#000000b0] bg-gradient-to-b from-[#F6F6F6] via-[#fef4f7] to-[#efeafe] dark:text-white text-black">
@@ -41,7 +49,7 @@ export default async function CollegeDetailPage({ params }: PageProps) {
         <div className="flex gap-10 mb-6 bg-gradient-to-b from-white to-white dark:bg-gradient-to-b dark:from-[#ffffff0d] border-t dark:border-[#ffffff14] dark:to-[#ffffff04] shadow-[0_0_10px_6px_rgba(142,142,142,0.05)] dark:shadow-none p-5 px-7 rounded-sm">
           <div className="w-32 h-32 dark:bg-white/10 bg-black/10 rounded-lg flex-shrink-0 overflow-hidden relative dark:shadow-none shadow-[0_0_10px_6px_rgba(142,142,142,0.05)]">
             <Image
-              src={college.featured_image || "/placeholder.svg"}
+              src={imageFormatter(college.featured_image) || "/placeholder.svg"}
               alt={college.property_name}
               fill
               className="object-cover"
@@ -58,8 +66,8 @@ export default async function CollegeDetailPage({ params }: PageProps) {
               <span>|</span>
               <span>{college.property_type || "Private University"}</span>
               <span>|</span>
-              {college.affiliated_by.map((val) => {
-                return <span>{val.value}</span>;
+              {college.affiliated_by.map((val, index) => {
+                return <span key={index}>{val.value}</span>;
               })}
             </div>
 
