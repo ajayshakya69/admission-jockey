@@ -84,7 +84,7 @@ export const colleges: College[] = [
     id: 6,
     name: "Maya University",
     slug: "maya-university",
-    image: "/collegeimg/maya.png",
+    image: "/collegeimg/dbs.png",
     description:
       "Emerging university offering a variety of undergraduate and PG programs.",
     referenceCode: "Admission Jockey",

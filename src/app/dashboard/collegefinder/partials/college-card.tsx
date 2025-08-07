@@ -1,20 +1,11 @@
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import Image from "next/image"
-import Link from "next/link"
-
-interface College {
-  id: number
-  name: string
-  slug: string
-  image: string
-  description: string
-  referenceCode: string
-  link: string
-}
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import Image from "next/image";
+import Link from "next/link";
+import { College } from "./data";
 
 interface CollegeCardProps {
-  college: College
+  college: College;
 }
 
 export function CollegeCard({ college }: CollegeCardProps) {
@@ -23,7 +14,12 @@ export function CollegeCard({ college }: CollegeCardProps) {
       <CardContent className="p-0 h-full flex flex-col">
         {/* College Image */}
         <div className="relative h-[165px] lg:h-[208px] w-full overflow-hidden rounded-t-[8px]">
-          <Image src={college.image || "/placeholder.svg"} alt={college.name} fill className="object-cover" />
+          <Image
+            src={college.image || "/placeholder.svg"}
+            alt={college.name}
+            fill
+            className="object-cover"
+          />
         </div>
 
         {/* College Info */}
@@ -41,12 +37,18 @@ export function CollegeCard({ college }: CollegeCardProps) {
           {/* Reference + Button */}
           <div className="flex justify-between items-center">
             <div>
-              <p className="dark:text-gray-400 text-[#00000087] text-xs font-medium">Use Reference Code</p>
-              <p className="dark:text-gray-300 text-[#00000064] text-sm italic">{college.referenceCode}</p>
+              <p className="dark:text-gray-400 text-[#00000087] text-xs font-medium">
+                Use Reference Code
+              </p>
+              <p className="dark:text-gray-300 text-[#00000064] text-sm italic">
+                {college.referenceCode}
+              </p>
             </div>
 
             <Link href={`/dashboard/collegefinder/${college.slug}`}>
-              <Button className="bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] hover:brightness-75 text-white font-medium rounded-[8px] py-[12px] px-[29px]">View</Button>
+              <Button className="bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] hover:brightness-75 text-white font-medium rounded-[8px] py-[12px] px-[29px]">
+                View
+              </Button>
             </Link>
             {/* <a href={college.link} target="_blank" rel="noopener noreferrer">
               <Button className="bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] hover:brightness-75 text-white font-medium rounded-[8px] py-[12px] px-[29px]">
@@ -57,5 +59,5 @@ export function CollegeCard({ college }: CollegeCardProps) {
         </div>
       </CardContent>
     </Card>
-  )
+  );
 }
