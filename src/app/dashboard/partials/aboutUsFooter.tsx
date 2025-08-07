@@ -19,9 +19,9 @@ export default function AboutUsFooter() {
                         </div>
                         <div className=" dark:text-white text-black text-left py-4  bg-transparent grid grid-cols-2 gap-8 gap-x-25">
                             <Link href="/dashboard/consentForm">Consent Form</Link>
-                            <Link href="">Disclaimer</Link>
-                            <Link href="">Privacy Policy</Link>
-                            <Link href="">Terms</Link>
+                            <Link href="/dashboard/disclaimer">Disclaimer</Link>
+                            <Link href="/dashboard/privacypolicy">Privacy Policy</Link>
+                            <Link href="/dashboard/terms">Terms</Link>
                         </div>
                     </div>
                     <div className="w-full flex justify-between place-items-center dark:text-white text-black text-center py-4 mt-5 bg-transparent">
@@ -123,9 +123,9 @@ export default function AboutUsFooter() {
                         <div>
                             <div className=" dark:text-white text-black text-left py-4 text-[7px]  bg-transparent grid grid-cols-2 gap-3 gap-x-5">
                                 <Link href="/dashboard/consentForm">Consent Form</Link>
-                                <Link href="">Disclaimer</Link>
-                                <Link href="">Privacy Policy</Link>
-                                <Link href="">Terms</Link>
+                                <Link href="/dashboard/disclaimer">Disclaimer</Link>
+                                <Link href="/dashboard/privacypolicy">Privacy Policy</Link>
+                                <Link href="/dashboard/terms">Terms</Link>
                             </div>
                         </div>
                     </div>

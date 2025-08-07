@@ -94,12 +94,15 @@ export default function LeftSidebar() {
     <aside className="flex flex-col gap-4 p-4 w-full h-full lg:max-h-[calc(100vh-74px)] overflow-hidden">
       {/* Chat History Section - Takes most space */}
       <div className="bg-gradient-to-b from-white to-white dark:bg-gradient-to-b dark:from-[#ffffff0d] border-t dark:border-[#ffffff14] dark:to-[#ffffff04] rounded-[8px] shadow-[0_0_10px_6px_rgba(142,142,142,0.05)] dark:shadow-none p-4 flex-1 overflow-y-auto lg:mt-0 mt-15">
-        <h3 className="text-lg font-bold bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] bg-clip-text text-transparent mb-2 text-center">
+        <div className="flex justify-between place-items-center">
+          <h3 className="text-lg font-bold bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] bg-clip-text text-transparent mb-2 text-center">
           Chat History
         </h3>
         <div className="text-center mb-4">
           <NewChat />
         </div>
+        </div>
+        
         <ul className="text-xs dark:text-gray-400 text-gray-600 space-y-3">
           {chatHistory.length > 0 ? (
             chatHistory.map((value: any) => {
