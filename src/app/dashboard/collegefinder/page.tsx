@@ -3,8 +3,11 @@
 import { CollegeCard } from "./partials/college-card";
 import { MoreInstitutions } from "./partials/more-institutions";
 import { colleges } from "./partials/data";
+<<<<<<< HEAD
 import { useCollegeContext } from "@/app/providers/colleges/college.context";
 import Loader from "@/components/ui/loader";
+=======
+>>>>>>> dev
 
 export default function CollegesPage() {
   const { colleges, isLoading } = useCollegeContext();
@@ -22,7 +25,11 @@ export default function CollegesPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
           {colleges.map((college) => (
+<<<<<<< HEAD
             <CollegeCard key={college.uniqueId} college={college} />
+=======
+            <CollegeCard key={college.id} college={college} />
+>>>>>>> dev
           ))}
 
           <div className="md:col-span-1 lg:col-span-1">

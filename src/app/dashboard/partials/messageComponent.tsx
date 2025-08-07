@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Avatar } from "@radix-ui/react-avatar";
 import { AvatarFallback } from "@/components/ui/avatar";
 import { Sparkle } from "lucide-react";
@@ -16,19 +16,29 @@ export default function MessageComponent({
 
   function TypingMessage({ content }: { content: string }) {
     const [displayedText, setDisplayedText] = useState("");
+    const indexRef = useRef(0);
+    const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
     useEffect(() => {
-      let index = 0;
-      const interval = setInterval(() => {
-        if (index < content.length - 1) {
-          setDisplayedText((prev) => prev + content[index]);
-          index++;
+      indexRef.current = 0;
+      setDisplayedText("");
+
+      intervalRef.current = setInterval(() => {
+        const currentIndex = indexRef.current;
+
+        if (currentIndex < content.length) {
+          setDisplayedText((prev) => {
+            return prev + content[currentIndex];
+          });
+          indexRef.current += 1;
         } else {
-          clearInterval(interval);
+          if (intervalRef.current) clearInterval(intervalRef.current);
         }
       }, 10);
 
-      return () => clearInterval(interval);
+      return () => {
+        if (intervalRef.current) clearInterval(intervalRef.current);
+      };
     }, [content]);
 
     useEffect(() => {
