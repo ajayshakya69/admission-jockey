@@ -80,36 +80,36 @@ export const colleges: College[] = [
     referenceCode: "Admission Jockey",
     link: "https://tinyurl.com/5d2bj8a6",
   },
-  {
-    id: 6,
-    name: "Maya University",
-    slug: "maya-university",
-    image: "/collegeimg/dbs.png",
-    description:
-      "Emerging university offering a variety of undergraduate and PG programs.",
-    referenceCode: "Admission Jockey",
-    link: "https://bit.ly/3GADrjf",
-  },
-  {
-    id: 7,
-    name: "Quantum University (UG/PG)",
-    slug: "quantum-university",
-    image: "/collegeimg/quantum.png",
-    description:
-      "Offers UG and PG programs in tech and management. Separate links for both.",
-    referenceCode: "Admission Jockey",
-    link: "https://bitly.cx/nrTLL",
-  },
-  {
-    id: 8,
-    name: "RV University",
-    slug: "rv-university",
-    image: "/collegeimg/rv.png",
-    description:
-      "Renowned Bangalore university for liberal arts, tech, and law.",
-    referenceCode: "Admission Jockey",
-    link: "https://t.ly/XKLQS",
-  },
+  // {
+  //   id: 6,
+  //   name: "Maya University",
+  //   slug: "maya-university",
+  //   image: "/collegeimg/dbs.png",
+  //   description:
+  //     "Emerging university offering a variety of undergraduate and PG programs.",
+  //   referenceCode: "Admission Jockey",
+  //   link: "https://bit.ly/3GADrjf",
+  // },
+  // {
+  //   id: 7,
+  //   name: "Quantum University (UG/PG)",
+  //   slug: "quantum-university",
+  //   image: "/collegeimg/quantum.png",
+  //   description:
+  //     "Offers UG and PG programs in tech and management. Separate links for both.",
+  //   referenceCode: "Admission Jockey",
+  //   link: "https://bitly.cx/nrTLL",
+  // },
+  // {
+  //   id: 8,
+  //   name: "RV University",
+  //   slug: "rv-university",
+  //   image: "/collegeimg/rv.png",
+  //   description:
+  //     "Renowned Bangalore university for liberal arts, tech, and law.",
+  //   referenceCode: "Admission Jockey",
+  //   link: "https://t.ly/XKLQS",
+  // },
   // {
   //   id: 9,
   //   name: "UIT University",
