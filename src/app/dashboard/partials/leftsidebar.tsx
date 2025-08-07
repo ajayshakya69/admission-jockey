@@ -14,6 +14,7 @@ import Link from "next/link";
 import { useChatbotContext } from "@/app/providers/chatbot/chatbot.context";
 import { useEffect, useRef, useState } from "react";
 import { alumniList } from "../alumini/alumni-data";
+import NewChat from "./newChat";
 
 {
   /* Testimonial Card - Fixed height */
