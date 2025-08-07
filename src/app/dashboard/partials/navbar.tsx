@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
+import NewChat from "./newChat";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -51,6 +52,7 @@ export default function Navbar() {
             <Menu className="w-8 h-8 p-[3px] rounded-[2px] bg-gradient-to-b from-white to-white dark:bg-gradient-to-b dark:from-[#ffffff0d] border-t dark:border-[#ffffff14] dark:to-[#ffffff04] shadow-[0_0_10px_6px_rgba(142,142,142,0.15)] dark:shadow-none" />
           </button>
 
+
           {/* Center Logo */}
           <div className="flex-grow text-center md:text-left">
             <div className="inline-block mt-2">
@@ -74,7 +76,7 @@ export default function Navbar() {
           </div>
 
           {/* Right: Dots on mobile */}
-          <div className="md:hidden  relative">
+          <div className="md:hidden  relative flex place-item-center gap-1">
             <DropdownMenu>
               <DropdownMenuTrigger className="outline-none">
                 <MoreVertical className="dark:text-white text-black w-8 h-8 p-[3px]" />
@@ -84,6 +86,9 @@ export default function Navbar() {
                 align="start"
                 className="dark:bg-black bg-white dark:text-white text-black border dark:border-white/20 border-black/10 mt-10 rounded-sm  shadow-lg animate-slideInRight transition-all duration-300 ease-in-out p-0 w-40"
               >
+                <DropdownMenuItem className="w-full flex items-center py-2 px-4">
+                  <NewChat/>
+                </DropdownMenuItem>
                 <DropdownMenuItem className="w-full flex items-center py-2 px-4">
                   <ThemeToggle />
                 </DropdownMenuItem>
@@ -119,7 +124,7 @@ export default function Navbar() {
                 <DropdownMenuContent className="bg-white text-black">
                   <Link href="/dashboard/alumini">
                     <DropdownMenuItem className="dark:hover:bg-black">
-                      Alumini
+                      Alumni
                     </DropdownMenuItem>
                   </Link>
                   <Link href="/dashboard/calender">
@@ -166,11 +171,15 @@ export default function Navbar() {
           </nav>
 
           {/* Desktop Right Side */}
-          <div className="hidden md:flex gap-5">
-            <ThemeToggle />
-            <NotificationDropdown />
-            <UserDropDown />
+          <div className="hidden md:flex gap-4 place-items-center ">
+            <NewChat/>
+            <div className="hidden md:flex gap-4">
+              <ThemeToggle />
+              <NotificationDropdown />
+              <UserDropDown />
+            </div>
           </div>
+
         </div>
       </div>
 
@@ -193,7 +202,7 @@ export default function Navbar() {
             <div className="flex flex-col mt-10 gap-8 text-xl text-center font-semibold tracking-widest dark:text-white/80 text-black/80">
               <Link href="/dashboard" onClick={() => setMenuOpen(false)}>HOME</Link>
               <Link href="/dashboard/aboutus" onClick={() => setMenuOpen(false)}>ABOUT US</Link>
-              <Link href="/dashboard/alumini" onClick={() => setMenuOpen(false)}>ALUMINI</Link>
+              <Link href="/dashboard/alumini" onClick={() => setMenuOpen(false)}>ALUMNI</Link>
               <Link href="/dashboard/calender" onClick={() => setMenuOpen(false)}>CALENDER</Link>
               <Link href="/dashboard/introForm" onClick={() => setMenuOpen(false)}>APPLICATION BUILDER</Link>
               <Link href="/dashboard/onlineCollege" onClick={() => setMenuOpen(false)}>ONLINE COLLEGE</Link>
