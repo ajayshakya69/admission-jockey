@@ -1,7 +1,7 @@
 export interface College {
   id: number;
   name: string;
-  slug: string;
+  slug?: string;
   image: string;
   description: string;
   referenceCode: string;
