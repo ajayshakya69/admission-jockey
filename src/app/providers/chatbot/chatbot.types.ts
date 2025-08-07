@@ -8,10 +8,6 @@ export type chatbotContextType = {
 export type handleSumbitMessageType = {
   inputValue: string;
   onSubmit: (message: string) => void;
-  hasStartedChat: boolean;
-  setHasStartedChat: React.Dispatch<React.SetStateAction<boolean>>;
-  setMessages?: React.Dispatch<React.SetStateAction<Message[]>>;
-  setIsTyping?: React.Dispatch<React.SetStateAction<boolean>>;
   setInputValue: React.Dispatch<React.SetStateAction<string>>;
 };
 
