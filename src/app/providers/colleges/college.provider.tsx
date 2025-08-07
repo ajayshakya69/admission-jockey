@@ -17,7 +17,7 @@ export function CollegeProvider({ children }: { children: ReactNode }) {
     queryKey: ["colleges"],
     queryFn: async () => {
       const data = await axios.get<PropertyApiResponse>(
-        `${process.env.NEXT_PUBLIC_API_URL}/property`,
+        `${process.env.NEXT_PUBLIC_API_URL}/api/property`,
       );
       console.log(data);
       return data.data;

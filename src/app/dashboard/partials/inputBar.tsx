@@ -112,7 +112,9 @@ const InputBar: React.FC<InputBarProps> = ({
       />
 
       <Button
-        onClick={handleSendMessage}
+        onClick={() =>
+          handleSendMessage({ onSubmit, inputValue, setInputValue })
+        }
         className="lg:w-12 lg:h-12 w-10 h-10 rounded-full flex items-center justify-center border-t border-[#ffffff3f] bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] hover:opacity-90 transition-opacity"
       >
         <Send size={26} color="#FFFFFF" />
