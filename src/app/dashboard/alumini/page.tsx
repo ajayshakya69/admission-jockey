@@ -7,66 +7,84 @@ const alumniList = [
     college: "Graphic Era (Deemed to be University)",
     course: "B.Tech (C.S.E with AI)",
     passout: "2025",
+    img: "/alumni/profilepic/shantanu.png",
   },
   {
     name: "Naman Khedwal",
     college: "Graphic Era (Deemed to be University)",
     course: "B.Tech (C.S.E with AI/ML)",
     passout: "2025",
+    img: "/images/alumni/naman-khedwal.jpg",
   },
   {
     name: "Ayush Sharma",
     college: "Graphic Era (Deemed to be University)",
     course: "B.Tech (C.S.E)",
     passout: "2025",
+    img: "/images/alumni/ayush-sharma.jpg",
   },
   {
     name: "Deepanshu Dangre",
     college: "Bharati Vidyapeeth college of engg.",
     course: "B.Tech (E.C.E with C.S.E)",
     passout: "2024",
+    img: "/alumni/profilepic/deepanshu.png",
+  },
+  {
+    name: "Farha Ansari",
+    college: "2500+ successful counseling done",
+    course: "Senior Career Counsellor",
+    passout: "",
+    img: "/alumni/profilepic/farhaansari.jpg",
   },
   {
     name: "Parnika Ingole",
     college: "Shri Guru Gobind Singhji Institute of Engineering and Technology, Nanded",
     course: "B.Tech (C.S.E)",
     passout: "2024",
+    img: "/images/alumni/parnika-ingole.jpg",
   },
   {
     name: "Yash Ahuja",
     college: "Indian Institute of Technology, Roorkee",
     course: "B.Tech (E.P)",
     passout: "2023",
+    img: "/images/alumni/yash-ahuja.jpg",
   },
   {
     name: "Ishika Jain",
     college: "Shri Guru Gobind Singh College of Commerce",
     course: "Bcom",
     passout: "2025",
+    img: "/images/alumni/ishika-jain.jpg",
   },
   {
     name: "Ujjwal Jindal",
     college: "Maharaja Agrasen Institute of Technology, Delhi",
     course: "B.Tech (C.S.E)",
     passout: "2023",
+    img: "/alumni/profilepic/ujjwal.png",
   },
   {
     name: "Vatsal Singh",
     college: "Delhi Technological University",
     course: "B.Des",
     passout: "2024",
+    img: "/images/alumni/vatsal-singh.jpg",
   },
   {
     name: "Manvi Sharma",
     college: "Bhai Parmanand DSEU, Shakarpur Campus",
     course: "BBA BFSI",
     passout: "2025",
+    img: "/images/alumni/manvi-sharma.jpg",
   },
   {
     name: "Sujan Kotiyan",
     college: "Christ University, Bangalore",
     course: "BBA (hons.)",
     passout: "2025",
+    img: "/images/alumni/sujan-kotiyan.jpg",
   },
 ];
 
@@ -75,7 +93,11 @@ const AlumniCard = ({ alumni }: { alumni: typeof alumniList[0] }) => (
     <CardContent className="px-5 py-4 flex flex-col items-center text-center gap-4 h-full">
       <div className="flex items-center justify-around w-full gap-5">
         <div className="w-20 h-20 flex-1">
-          <div className="w-20 h-20 bg-zinc-300 rounded-full"></div>
+          <img
+            src={alumni.img}
+            alt={alumni.name}
+            className="w-20 h-20 object-cover rounded-full border text-[10px] border-zinc-400"
+          />
         </div>
         <div className="text-left flex-2">
           <h3 className="text-xl font-semibold text-transparent bg-clip-text bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] leading-tight">
