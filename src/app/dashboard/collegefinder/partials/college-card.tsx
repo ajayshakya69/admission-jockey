@@ -1,11 +1,11 @@
+import { CollegeType } from "@/app/providers/colleges/colleget.types";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
 import Link from "next/link";
-import { College } from "./data";
 
 interface CollegeCardProps {
-  college: College;
+  college: CollegeType;
 }
 
 export function CollegeCard({ college }: CollegeCardProps) {
@@ -15,8 +15,8 @@ export function CollegeCard({ college }: CollegeCardProps) {
         {/* College Image */}
         <div className="relative h-[165px] lg:h-[208px] w-full overflow-hidden rounded-t-[8px]">
           <Image
-            src={college.image || "/placeholder.svg"}
-            alt={college.name}
+            src={college.featured_image || "/placeholder.svg"}
+            alt={college.property_name}
             fill
             className="object-cover"
           />
@@ -26,12 +26,12 @@ export function CollegeCard({ college }: CollegeCardProps) {
         <div className="flex-1 p-4 flex flex-col justify-between">
           {/* College Name */}
           <h3 className="text-lg lg:text-xl font-semibold text-transparent bg-clip-text bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] mb-2 lg:mb-4">
-            {college.name}
+            {college.property_name}
           </h3>
 
           {/* Scrollable Description */}
           <div className="text-black dark:text-gray-300 text-xs lg:text-sm leading-relaxed mb-3 overflow-y-auto max-h-[72px] pr-1 scrollbar-thin scrollbar-thumb-gray-200 hide-scroll">
-            {college.description}
+            {college.property_name}
           </div>
 
           {/* Reference + Button */}
@@ -41,11 +41,11 @@ export function CollegeCard({ college }: CollegeCardProps) {
                 Use Reference Code
               </p>
               <p className="dark:text-gray-300 text-[#00000064] text-sm italic">
-                {college.referenceCode}
+                {college.uniqueId}
               </p>
             </div>
 
-            <Link href={`/dashboard/collegefinder/${college.slug}`}>
+            <Link href={`/dashboard/collegefinder/${college.uniqueId}`}>
               <Button className="bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] hover:brightness-75 text-white font-medium rounded-[8px] py-[12px] px-[29px]">
                 View
               </Button>

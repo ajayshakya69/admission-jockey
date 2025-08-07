@@ -10,7 +10,6 @@ import { handleSumbitMessageType, Message } from "./chatbot.types";
 export function ChatbotProvider({ children }: { children: React.ReactNode }) {
   const { session } = useSupabase();
   const { axios } = useAxios();
-  const [inputValue, setInputValue] = useState("");
   const [chatHistory, setChatHistory] = useState<any[]>([]);
   const [hasStartedChat, setHasStartedChat] = useState<boolean>(false);
   const [messages, setMessages] = useState<Message[]>([]);
@@ -150,8 +149,6 @@ export function ChatbotProvider({ children }: { children: React.ReactNode }) {
         handlePreviousMessages,
         hasStartedChat,
         setHasStartedChat,
-        inputValue,
-        setInputValue,
         isTyping,
         setIsTyping,
         showLeftSidebar,

@@ -79,30 +79,16 @@ export default function MessageComponent({
           >
             {/* Avatar */}
             {message.sender !== "user" ? (
-              <div className="rounded-full flex items-center justify-center h-10 w-12  p-[1px]  bg-[linear-gradient(90deg,#A07DF1,#F69DBA)]">
-                <Avatar className=" rounded-full w-full h-full dark:bg-black bg-white flex justify-center items-center">
+              <div className="rounded-full flex items-center justify-center h-10 w-10 md:h-10 md:w-12 flex-shrink-0">
+                <Avatar className="rounded-full w-full h-full flex justify-center items-center">
                   <AvatarFallback className="text-white font-bold text-sm md:text-xl bg-transparent">
-                    <svg width="30" height="30" viewBox="0 0 25 25" fill="none">
-                      <defs>
-                        <linearGradient
-                          id="sparkleGradient"
-                          x1="0"
-                          y1="0"
-                          x2="0"
-                          y2="1"
-                        >
-                          <stop
-                            offset="0%"
-                            stopColor="rgba(232, 125, 179, 0.5)"
-                          />
-                          <stop
-                            offset="100%"
-                            stopColor="rgba(140, 103, 226, 0.5)"
-                          />
-                        </linearGradient>
-                      </defs>
-                      <Sparkle stroke="url(#sparkleGradient)" />
-                    </svg>
+                    <img
+                      src="/minilogo.svg"
+                      alt="Logo"
+                      width={32}
+                      height={32}
+                      className="md:w-[50px] md:h-[50px] w-[40px] h-[40px]"
+                    />
                   </AvatarFallback>
                 </Avatar>
               </div>
@@ -159,30 +145,10 @@ export default function MessageComponent({
       {isTyping && (
         <div className="flex justify-start">
           <div className="flex gap-2 md:gap-3">
-            <div className="rounded-full flex items-center justify-center h-10 w-12  p-[1px]  bg-[linear-gradient(90deg,#A07DF1,#F69DBA)]">
-              <Avatar className=" rounded-full w-full h-full dark:bg-black bg-white flex justify-center items-center">
-                <AvatarFallback className="  dark:text-white text-black font-bold text-sm md:text-xl bg-transparent">
-                  <svg width="30" height="30" viewBox="0 0 25 25" fill="none">
-                    <defs>
-                      <linearGradient
-                        id="sparkleGradient"
-                        x1="0"
-                        y1="0"
-                        x2="0"
-                        y2="1"
-                      >
-                        <stop
-                          offset="0%"
-                          stopColor="rgba(232, 125, 179, 0.5)"
-                        />
-                        <stop
-                          offset="100%"
-                          stopColor="rgba(140, 103, 226, 0.5)"
-                        />
-                      </linearGradient>
-                    </defs>
-                    <Sparkle stroke="url(#sparkleGradient)" />
-                  </svg>
+            <div className="rounded-full flex items-center justify-center h-10 w-12">
+              <Avatar className=" rounded-full w-full h-full flex justify-center items-center">
+                <AvatarFallback className="text-white font-bold text-sm md:text-xl bg-transparent">
+                  <img src="/minilogo.svg" alt="Logo" width={50} height={50} className="md:w-[50px] md:h-[50px] w-[40px] h-[40px]" />
                 </AvatarFallback>
               </Avatar>
             </div>
