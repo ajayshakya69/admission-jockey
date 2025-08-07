@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Star } from "lucide-react";
 import Image from "next/image";
 import InputBar from "../partials/inputBar";
+import { InputProvider } from "@/app/providers/inputBarContext/chatbot.context";
 
 const courses = [
   {
@@ -62,7 +63,9 @@ export default function CourseCardsPage() {
                   <h3 className="text-lg font-semibold text-pink-300">
                     {course.title}
                   </h3>
-                  <p className="text-sm dark:text-zinc-300 text-black">{course.description}</p>
+                  <p className="text-sm dark:text-zinc-300 text-black">
+                    {course.description}
+                  </p>
                 </CardContent>
                 <CardFooter className="flex items-center justify-between p-4">
                   <div className="flex flex-col gap-2">
@@ -75,7 +78,9 @@ export default function CourseCardsPage() {
                         />
                       ))}
                     </div>
-                    <div className="text-xs text-zinc-400">{course.learners}</div>
+                    <div className="text-xs text-zinc-400">
+                      {course.learners}
+                    </div>
                   </div>
                   <Button
                     variant="outline"
@@ -92,9 +97,10 @@ export default function CourseCardsPage() {
 
       {/* Fixed bottom input */}
       <div className="bottom-5 lg:pb-10 pb-4 px-4 lg:px-0 w-full max-w-6xl mx-auto">
-        <InputBar />
+        <InputProvider>
+          <InputBar />
+        </InputProvider>
       </div>
     </div>
-
   );
 }
