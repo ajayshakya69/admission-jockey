@@ -9,6 +9,7 @@ import { useSupabase } from "@/services/supabase/supabase.hook";
 import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
+import { InputProvider } from "./providers/inputBarContext/chatbot.context";
 // import Partners from "./(components)/partersBar/page";
 
 const Model = dynamic(() => import("./HomeComponents/3dmodel"), {
@@ -39,7 +40,7 @@ export default function Home() {
           <h1 className="lg:text-[40px] text-[24px] tracking-wide lg:leading-13 leading-8 font-semibold dark:text-white text-black">
             Your AI-Powered Guide to{" "}
             <span className="text-transparent  bg-clip-text bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] ">
-             Higher Education
+              Higher Education
             </span>
             ,{" "}
             <span className="text-transparent  bg-clip-text bg-[linear-gradient(90deg,#A07DF1,#F69DBA)]">
@@ -51,19 +52,24 @@ export default function Home() {
             </span>{" "}
             ,{" "}
             <span className="text-transparent  bg-clip-text bg-[linear-gradient(90deg,#A07DF1,#F69DBA)]">
-             Upskilling 
+              Upskilling 
             </span>{" "}
             &{" "}
             <span className="text-transparent  bg-clip-text bg-[linear-gradient(90deg,#A07DF1,#F69DBA)]">
               Placement
-            </span>{" "}.
+            </span>{" "}
+            .
           </h1>
           <span className="text-left  lg:text-base text-[17px]  lg:w-3/4 lg:mt-0 mt-5 dark:text-white text-black">
-           Alumna.ai is India’s first dedicated AI foundation model to help students discover the right career options, colleges, courses and career paths with personalised guidance.
+            Alumna.ai is India’s first dedicated AI foundation model to help
+            students discover the right career options, colleges, courses and
+            career paths with personalised guidance.
           </span>
           <div className="lg:w-3/4">
             <Suspense fallback={<div>Loading...</div>}>
-              <InputBar onSubmit={handleLandingSubmit} />
+              <InputProvider>
+                <InputBar onSubmit={handleLandingSubmit} />
+              </InputProvider>
             </Suspense>
           </div>
         </div>
@@ -72,13 +78,18 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="lg:px-20 px-5"> <KeyFeatures /></div>
+      <div className="lg:px-20 px-5">
+        {" "}
+        <KeyFeatures />
+      </div>
 
       <div className="lg:my-30 my-10 lg:px-20 px-5">
         <HowAjWork />
       </div>
 
-      <div className="lg:px-20 px-5"><Faq /></div>
+      <div className="lg:px-20 px-5">
+        <Faq />
+      </div>
 
       <div className="mt-20 ">
         <Footer />
