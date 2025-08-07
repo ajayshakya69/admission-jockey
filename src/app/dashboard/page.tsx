@@ -112,8 +112,8 @@ export default function ChatInterface() {
         )}
 
         {!hasStartedChat && (
-          <div className="lg:flex flex-col fixed bottom-3 gap-1 text-[10px] hidden">
-            <div className=" justify-center place-items-center  gap-1 text-black dark:text-white cursor-pointer mx-5 px-4 py-2 rounded-sm bg-gradient-to-b from-white to-white dark:bg-gradient-to-b dark:from-[#ffffff0d] border-t dark:border-[#ffffff14] dark:to-[#ffffff04] shadow-[0_0_10px_6px_rgba(142,142,142,0.05)] dark:shadow-none text-center">
+          <div className="hidden lg:flex flex-col items-center gap-1 w-5xl text-[8px] absolute left-1/2 -translate-x-1/2 bottom-3 z-30">
+            <div className="justify-center place-items-center gap-1 text-black dark:text-white cursor-pointer px-4 py-2 rounded-sm bg-gradient-to-b from-white to-white dark:bg-gradient-to-b dark:from-[#ffffff0d] border-t dark:border-[#ffffff14] dark:to-[#ffffff04] shadow-[0_0_10px_6px_rgba(142,142,142,0.05)] dark:shadow-none text-center italic">
               Built on adaptive Al, Alumna.ai continuously learns from user
               conversations (with consent) to fine-tune responses and surface
               insights aligned with user preferences.

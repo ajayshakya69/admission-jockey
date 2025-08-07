@@ -30,7 +30,7 @@ export default function MainFooter() {
                                 <FaLinkedin className="w-7 h-7 hover:opacity-80 transition-opacity" />
                             </Link>
                         </div>
-                        <p className="text-[14px] dark:text-white text-black text-end">© 2025 alumna.ai. All rights reserved.</p>
+                        <p className="text-[14px] dark:text-white text-black text-end">© 2025  Decacorn Edutech Private Limited. All rights reserved.</p>
                     </div>
                 </div>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1514 400" fill="none" preserveAspectRatio="none" className="w-full h-auto dark:block hidden ">
@@ -126,7 +126,7 @@ export default function MainFooter() {
                                 <FaLinkedin className="w-[14px] h-[14px] hover:opacity-80 transition-opacity" />
                             </a>
                         </div>
-                        <p className="text-[8px] dark:text-white text-black text-end">© 2025 alumna.ai. All rights reserved.</p>
+                        <p className="text-[8px] dark:text-white text-black text-end">© 2025  Decacorn Edutech Private Limited. All rights reserved.</p>
                     </div>
                 </div>
                 <svg

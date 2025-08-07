@@ -1,92 +1,8 @@
+"use client";
+
+import { alumniList } from "./alumni-data";
 import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
-
-const alumniList = [
-  {
-    name: "Shantanu Garg",
-    college: "Graphic Era (Deemed to be University)",
-    course: "B.Tech (C.S.E with AI)",
-    passout: "2025",
-    img: "/alumni/profilepic/shantanu.png",
-  },
-  {
-    name: "Naman Khedwal",
-    college: "Graphic Era (Deemed to be University)",
-    course: "B.Tech (C.S.E with AI/ML)",
-    passout: "2025",
-    img: "/images/alumni/naman-khedwal.jpg",
-  },
-  {
-    name: "Ayush Sharma",
-    college: "Graphic Era (Deemed to be University)",
-    course: "B.Tech (C.S.E)",
-    passout: "2025",
-    img: "/images/alumni/ayush-sharma.jpg",
-  },
-  {
-    name: "Deepanshu Dangre",
-    college: "Bharati Vidyapeeth college of engg.",
-    course: "B.Tech (E.C.E with C.S.E)",
-    passout: "2024",
-    img: "/alumni/profilepic/deepanshu.png",
-  },
-  {
-    name: "Farha Ansari",
-    college: "2500+ successful counseling done",
-    course: "Senior Career Counsellor",
-    passout: "",
-    img: "/alumni/profilepic/farhaansari.jpg",
-  },
-  {
-    name: "Parnika Ingole",
-    college: "Shri Guru Gobind Singhji Institute of Engineering and Technology, Nanded",
-    course: "B.Tech (C.S.E)",
-    passout: "2024",
-    img: "/images/alumni/parnika-ingole.jpg",
-  },
-  {
-    name: "Yash Ahuja",
-    college: "Indian Institute of Technology, Roorkee",
-    course: "B.Tech (E.P)",
-    passout: "2023",
-    img: "/images/alumni/yash-ahuja.jpg",
-  },
-  {
-    name: "Ishika Jain",
-    college: "Shri Guru Gobind Singh College of Commerce",
-    course: "Bcom",
-    passout: "2025",
-    img: "/images/alumni/ishika-jain.jpg",
-  },
-  {
-    name: "Ujjwal Jindal",
-    college: "Maharaja Agrasen Institute of Technology, Delhi",
-    course: "B.Tech (C.S.E)",
-    passout: "2023",
-    img: "/alumni/profilepic/ujjwal.png",
-  },
-  {
-    name: "Vatsal Singh",
-    college: "Delhi Technological University",
-    course: "B.Des",
-    passout: "2024",
-    img: "/images/alumni/vatsal-singh.jpg",
-  },
-  {
-    name: "Manvi Sharma",
-    college: "Bhai Parmanand DSEU, Shakarpur Campus",
-    course: "BBA BFSI",
-    passout: "2025",
-    img: "/images/alumni/manvi-sharma.jpg",
-  },
-  {
-    name: "Sujan Kotiyan",
-    college: "Christ University, Bangalore",
-    course: "BBA (hons.)",
-    passout: "2025",
-    img: "/images/alumni/sujan-kotiyan.jpg",
-  },
-];
 
 const AlumniCard = ({ alumni }: { alumni: typeof alumniList[0] }) => (
   <Card className="dark:bg-gradient-to-b from-[#111] to-[#000] dark:border border-zinc-800 text-white rounded-xl shadow-md min-h-[250px] flex flex-col justify-between">
@@ -107,18 +23,25 @@ const AlumniCard = ({ alumni }: { alumni: typeof alumniList[0] }) => (
         </div>
       </div>
 
-      {/* Description section with fixed height & scroll */}
       <div className="text-sm md:text-base text-left dark:text-white text-black overflow-y-auto w-full pr-1 hide-scroll h-[80px]">
         <p className="mb-1 font-medium">{alumni.course}</p>
         <p className="text-zinc-400 text-[16px]">{alumni.college}</p>
       </div>
 
-      <div className="flex justify-end w-full">
-        <button className="rounded-[5px] flex items-center justify-center w-20 h-10 text-sm p-[1px] bg-[linear-gradient(90deg,#A07DF1,#F69DBA)]">
-          <div className="rounded-[5px] h-full w-full dark:bg-black bg-white dark:text-white text-black flex justify-center items-center">
-            View
-          </div>
-        </button>
+      <div className="flex justify-between place-items-center w-full">
+        <div className="text-black flex flex-col dark:text-white text-[12px] italic text-left">
+          <span className="text-zinc-400">Skills</span>
+          {Array.isArray(alumni.tags)
+            ? alumni.tags.join(" , ")
+            : alumni.tags}
+        </div>
+        <Link href="https://calendly.com/focs-outreach/30min" target="_blank" rel="noopener noreferrer">
+          <button className="rounded-[5px] flex items-center justify-center w-20 h-10 text-sm p-[1px] bg-[linear-gradient(90deg,#A07DF1,#F69DBA)]">
+            <div className="rounded-[5px] h-full w-full dark:bg-black bg-white dark:text-white text-black flex justify-center items-center">
+              Connect
+            </div>
+          </button>
+        </Link>
       </div>
     </CardContent>
   </Card>
@@ -126,7 +49,7 @@ const AlumniCard = ({ alumni }: { alumni: typeof alumniList[0] }) => (
 
 const AlumniCardGrid = () => {
   return (
-    <div className="flex flex-col lg:max-h-screen relative dark:bg-gradient-b dark:from-[#000000b0] dark:via-[#000000b0] dark:to-[#000000b0] bg-gradient-to-b from-[#F6F6F6] via-[#fef4f7] to-[#efeafe] ">
+    <div className="flex flex-col lg:max-h-screen relative dark:bg-gradient-b dark:from-[#000000b0] dark:via-[#000000b0] dark:to-[#000000b0] bg-gradient-to-b from-[#F6F6F6] via-[#fef4f7] to-[#efeafe]">
       <div className="inset-0 z-20 flex flex-col items-center px-4 text-center overflow-y-scroll hide-scroll pb-10 pt-5 lg:py-10">
         <p className="text-md md:text-xl dark:text-white text-black font-semibold">
           Soon you'll be chatting with your future seniors
