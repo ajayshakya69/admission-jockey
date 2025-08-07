@@ -10,11 +10,10 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuTrigger
+  DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
-import NewChat from "./newChat";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -46,12 +45,13 @@ export default function Navbar() {
     <header className="fixed top-0 inset-x-0 z-50">
       <div className="lg:bg-[linear-gradient(90deg,rgba(160,125,241,0.2),rgba(246,157,186,0.2))] bg-transparent lg:pb-[1px]">
         <div className="bg-white dark:bg-black flex justify-between place-items-center px-4 py-3 md:px-8 md:py-4 lg:h-[72px] h-[70px]">
-
           {/* Left: Hamburger on mobile */}
-          <button className="md:hidden dark:text-white text-black" onClick={() => setMenuOpen(true)}>
+          <button
+            className="md:hidden dark:text-white text-black"
+            onClick={() => setMenuOpen(true)}
+          >
             <Menu className="w-8 h-8 p-[3px] rounded-[2px] bg-gradient-to-b from-white to-white dark:bg-gradient-to-b dark:from-[#ffffff0d] border-t dark:border-[#ffffff14] dark:to-[#ffffff04] shadow-[0_0_10px_6px_rgba(142,142,142,0.15)] dark:shadow-none" />
           </button>
-
 
           {/* Center Logo */}
           <div className="flex-grow text-center md:text-left">
@@ -87,9 +87,6 @@ export default function Navbar() {
                 className="dark:bg-black bg-white dark:text-white text-black border dark:border-white/20 border-black/10 mt-10 rounded-sm  shadow-lg animate-slideInRight transition-all duration-300 ease-in-out p-0 w-40"
               >
                 <DropdownMenuItem className="w-full flex items-center py-2 px-4">
-                  <NewChat/>
-                </DropdownMenuItem>
-                <DropdownMenuItem className="w-full flex items-center py-2 px-4">
                   <ThemeToggle />
                 </DropdownMenuItem>
 
@@ -104,14 +101,16 @@ export default function Navbar() {
             </DropdownMenu>
           </div>
 
-
           {/* Desktop Nav */}
           <nav className="hidden md:block absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
             <div className="flex gap-8 text-black dark:text-white font-medium text-sm items-center">
               <Link href="/dashboard" className={isActive("/dashboard")}>
                 Home
               </Link>
-              <Link href="/dashboard/aboutus" className={isActive("/dashboard/aboutus")}>
+              <Link
+                href="/dashboard/aboutus"
+                className={isActive("/dashboard/aboutus")}
+              >
                 About Us
               </Link>
 
@@ -119,7 +118,8 @@ export default function Navbar() {
                 <DropdownMenuTrigger
                   className={`flex items-center gap-1 outline-none ${isActive("/dashboard/calender", false)} ${isActive("/dashboard/introForm", false)}`}
                 >
-                  Features <ChevronDown className="w-4 h-4 dark:text-white text-black" />
+                  Features{" "}
+                  <ChevronDown className="w-4 h-4 dark:text-white text-black" />
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className="bg-white text-black">
                   <Link href="/dashboard/alumini">
@@ -144,7 +144,8 @@ export default function Navbar() {
                 <DropdownMenuTrigger
                   className={`flex items-center gap-1 outline-none ${isActive("/dashboard/onlineCollege", false)} ${isActive("/dashboard/collegefinder", false)}`}
                 >
-                  College <ChevronDown className="w-4 h-4 dark:text-white text-black" />
+                  College{" "}
+                  <ChevronDown className="w-4 h-4 dark:text-white text-black" />
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className="bg-white text-black">
                   <Link href="/dashboard/onlineCollege">
@@ -160,11 +161,17 @@ export default function Navbar() {
                 </DropdownMenuContent>
               </DropdownMenu>
 
-              <Link href="/dashboard/courses" className={isActive("/dashboard/courses")}>
+              <Link
+                href="/dashboard/courses"
+                className={isActive("/dashboard/courses")}
+              >
                 E-learning
               </Link>
 
-              <Link href="/dashboard/addresume" className={isActive("/dashboard/addresume")}>
+              <Link
+                href="/dashboard/addresume"
+                className={isActive("/dashboard/addresume")}
+              >
                 Jobs
               </Link>
             </div>
@@ -172,14 +179,12 @@ export default function Navbar() {
 
           {/* Desktop Right Side */}
           <div className="hidden md:flex gap-4 place-items-center ">
-            <NewChat/>
             <div className="hidden md:flex gap-4">
               <ThemeToggle />
               <NotificationDropdown />
               <UserDropDown />
             </div>
           </div>
-
         </div>
       </div>
 
@@ -200,21 +205,61 @@ export default function Navbar() {
               <X className="w-6 h-6" />
             </button>
             <div className="flex flex-col mt-10 gap-8 text-xl text-center font-semibold tracking-widest dark:text-white/80 text-black/80">
-              <Link href="/dashboard" onClick={() => setMenuOpen(false)}>HOME</Link>
-              <Link href="/dashboard/aboutus" onClick={() => setMenuOpen(false)}>ABOUT US</Link>
-              <Link href="/dashboard/alumini" onClick={() => setMenuOpen(false)}>ALUMNI</Link>
-              <Link href="/dashboard/calender" onClick={() => setMenuOpen(false)}>CALENDER</Link>
-              <Link href="/dashboard/introForm" onClick={() => setMenuOpen(false)}>APPLICATION BUILDER</Link>
-              <Link href="/dashboard/onlineCollege" onClick={() => setMenuOpen(false)}>ONLINE COLLEGE</Link>
-              <Link href="/dashboard/collegefinder" onClick={() => setMenuOpen(false)}>COLLEGE FINDER</Link>
-              <Link href="/dashboard/courses" onClick={() => setMenuOpen(false)}>E-LEARNING</Link>
-              <Link href="/dashboard/addresume" onClick={() => setMenuOpen(false)}>JOBS</Link>
+              <Link href="/dashboard" onClick={() => setMenuOpen(false)}>
+                HOME
+              </Link>
+              <Link
+                href="/dashboard/aboutus"
+                onClick={() => setMenuOpen(false)}
+              >
+                ABOUT US
+              </Link>
+              <Link
+                href="/dashboard/alumini"
+                onClick={() => setMenuOpen(false)}
+              >
+                ALUMNI
+              </Link>
+              <Link
+                href="/dashboard/calender"
+                onClick={() => setMenuOpen(false)}
+              >
+                CALENDER
+              </Link>
+              <Link
+                href="/dashboard/introForm"
+                onClick={() => setMenuOpen(false)}
+              >
+                APPLICATION BUILDER
+              </Link>
+              <Link
+                href="/dashboard/onlineCollege"
+                onClick={() => setMenuOpen(false)}
+              >
+                ONLINE COLLEGE
+              </Link>
+              <Link
+                href="/dashboard/collegefinder"
+                onClick={() => setMenuOpen(false)}
+              >
+                COLLEGE FINDER
+              </Link>
+              <Link
+                href="/dashboard/courses"
+                onClick={() => setMenuOpen(false)}
+              >
+                E-LEARNING
+              </Link>
+              <Link
+                href="/dashboard/addresume"
+                onClick={() => setMenuOpen(false)}
+              >
+                JOBS
+              </Link>
             </div>
           </div>
         </div>
       )}
-
-
     </header>
   );
 }

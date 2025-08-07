@@ -20,27 +20,29 @@ import { Star, Download, ChevronDown, Building2 } from "lucide-react";
 import Image from "next/image";
 import { useCollegeContext } from "@/app/providers/colleges/college.context";
 import { imageFormatter } from "@/lib/imagePathFormater";
-import React, { use, useEffect } from "react";
+import React, { use, useEffect, useMemo } from "react";
+import Loader from "@/components/ui/loader";
 
 type PageProps = {
   params: {
     uniqueId: string;
   };
 };
-
-export default function CollegeDetailPage({ params }: PageProps) {
-  const { colleges } = useCollegeContext();
+export default function CollegeDetailPage({
+  params,
+}: {
+  params: Promise<{ uniqueId: string }>;
+}) {
+  const { colleges, isLoading } = useCollegeContext();
   const { uniqueId } = use(params);
-  console.log(Number(uniqueId));
-  const college = colleges.find((c) => c.uniqueId === Number(uniqueId));
-  console.log(college);
+  const id = Number(uniqueId);
 
-  useEffect(() => {
-    console.log("this is uni", uniqueId);
-  }, []);
-  // const campusHighlights = college.highlights || [];
+  const college = useMemo(() => {
+    return colleges.find((c) => c.uniqueId === id);
+  }, [colleges, id]);
 
-  if (!college) return notFound();
+  if (isLoading || !college) return <Loader />;
+
   return (
     <div className="min-h-screen dark:bg-gradient-b dark:from-[#000000b0] dark:via-[#000000b0] dark:to-[#000000b0] bg-gradient-to-b from-[#F6F6F6] via-[#fef4f7] to-[#efeafe] dark:text-white text-black">
       <div className="p-6 my-10 max-w-7xl mx-auto">
@@ -64,8 +66,8 @@ export default function CollegeDetailPage({ params }: PageProps) {
               <span>|</span>
               <span>{college.property_type || "Private University"}</span>
               <span>|</span>
-              {college.affiliated_by.map((val) => {
-                return <span>{val.value}</span>;
+              {college.affiliated_by.map((val, index) => {
+                return <span key={index}>{val.value}</span>;
               })}
             </div>
 

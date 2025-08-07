@@ -23,7 +23,7 @@ export function CollegeProvider({ children }: { children: ReactNode }) {
       return data.data;
     },
   });
-
+  console.log({ colleges });
   return (
     <CollegeContext.Provider
       value={{ colleges: colleges ?? [], isLoading, refectColleges }}
