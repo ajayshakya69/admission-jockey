@@ -5,6 +5,7 @@ import { AxiosProvider } from "@/services/axios/axios.provider";
 import { SupabaseProvider } from "@/services/supabase/supabase.provider";
 import { QueryProvider } from "./query-provider";
 import { ChatbotProvider } from "./chatbot/chatbot.provider";
+import { CollegeProvider } from "./colleges/college.provider";
 
 export default function Providers({ children }: { children: React.ReactNode }) {
   return (
@@ -12,7 +13,9 @@ export default function Providers({ children }: { children: React.ReactNode }) {
       <QueryProvider>
         <AxiosProvider>
           <SupabaseProvider>
-            <ChatbotProvider>{children}</ChatbotProvider>
+            <ChatbotProvider>
+              <CollegeProvider>{children}</CollegeProvider>
+            </ChatbotProvider>
           </SupabaseProvider>
         </AxiosProvider>
       </QueryProvider>

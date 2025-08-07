@@ -1,3 +1,4 @@
+"use client";
 import { notFound } from "next/navigation";
 import { colleges } from "../partials/data";
 import { Button } from "@/components/ui/button";
@@ -17,20 +18,22 @@ import {
 } from "@/components/ui/collapsible";
 import { Star, Download, ChevronDown, Building2 } from "lucide-react";
 import Image from "next/image";
+import { useCollegeContext } from "@/app/providers/colleges/college.context";
 
 type PageProps = {
   params: Promise<{
-    slug: string;
+    uniqueId: number;
   }>;
 };
 
 export default async function CollegeDetailPage({ params }: PageProps) {
-  const { slug } = await params;
-  const college = colleges.find((c) => c.slug === slug);
+  const { colleges } = useCollegeContext();
+  const { uniqueId } = await params;
+  const college = colleges.find((c) => c.uniqueId === uniqueId);
 
   if (!college) return notFound();
 
-  const campusHighlights = college.highlights || [];
+  // const campusHighlights = college.highlights || [];
 
   return (
     <div className="min-h-screen dark:bg-gradient-b dark:from-[#000000b0] dark:via-[#000000b0] dark:to-[#000000b0] bg-gradient-to-b from-[#F6F6F6] via-[#fef4f7] to-[#efeafe] dark:text-white text-black">
@@ -38,8 +41,8 @@ export default async function CollegeDetailPage({ params }: PageProps) {
         <div className="flex gap-10 mb-6 bg-gradient-to-b from-white to-white dark:bg-gradient-to-b dark:from-[#ffffff0d] border-t dark:border-[#ffffff14] dark:to-[#ffffff04] shadow-[0_0_10px_6px_rgba(142,142,142,0.05)] dark:shadow-none p-5 px-7 rounded-sm">
           <div className="w-32 h-32 dark:bg-white/10 bg-black/10 rounded-lg flex-shrink-0 overflow-hidden relative dark:shadow-none shadow-[0_0_10px_6px_rgba(142,142,142,0.05)]">
             <Image
-              src={college.image || "/placeholder.svg"}
-              alt={college.name}
+              src={college.featured_image || "/placeholder.svg"}
+              alt={college.property_name}
               fill
               className="object-cover"
               sizes="128px"
@@ -48,14 +51,16 @@ export default async function CollegeDetailPage({ params }: PageProps) {
 
           <div className="flex-1">
             <h1 className="text-2xl font-bold text-transparent bg-clip-text bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] mb-2">
-              {college.name}
+              {college.property_name}
             </h1>
             <div className="flex items-center gap-4 text-gray-400 mb-4">
-              <span>{college.location || "Dehradun, Uttarkhand"}</span>
+              <span>{college.email || "Dehradun, Uttarkhand"}</span>
               <span>|</span>
-              <span>{college.type || "Private University"}</span>
+              <span>{college.property_type || "Private University"}</span>
               <span>|</span>
-              <span>{college.approvals || "AICTE, BCI, UGC Approved"}</span>
+              {college.affiliated_by.map((val) => {
+                return <span>{val.value}</span>;
+              })}
             </div>
 
             <div className="flex gap-8">
@@ -67,11 +72,7 @@ export default async function CollegeDetailPage({ params }: PageProps) {
                 asChild
                 className="text-transparent bg-clip-text bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] hover:brightness-75 shadow-none"
               >
-                <a
-                  href={college.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <a href="#" target="_blank" rel="noopener noreferrer">
                   Apply Now
                 </a>
               </Button>
@@ -122,7 +123,7 @@ export default async function CollegeDetailPage({ params }: PageProps) {
               </CollapsibleTrigger>
               <CollapsibleContent className="p-4">
                 <p className="dark:text-white text-black">
-                  {college.description}
+                  {college.property_name}
                 </p>
               </CollapsibleContent>
             </Collapsible>
@@ -133,7 +134,7 @@ export default async function CollegeDetailPage({ params }: PageProps) {
                 <span className="font-semibold">Campus Highlights</span>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {/*<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {campusHighlights.map((highlight, index) => (
                   <Card
                     key={index}
@@ -156,7 +157,7 @@ export default async function CollegeDetailPage({ params }: PageProps) {
                     </CardContent>
                   </Card>
                 ))}
-              </div>
+              </div>*/}
             </div>
 
             <div className="space-y-4">
