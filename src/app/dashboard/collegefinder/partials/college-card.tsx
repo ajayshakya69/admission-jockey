@@ -1,6 +1,7 @@
 import { CollegeType } from "@/app/providers/colleges/colleget.types";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { imageFormatter } from "@/lib/imagePathFormater";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -15,7 +16,7 @@ export function CollegeCard({ college }: CollegeCardProps) {
         {/* College Image */}
         <div className="relative h-[165px] lg:h-[208px] w-full overflow-hidden rounded-t-[8px]">
           <Image
-            src={college.featured_image || "/placeholder.svg"}
+            src={imageFormatter(college.featured_image) || "/placeholder.svg"}
             alt={college.property_name}
             fill
             className="object-cover"
