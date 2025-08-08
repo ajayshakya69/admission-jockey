@@ -2,6 +2,7 @@
 
 import { useCollegeContext } from "@/app/providers/colleges/college.context";
 import { CollegeCard } from "../collegefinder/partials/college-card";
+import { OnlineCollegeCard } from "./online-card";
 
 const dummycolleges = [
   {
@@ -43,7 +44,6 @@ const dummycolleges = [
 ];
 
 export default function CollegesPage() {
-  const { colleges } = useCollegeContext();
   return (
     <div className="max-h-screen overflow-y-scroll hide-scroll dark:text-white text-black dark:bg-gradient-b dark:from-[#000000b0] dark:via-[#000000b0] dark:to-[#000000b0] bg-gradient-to-b from-[#F6F6F6] via-[#fef4f7] to-[#efeafe]">
       <div className="container mx-auto p-4 lg:px-0 max-w-6xl lg:py-10">
@@ -55,8 +55,8 @@ export default function CollegesPage() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-          {colleges.map((college) => (
-            <CollegeCard key={college.uniqueId} college={college} />
+          {dummycolleges.map((college) => (
+            <OnlineCollegeCard key={college.id} college={college} />
           ))}
         </div>
       </div>

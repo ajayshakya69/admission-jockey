@@ -12,7 +12,6 @@ export function PromptSuggestion() {
       ].map((question, idx) => (
         <div
           onClick={() => {
-            console.log("sdjfhk");
             setInputValue(question);
           }}
           key={idx}

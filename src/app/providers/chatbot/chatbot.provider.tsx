@@ -14,6 +14,7 @@ export function ChatbotProvider({ children }: { children: React.ReactNode }) {
   const [hasStartedChat, setHasStartedChat] = useState<boolean>(false);
   const [messages, setMessages] = useState<Message[]>([]);
   const [isTyping, setIsTyping] = useState(false);
+  const [inputValue, setInputValue] = useState("");
   const [showLeftSidebar, setShowLeftSidebar] = useState(false);
   const [showRightSidebar, setShowRightSidebar] = useState(false);
 
