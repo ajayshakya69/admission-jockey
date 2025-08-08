@@ -21,7 +21,7 @@ export const alumniList = [
     college: "Graphic Era (Deemed to be University)",
     course: "B.Tech (C.S.E)",
     passout: "2025",
-    img: "",
+    img: "/alumni/profilepic/ayush.jpg",
     tags: ["Narrator", "Marketing"],
   },
   {
@@ -36,7 +36,7 @@ export const alumniList = [
     name: "Farha Ansari",
     college: "2500+ successful counseling done",
     course: "Senior Career Counsellor",
-    passout: "",
+    passout: "/alumni/profilepic/naman.jpg",
     img: "/alumni/profilepic/farhaansari.jpg",
   },
   {
@@ -52,7 +52,7 @@ export const alumniList = [
     college: "Indian Institute of Technology, Roorkee",
     course: "B.Tech (E.P)",
     passout: "2023",
-    img: "",
+    img: "/alumni/profilepic/yash.jpg",
   },
   {
     name: "Ishika Jain",
@@ -88,6 +88,6 @@ export const alumniList = [
     college: "Christ University, Bangalore",
     course: "BBA (hons.)",
     passout: "2025",
-    img: "",
+    img: "/alumni/profilepic/sujan.jpg",
   },
 ];

@@ -66,9 +66,11 @@ function TestimonialCarousel() {
             {Array.isArray(alumni.tags) ? alumni.tags.join(" , ") : alumni.tags}
           </span>
         </div>
+        <Link href="https://calendly.com/focs-outreach/30min" target="_blank" rel="noopener noreferrer">
         <button className="bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] text-white px-4 py-2 rounded text-xs">
           Connect
         </button>
+        </Link>
       </div>
     </div>
   );
