@@ -3,17 +3,29 @@
 import { alumniList } from "./alumni-data";
 import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
+import { User } from "lucide-react";
 
 const AlumniCard = ({ alumni }: { alumni: typeof alumniList[0] }) => (
   <Card className="dark:bg-gradient-to-b from-[#111] to-[#000] dark:border border-zinc-800 text-white rounded-xl shadow-md min-h-[250px] flex flex-col justify-between">
     <CardContent className="px-5 py-4 flex flex-col items-center text-center gap-4 h-full">
       <div className="flex items-center justify-around w-full gap-5">
         <div className="w-20 h-20 flex-1">
-          <img
-            src={alumni.img}
-            alt={alumni.name}
-            className="w-20 h-20 object-cover rounded-full border text-[10px] border-zinc-400"
-          />
+          {alumni.img ? (
+            <img
+              src={alumni.img}
+              alt={alumni.name}
+              className="w-20 h-20 object-cover rounded-full border text-[10px] border-zinc-400"
+              onError={(e) => {
+                // hide the image on error
+                e.currentTarget.style.display = 'none';
+                // optionally, you could trigger a state update here if needed
+              }}
+            />
+          ) : (
+            <div className="w-20 h-20 flex items-center justify-center rounded-full bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] border border-zinc-400">
+              <User className="text-white w-10 h-10" />
+            </div>
+          )}
         </div>
         <div className="text-left flex-2">
           <h3 className="text-xl font-semibold text-transparent bg-clip-text bg-[linear-gradient(90deg,#A07DF1,#F69DBA)] leading-tight">
