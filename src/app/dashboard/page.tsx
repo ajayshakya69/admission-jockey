@@ -86,9 +86,7 @@ export default function ChatInterface() {
               <div className="p-4">
                 <div className="w-full mx-auto">
                   <Suspense fallback={<div>Loading...</div>}>
-                    <InputProvider>
-                      <InputBar />
-                    </InputProvider>
+                    <InputBar />
                   </Suspense>
                 </div>
               </div>
