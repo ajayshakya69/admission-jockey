@@ -7,12 +7,15 @@ import { Session } from "@supabase/supabase-js";
 import { useAxios } from "../axios/axios.hook";
 import { AxiosError } from "axios";
 import { supabaseConfig } from "./config";
+import { toast } from "react-toastify";
+import { useSearchParams } from "next/navigation";
 
 const createClient = new SupabaseAuthClient(supabaseConfig);
 
 export function SupabaseProvider({ children }: { children: React.ReactNode }) {
   const [retryAttempts, setRetryAttempts] = useState(0);
   const { axios } = useAxios();
+  const [userProfile, setUserProfile] = useState<any | null>(null);
 
   const {
     data: { supabase, session } = {},
@@ -24,6 +27,18 @@ export function SupabaseProvider({ children }: { children: React.ReactNode }) {
       const client = createClient.getBrowserclient();
       const supabase = client;
       const { data } = await supabase.auth.getSession();
+      const userEmail = data?.session?.user?.email;
+      const { data: userData, error } = await supabase
+        .from("users")
+        .select("*")
+        .eq("email", userEmail)
+        .single();
+
+      console.log({ userData });
+
+      if (userData) {
+        setUserProfile(userData);
+      }
       return { session: data.session as Session, supabase };
     },
   });
@@ -91,6 +106,27 @@ export function SupabaseProvider({ children }: { children: React.ReactNode }) {
     }
   };
 
+  async function saveProfile(
+    college: string,
+    year: string,
+    email: string,
+    profile_url: string,
+    name: string,
+  ) {
+    if (!supabase) return;
+    const { data, error } = await supabase.from("users").upsert(
+      { name, email, profile_url, college, year },
+      { onConflict: "email" }, // ensure it uses the unique email to match
+    );
+
+    if (error) {
+      toast.error("error updating data");
+    } else {
+      toast.success("profile is updated");
+    }
+    await refetch();
+  }
+
   return (
     <SupabaseContext.Provider
       value={{
@@ -99,6 +135,8 @@ export function SupabaseProvider({ children }: { children: React.ReactNode }) {
         isLoading: isloading,
         logout,
         refreshSession: refetch,
+        saveProfile,
+        userProfile,
       }}
     >
       {children}
